@@ -1,1 +1,1144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgilePM v3 - Projet Immobilier 100 Appartements</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding-top: 56px;
+        }
+        
+        .navbar {
+            background: rgba(44, 62, 80, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.8)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 50px;
+        }
+        
+        .phase-card {
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .phase-1 { border-top: 5px solid #3498db; }
+        .phase-2 { border-top: 5px solid #2ecc71; }
+        .phase-3 { border-top: 5px solid #f39c12; }
+        .phase-4 { border-top: 5px solid #e74c3c; }
+        .phase-5 { border-top: 5px solid #9b59b6; }
+        .phase-6 { border-top: 5px solid #1abc9c; }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--secondary-color);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -75px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -75px;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .risk-table {
+            font-size: 0.9rem;
+        }
+        
+        .badge-must { background-color: #e74c3c; }
+        .badge-should { background-color: #f39c12; }
+        .badge-could { background-color: #3498db; }
+        .badge-wont { background-color: #95a5a6; }
+        
+        .kpi-card {
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .kpi-1 { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .kpi-2 { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .kpi-3 { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .kpi-4 { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .kpi-5 { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .progress-bar-animated {
+            animation: progress-animation 2s ease-in-out;
+        }
+        
+        @keyframes progress-animation {
+            from { width: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline:before { left: 30px; }
+            .timeline-item { width: calc(100% - 80px); margin-left: 80px !important; margin-right: 0 !important; }
+            .timeline-icon { left: -65px !important; right: auto !important; }
+        }
+        
+        .moscow-chart {
+            display: flex;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .moscow-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+        }
+        
+        .must-segment { background-color: #e74c3c; flex: 50%; }
+        .should-segment { background-color: #f39c12; flex: 25%; }
+        .could-segment { background-color: #3498db; flex: 15%; }
+        .wont-segment { background-color: #95a5a6; flex: 10%; }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-building me-2"></i>AgilePM v3 Immobilier
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Vue d'ensemble</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#phases">6 Phases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#timeline">Planification</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#risks">Risques</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kpis">KPI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resources">Ressources</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">🏗️ Guide de mise en œuvre d'un projet immobilier</h1>
+            <h2 class="h1 mb-4 animate__animated animate__fadeInUp animate__delay-1s">Construction de 100 appartements en location sous 24 mois</h2>
+            <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-2s">Application complète d'AgilePM v3 pour maîtriser délais, coûts et qualité</p>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-3 mb-3">
+                    <div class="bg-white text-dark rounded-3 p-3 shadow">
+                        <h3 class="h5">24 Mois</h3>
+                        <p class="mb-0 text-muted">Délai fixe</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="bg-white text-dark rounded-3 p-3 shadow">
+                        <h3 class="h5">100 Appartements</h3>
+                        <p class="mb-0 text-muted">Scope priorisé</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="bg-white text-dark rounded-3 p-3 shadow">
+                        <h3 class="h5">≥ 9% ROI</h3>
+                        <p class="mb-0 text-muted">Rendement cible</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="bg-white text-dark rounded-3 p-3 shadow">
+                        <h3 class="h5">AgilePM v3</h3>
+                        <p class="mb-0 text-muted">Méthodologie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section id="overview" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">🎯 Introduction</h2>
+                    <p class="lead">Construire 100 appartements en 24 mois est un programme à forte contrainte : délais réglementaires, financement, foncier, entreprises BTP, risques climatiques, marché locatif.</p>
+                    <p>Appliquer <strong>AgilePM v3</strong> permet :</p>
+                    <ul>
+                        <li>Maîtriser le Time & Cost (fixés)</li>
+                        <li>Prioriser le Scope (MoSCoW)</li>
+                        <li>Réduire les risques par itérations contrôlées</li>
+                        <li>Maintenir la gouvernance et la rentabilité</li>
+                        <li>Piloter par la valeur locative et le ROI</li>
+                    </ul>
+                    <p>Ce guide sert de cas pratique complet pour maîtriser tous les concepts AgilePM v3.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-lg phase-card">
+                        <div class="card-body p-4">
+                            <h3 class="card-title h4 mb-4">🧭 Vue d'ensemble des 6 Phases AgilePM v3</h3>
+                            <ol class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center border-0">
+                                    <span class="badge bg-primary me-3">1</span> Pre-Project
+                                </li>
+                                <li class="list-group-item d-flex align-items-center border-0">
+                                    <span class="badge bg-success me-3">2</span> Feasibility
+                                </li>
+                                <li class="list-group-item d-flex align-items-center border-0">
+                                    <span class="badge bg-warning me-3">3</span> Foundations
+                                </li>
+                                <li class="list-group-item d-flex align-items-center border-0">
+                                    <span class="badge bg-danger me-3">4</span> Development
+                                </li>
+                                <li class="list-group-item d-flex align-items-center border-0">
+                                    <span class="badge bg-purple me-3">5</span> Deployment
+                                </li>
+                                <li class="list-group-item d-flex align-items-center border-0">
+                                    <span class="badge bg-info me-3">6</span> Post-Project (Embed & Evolve)
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 Phases -->
+    <section id="phases" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">📋 Les 6 Phases du Projet</h2>
+            <div class="row g-4">
+                <!-- Phase 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card phase-card phase-1 h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h5 mb-0">1️⃣ PRE-PROJECT</h3>
+                                <span class="badge bg-primary">M0-M1</span>
+                            </div>
+                            <p class="card-text"><strong>🎯 Objectif :</strong> Valider l'idée stratégique</p>
+                            <p class="card-text"><strong>👥 Rôles clés :</strong></p>
+                            <ul class="small">
+                                <li>Executive Sponsor</li>
+                                <li>Business Sponsor</li>
+                                <li>Business Visionary</li>
+                                <li>Project Manager</li>
+                            </ul>
+                            <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="collapse" data-bs-target="#phase1-details">Voir détails</button>
+                            <div class="collapse mt-3" id="phase1-details">
+                                <p class="card-text"><strong>📄 Top 3 livrables :</strong></p>
+                                <ol class="small">
+                                    <li>Project Mandate</li>
+                                    <li>Initial Business Case</li>
+                                    <li>Initial Risk Log</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card phase-card phase-2 h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h5 mb-0">2️⃣ FEASIBILITY</h3>
+                                <span class="badge bg-success">M1-M3</span>
+                            </div>
+                            <p class="card-text"><strong>🎯 Objectif :</strong> Vérifier que le projet est réalisable</p>
+                            <p class="card-text"><strong>👥 Rôles clés :</strong></p>
+                            <ul class="small">
+                                <li>Business Analyst</li>
+                                <li>Architecte</li>
+                                <li>Responsable juridique</li>
+                                <li>Cost Controller</li>
+                            </ul>
+                            <button class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" data-bs-target="#phase2-details">Voir détails</button>
+                            <div class="collapse mt-3" id="phase2-details">
+                                <p class="card-text"><strong>📄 Top 3 livrables :</strong></p>
+                                <ol class="small">
+                                    <li>Feasibility Assessment</li>
+                                    <li>Outline Plan</li>
+                                    <li>Updated Business Case</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card phase-card phase-3 h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h5 mb-0">3️⃣ FOUNDATIONS</h3>
+                                <span class="badge bg-warning">M3-M6</span>
+                            </div>
+                            <p class="card-text"><strong>🎯 Objectif :</strong> Définir le cadre stable du projet</p>
+                            <p class="card-text"><strong>🔑 Éléments clés :</strong></p>
+                            <ul class="small">
+                                <li>Vision locative</li>
+                                <li>Backlog MoSCoW</li>
+                                <li>Architecture technique</li>
+                                <li>Plan financier détaillé</li>
+                            </ul>
+                            <button class="btn btn-sm btn-outline-warning mt-2" data-bs-toggle="collapse" data-bs-target="#phase3-details">Voir détails</button>
+                            <div class="collapse mt-3" id="phase3-details">
+                                <p class="card-text"><strong>🧱 MoSCoW Exemple :</strong></p>
+                                <div class="moscow-chart">
+                                    <div class="moscow-segment must-segment">Must Have</div>
+                                    <div class="moscow-segment should-segment">Should</div>
+                                    <div class="moscow-segment could-segment">Could</div>
+                                    <div class="moscow-segment wont-segment">Won't</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card phase-card phase-4 h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h5 mb-0">4️⃣ DEVELOPMENT</h3>
+                                <span class="badge bg-danger">M6-M20</span>
+                            </div>
+                            <p class="card-text"><strong>🎯 Objectif :</strong> Construction incrémentale</p>
+                            <p class="card-text"><strong>Approche par blocs :</strong></p>
+                            <ul class="small">
+                                <li>Bloc A (25 unités) - M6-M9</li>
+                                <li>Bloc B (25 unités) - M9-M12</li>
+                                <li>Bloc C (25 unités) - M12-M16</li>
+                                <li>Bloc D (25 unités) - M16-M20</li>
+                            </ul>
+                            <button class="btn btn-sm btn-outline-danger mt-2" data-bs-toggle="collapse" data-bs-target="#phase4-details">Voir détails</button>
+                            <div class="collapse mt-3" id="phase4-details">
+                                <p class="card-text"><strong>🔄 Cycle Timebox (8-12 semaines) :</strong></p>
+                                <ol class="small">
+                                    <li>Plan</li>
+                                    <li>Build</li>
+                                    <li>Review</li>
+                                    <li>Retrospective</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card phase-card phase-5 h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h5 mb-0">5️⃣ DEPLOYMENT</h3>
+                                <span class="badge bg-purple">M20-M24</span>
+                            </div>
+                            <p class="card-text"><strong>🎯 Objectif :</strong> Mise en location progressive</p>
+                            <p class="card-text"><strong>📊 Sous-phases :</strong></p>
+                            <ul class="small">
+                                <li>Assemble - Finitions et tests</li>
+                                <li>Review - Inspection qualité</li>
+                                <li>Deploy - Signature baux et entrée locataires</li>
+                            </ul>
+                            <button class="btn btn-sm btn-outline-purple mt-2" data-bs-toggle="collapse" data-bs-target="#phase5-details">Voir détails</button>
+                            <div class="collapse mt-3" id="phase5-details">
+                                <p class="card-text"><strong>📄 Top 3 livrables :</strong></p>
+                                <ol class="small">
+                                    <li>Deployment Plan</li>
+                                    <li>Acceptance Record</li>
+                                    <li>Benefits Realisation Plan</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card phase-card phase-6 h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h5 mb-0">6️⃣ POST-PROJECT</h3>
+                                <span class="badge bg-info">M24+</span>
+                            </div>
+                            <p class="card-text"><strong>🎯 Objectif :</strong> Stabiliser et optimiser</p>
+                            <p class="card-text"><strong>📈 Deux axes :</strong></p>
+                            <ul class="small">
+                                <li><strong>Embed :</strong> Stabilisation exploitation et maintenance</li>
+                                <li><strong>Evolve :</strong> Optimisation loyers et services premium</li>
+                            </ul>
+                            <button class="btn btn-sm btn-outline-info mt-2" data-bs-toggle="collapse" data-bs-target="#phase6-details">Voir détails</button>
+                            <div class="collapse mt-3" id="phase6-details">
+                                <p class="card-text"><strong>🎯 Objectifs long terme :</strong></p>
+                                <ul class="small">
+                                    <li>Taux d'occupation ≥ 95%</li>
+                                    <li>ROI ≥ 9% annuel</li>
+                                    <li>Phase 2 d'extension</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">📅 Planification Macro 24 Mois</h2>
+            
+            <div class="timeline">
+                <!-- Mois 0-3 -->
+                <div class="timeline-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0">M0-M3 : Feasibility</h5>
+                                <span class="badge bg-success">Phase 2</span>
+                            </div>
+                            <p class="card-text small">Étude géotechnique, marché locatif, simulation financière, analyse réglementaire</p>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-success progress-bar-animated" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="bi bi-clipboard-check"></i>
+                    </div>
+                </div>
+                
+                <!-- Mois 3-6 -->
+                <div class="timeline-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0">M3-M6 : Foundations</h5>
+                                <span class="badge bg-warning">Phase 3</span>
+                            </div>
+                            <p class="card-text small">Définition du cadre stable, backlog MoSCoW, architecture, plan financier détaillé</p>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-warning progress-bar-animated" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="bi bi-layers"></i>
+                    </div>
+                </div>
+                
+                <!-- Mois 6-20 -->
+                <div class="timeline-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0">M6-M20 : Development par incréments</h5>
+                                <span class="badge bg-danger">Phase 4</span>
+                            </div>
+                            <p class="card-text small">Construction des 4 blocs de 25 appartements chacun (4 incréments de 3-4 mois)</p>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-danger progress-bar-animated" style="width: 75%;"></div>
+                            </div>
+                            <p class="small text-muted mt-2">Progression: Bloc A ✓, Bloc B ✓, Bloc C en cours, Bloc D à venir</p>
+                        </div>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="bi bi-hammer"></i>
+                    </div>
+                </div>
+                
+                <!-- Mois 20-24 -->
+                <div class="timeline-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0">M20-M24 : Deployment progressif</h5>
+                                <span class="badge bg-purple">Phase 5</span>
+                            </div>
+                            <p class="card-text small">Mise en location progressive par blocs, signature baux, entrée locataires</p>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-purple progress-bar-animated" style="width: 20%;"></div>
+                            </div>
+                            <p class="small text-muted mt-2">À venir : Mise en location Bloc A à M20</p>
+                        </div>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="bi bi-key"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Management -->
+    <section id="risks" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">⚠️ Gestion des Risques</h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">📊 Tableau des Risques Principaux</h4>
+                            <div class="table-responsive">
+                                <table class="table table-hover risk-table">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Risque</th>
+                                            <th>Impact</th>
+                                            <th>Mitigation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Retard permis</td>
+                                            <td><span class="badge bg-danger">Critique</span></td>
+                                            <td>Anticipation administrative</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inflation matériaux</td>
+                                            <td><span class="badge bg-warning">Élevé</span></td>
+                                            <td>Contrats à prix fixe</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Faible occupation</td>
+                                            <td><span class="badge bg-info">Moyen</span></td>
+                                            <td>Étude marché fine</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Défaillance entreprise</td>
+                                            <td><span class="badge bg-danger">Critique</span></td>
+                                            <td>Double sourcing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Conditions météo</td>
+                                            <td><span class="badge bg-warning">Élevé</span></td>
+                                            <td>Planification saisonnière</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">🏛️ Gouvernance AgilePM v3</h4>
+                            <p class="card-text"><strong>Structure :</strong></p>
+                            <ul>
+                                <li>Steering Committee mensuel</li>
+                                <li>PM reporting bi-hebdomadaire</li>
+                                <li>Audit financier trimestriel</li>
+                            </ul>
+                            <p class="card-text"><strong>Leadership :</strong></p>
+                            <p>Un expert AgilePM :</p>
+                            <ul>
+                                <li>Protège le Time & Cost</li>
+                                <li>Défend MoSCoW</li>
+                                <li>Favorise collaboration</li>
+                                <li>Décide rapidement</li>
+                                <li>Pilote par valeur business</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MoSCoW Priorization -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">🧠 Priorisation Stratégique MoSCoW</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Toujours protéger :</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Délai 24 mois
+                                            <span class="badge badge-must">Must</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Budget plafond
+                                            <span class="badge badge-must">Must</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Qualité réglementaire
+                                            <span class="badge badge-must">Must</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Ajustable :</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Finitions premium
+                                            <span class="badge badge-should">Should</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Aménagements secondaires
+                                            <span class="badge badge-could">Could</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Services additionnels
+                                            <span class="badge badge-wont">Won't</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPI -->
+    <section id="kpis" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">📊 KPI Clés de Suivi</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="kpi-card kpi-1">
+                        <i class="bi bi-speedometer2 display-6 mb-3"></i>
+                        <h3>SPI</h3>
+                        <h4 class="display-6 fw-bold">1.05</h4>
+                        <p>Schedule Performance Index</p>
+                        <div class="progress bg-white bg-opacity-25" style="height: 10px;">
+                            <div class="progress-bar bg-white" style="width: 105%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="kpi-card kpi-2">
+                        <i class="bi bi-cash-coin display-6 mb-3"></i>
+                        <h3>CPI</h3>
+                        <h4 class="display-6 fw-bold">0.98</h4>
+                        <p>Cost Performance Index</p>
+                        <div class="progress bg-white bg-opacity-25" style="height: 10px;">
+                            <div class="progress-bar bg-white" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="kpi-card kpi-3">
+                        <i class="bi bi-house-check display-6 mb-3"></i>
+                        <h3>Taux occupation</h3>
+                        <h4 class="display-6 fw-bold">0%</h4>
+                        <p>Cible : 95%</p>
+                        <div class="progress bg-white bg-opacity-25" style="height: 10px;">
+                            <div class="progress-bar bg-white" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="kpi-card kpi-4">
+                        <i class="bi bi-graph-up display-6 mb-3"></i>
+                        <h3>Cashflow net</h3>
+                        <h4 class="display-6 fw-bold">-X MFCFA</h4>
+                        <p>Investissement phase</p>
+                        <div class="progress bg-white bg-opacity-25" style="height: 10px;">
+                            <div class="progress-bar bg-white" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="kpi-card kpi-5">
+                        <i class="bi bi-percent display-6 mb-3"></i>
+                        <h3>ROI projet</h3>
+                        <h4 class="display-6 fw-bold">8.7%</h4>
+                        <p>Estimé (cible ≥ 9%)</p>
+                        <div class="progress bg-white bg-opacity-25" style="height: 10px;">
+                            <div class="progress-bar bg-white" style="width: 87%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 d-flex justify-content-center align-items-center p-4 border-0 shadow">
+                        <h4 class="text-center mb-3">🎓 Devenir Expert AgilePM v3</h4>
+                        <p class="text-center">Ce cas immobilier permet de maîtriser :</p>
+                        <ul class="small">
+                            <li>Les 6 phases</li>
+                            <li>MoSCoW stratégique</li>
+                            <li>Gouvernance agile en environnement BTP</li>
+                            <li>Gestion incrémentale physique</li>
+                            <li>Leadership orienté valeur</li>
+                        </ul>
+                        <p class="text-center fst-italic mt-3">Un expert AgilePM ne gère pas seulement des tâches. Il protège la valeur business sous contrainte forte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">📚 Ressources et Prochaines Étapes</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-diagram-3 display-4 text-primary mb-3"></i>
+                            <h5 class="card-title">Carte Mentale</h5>
+                            <p class="card-text small">Carte mentale complète AgilePM v3 appliquée à l'immobilier</p>
+                            <button class="btn btn-sm btn-outline-primary" id="mindmap-btn">Générer</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-question-circle display-4 text-success mb-3"></i>
+                            <h5 class="card-title">Questions Examen</h5>
+                            <p class="card-text small">40 questions type examen basées sur ce cas</p>
+                            <button class="btn btn-sm btn-outline-success" id="questions-btn">Générer</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-file-earmark-text display-4 text-warning mb-3"></i>
+                            <h5 class="card-title">Template Projet</h5>
+                            <p class="card-text small">Template prêt à utiliser pour lancer un vrai projet immobilier</p>
+                            <button class="btn btn-sm btn-outline-warning" id="template-btn">Télécharger</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-graph-up-arrow display-4 text-danger mb-3"></i>
+                            <h5 class="card-title">Simulation Financière</h5>
+                            <p class="card-text small">Simulation financière détaillée sur 5 ans</p>
+                            <button class="btn btn-sm btn-outline-danger" id="finance-btn">Générer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resource Display Area -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow">
+                        <div class="card-body">
+                            <div id="resource-display" class="text-center p-5">
+                                <i class="bi bi-arrow-up-circle display-1 text-muted mb-3"></i>
+                                <h4>Sélectionnez une ressource ci-dessus</h4>
+                                <p class="text-muted">Le contenu s'affichera ici</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🏗️ Guide de mise en œuvre d'un projet immobilier</h5>
+                    <p>Application complète d'AgilePM v3 pour la construction de 100 appartements en location sous 24 mois.</p>
+                    <p>Ce portail sert de cas pratique complet pour maîtriser tous les concepts AgilePM v3.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#overview" class="text-light">Introduction</a></li>
+                        <li><a href="#phases" class="text-light">6 Phases</a></li>
+                        <li><a href="#timeline" class="text-light">Planification</a></li>
+                        <li><a href="#risks" class="text-light">Risques</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>AgilePM v3</h5>
+                    <p>Méthodologie agile pour la gestion de projets à contraintes fixes (Time & Cost).</p>
+                    <p>Focus sur la livraison de valeur business priorisée (MoSCoW).</p>
+                </div>
+            </div>
+            <hr class="bg-light my-4">
+            <div class="text-center">
+                <p>&copy; 2023 Guide AgilePM v3 Immobilier. Cas pratique complet.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <button class="floating-btn btn btn-primary" id="scrollTopBtn" title="Retour en haut">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.style.display = 'flex';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Resource buttons functionality
+        const resourceDisplay = document.getElementById('resource-display');
+        
+        document.getElementById('mindmap-btn').addEventListener('click', function() {
+            resourceDisplay.innerHTML = `
+                <h4 class="text-primary">📊 Carte Mentale AgilePM v3 - Immobilier</h4>
+                <div class="mt-4">
+                    <p><strong>Structure centrale :</strong> Projet 100 Appartements - 24 Mois</p>
+                    <p><strong>Branche 1 :</strong> 6 Phases AgilePM v3 (détaillées avec livrables clés)</p>
+                    <p><strong>Branche 2 :</strong> Gouvernance (rôles, comités, reporting)</p>
+                    <p><strong>Branche 3 :</strong> Priorisation MoSCoW (Must, Should, Could, Won't)</p>
+                    <p><strong>Branche 4 :</strong> Risques & Mitigations (tableau complet)</p>
+                    <p><strong>Branche 5 :</strong> KPI de suivi (SPI, CPI, ROI, taux occupation)</p>
+                    <p><strong>Branche 6 :</strong> Planification incrémentale (4 blocs de 25 unités)</p>
+                    <div class="mt-4">
+                        <button class="btn btn-primary">Télécharger PDF</button>
+                        <button class="btn btn-outline-primary ms-2">Voir en ligne</button>
+                    </div>
+                </div>
+            `;
+            resourceDisplay.scrollIntoView({behavior: 'smooth'});
+        });
+        
+        document.getElementById('questions-btn').addEventListener('click', function() {
+            resourceDisplay.innerHTML = `
+                <h4 class="text-success">🔥 40 Questions Type Examen AgilePM v3</h4>
+                <div class="text-start mt-4">
+                    <p><strong>Section 1 : Principes Fondamentaux (10 questions)</strong></p>
+                    <ol>
+                        <li>Quels sont les 3 principes AgilePM les plus critiques pour un projet immobilier avec contraintes fixes de temps et budget?</li>
+                        <li>Comment la priorisation MoSCoW protège-t-elle la valeur business dans notre cas de 100 appartements?</li>
+                    </ol>
+                    
+                    <p><strong>Section 2 : Phases et Processus (15 questions)</strong></p>
+                    <ol start="3">
+                        <li>Quels sont les livrables clés de la phase Feasibility pour un projet immobilier?</li>
+                        <li>Comment découperiez-vous le développement en timeboxes pour les 4 blocs de construction?</li>
+                    </ol>
+                    
+                    <p><strong>Section 3 : Gestion des Risques (10 questions)</strong></p>
+                    <ol start="18">
+                        <li>Quelle serait votre stratégie de mitigation face à un risque d'inflation des matériaux de +15%?</li>
+                        <li>Comment adapter la gouvernance AgilePM en cas de retard critique d'obtention de permis?</li>
+                    </ol>
+                    
+                    <p><strong>Section 4 : Calculs et KPI (5 questions)</strong></p>
+                    <ol start="28">
+                        <li>Calculez le SPI et CPI à M12 si 50% du budget est consommé pour 55% des travaux planifiés.</li>
+                        <li>Quel ROI minimal justifierait la poursuite du projet si les coûts augmentent de 10%?</li>
+                    </ol>
+                    
+                    <div class="mt-4">
+                        <button class="btn btn-success">Télécharger les questions</button>
+                        <button class="btn btn-outline-success ms-2">Voir les réponses</button>
+                    </div>
+                </div>
+            `;
+            resourceDisplay.scrollIntoView({behavior: 'smooth'});
+        });
+        
+        document.getElementById('template-btn').addEventListener('click', function() {
+            resourceDisplay.innerHTML = `
+                <h4 class="text-warning">📘 Template de Projet Immobilier AgilePM v3</h4>
+                <div class="mt-4">
+                    <p><strong>Contenu du template :</strong></p>
+                    <ul class="text-start">
+                        <li>Document de Mandat du Projet (Project Mandate)</li>
+                        <li>Business Case initial et modèle financier</li>
+                        <li>Registre des Risques pré-rempli pour l'immobilier</li>
+                        <li>Structure MoSCoW pour les exigences d'un projet résidentiel</li>
+                        <li>Plan de Déploiement pour mise en location progressive</li>
+                        <li>Dashboard de suivi KPI (SPI, CPI, ROI, taux occupation)</li>
+                        <li>Modèles de reporting Steering Committee</li>
+                        <li>Checklists qualité par phase de construction</li>
+                    </ul>
+                    
+                    <div class="alert alert-warning mt-4">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Ce template est directement applicable à tout projet immobilier de 20 à 200 unités.
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button class="btn btn-warning">Télécharger le template (.zip)</button>
+                        <button class="btn btn-outline-warning ms-2">Voir aperçu</button>
+                    </div>
+                </div>
+            `;
+            resourceDisplay.scrollIntoView({behavior: 'smooth'});
+        });
+        
+        document.getElementById('finance-btn').addEventListener('click', function() {
+            resourceDisplay.innerHTML = `
+                <h4 class="text-danger">📈 Simulation Financière Détaillée sur 5 Ans</h4>
+                <div class="mt-4">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-danger">
+                                <tr>
+                                    <th>Année</th>
+                                    <th>Investissement</th>
+                                    <th>Revenus locatifs</th>
+                                    <th>Charges</th>
+                                    <th>Cashflow net</th>
+                                    <th>ROI cumulé</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Année 1</td>
+                                    <td>-12.5 MFCFA</td>
+                                    <td>0 MFCFA</td>
+                                    <td>-0.5 MFCFA</td>
+                                    <td>-13.0 MFCFA</td>
+                                    <td>-8.2%</td>
+                                </tr>
+                                <tr>
+                                    <td>Année 2</td>
+                                    <td>-37.5 MFCFA</td>
+                                    <td>2.4 MFCFA</td>
+                                    <td>-1.2 MFCFA</td>
+                                    <td>-36.3 MFCFA</td>
+                                    <td>-5.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Année 3</td>
+                                    <td>0 MFCFA</td>
+                                    <td>9.6 MFCFA</td>
+                                    <td>-3.6 MFCFA</td>
+                                    <td>+6.0 MFCFA</td>
+                                    <td>+1.2%</td>
+                                </tr>
+                                <tr>
+                                    <td>Année 4</td>
+                                    <td>0 MFCFA</td>
+                                    <td>9.8 MFCFA</td>
+                                    <td>-3.7 MFCFA</td>
+                                    <td>+6.1 MFCFA</td>
+                                    <td>+4.9%</td>
+                                </tr>
+                                <tr>
+                                    <td>Année 5</td>
+                                    <td>0 MFCFA</td>
+                                    <td>10.0 MFCFA</td>
+                                    <td>-3.8 MFCFA</td>
+                                    <td>+6.2 MFCFA</td>
+                                    <td>+8.7%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <p><strong>Hypothèses clés :</strong></p>
+                            <ul class="small">
+                                <li>Taux d'occupation : 95% à partir de M24</li>
+                                <li>Loyer moyen : 100,000 FCFA/appartement/mois</li>
+                                <li>Inflation loyers : +2% annuel</li>
+                                <li>Charges de gestion : 8% des revenus</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Points de décision :</strong></p>
+                            <ul class="small">
+                                <li>Seuil de rentabilité : M36</li>
+                                <li>ROI à 5 ans : 8.7% (cible ≥ 9%)</li>
+                                <li>VAN à 5 ans : +3.2 MFCFA</li>
+                                <li>TRI : 9.2%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button class="btn btn-danger">Télécharger le modèle Excel</button>
+                        <button class="btn btn-outline-danger ms-2">Modifier les hypothèses</button>
+                    </div>
+                </div>
+            `;
+            resourceDisplay.scrollIntoView({behavior: 'smooth'});
+        });
+        
+        // Animate progress bars on scroll
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar-animated');
+            
+            progressBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    bar.style.animation = 'progress-animation 2s ease-in-out';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateProgressBalls);
+        animateProgressBars(); // Initial call
+        
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
