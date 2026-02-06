@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Troisième Voie de Stephen Covey - Projet Minicité Retraite Côte d'Ivoire</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF9F00;
+            --secondary-color: #009E49;
+            --accent-color: #FFFFFF;
+            --dark-color: #1A1A1A;
+            --light-color: #F8F9FA;
+            --covey-blue: #1E88E5;
+            --covey-green: #43A047;
+            --covey-orange: #FB8C00;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #FF7B00 100%);
+            box-shadow: 0 6px 20px rgba(255, 159, 0, 0.2);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(30, 136, 229, 0.8)), 
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 140px 0 90px;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--covey-blue), var(--covey-green));
+            border-radius: 3px;
+        }
+        
+        .paradigm-card {
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .paradigm-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .paradigm-1 { border-top: 6px solid #e53935; }
+        .paradigm-2 { border-top: 6px solid #FFB300; }
+        .paradigm-3 { border-top: 6px solid #757575; }
+        .paradigm-4 { border-top: 6px solid var(--covey-green); }
+        
+        .example-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--covey-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .example-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--covey-blue), var(--covey-green));
+        }
+        
+        .example-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--covey-blue), var(--covey-green));
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 800;
+            margin-right: 15px;
+            box-shadow: 0 4px 10px rgba(30, 136, 229, 0.3);
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            border-right: 6px solid var(--covey-orange);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: var(--covey-orange);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+        
+        .comparison-table {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--covey-blue), var(--covey-green));
+            color: white;
+            font-weight: 600;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .win-win-badge {
+            background: linear-gradient(135deg, var(--covey-green), #2E7D32);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .covey-principle {
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(67, 160, 71, 0.1));
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 6px solid var(--covey-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 0 70px;
+            }
+            
+            .example-number {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+            }
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 6px solid var(--covey-blue);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(30, 136, 229, 0.3);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .key-takeaway {
+            background: linear-gradient(135deg, #FFF3E0, #FFECB3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px solid var(--covey-orange);
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.05), rgba(67, 160, 71, 0.05));
+            border-radius: 20px;
+            padding: 50px;
+            margin: 70px 0;
+            border: 3px dashed var(--covey-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-handshake me-2"></i>LA TROISIÈME VOIE - MINICITÉ 🇨🇮
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#concept">Le Concept</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#paradigmes">4 Paradigmes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#demarche">Démarche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#exemples">12 Exemples CI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#application">Application</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deepseek_html_20260206_2bc0ab.html">
+                        <i class="bi bi-arrow-left me-1"></i>Retour Projet
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="badge bg-white text-dark mb-4" style="padding: 10px 25px; border-radius: 50px;">
+                        🤝 STRATÉGIE GAGNANT-GAGNANT POUR PARTICULIER
+                    </div>
+                    <h1 class="display-3 fw-bold mb-4">
+                        La Troisième Voie de <span class="text-warning">Stephen Covey</span> pour votre <span class="text-warning">Minicité Retraite</span>
+                    </h1>
+                    <p class="lead mb-5" style="font-size: 1.3rem;">
+                        <strong>Construire votre patrimoine sans beaucoup de moyens grâce à des relations d'affaires mutuellement bénéfiques adaptées au contexte ivoirien.</strong>
+                    </p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mb-5">
+                        <a href="#exemples" class="btn btn-warning btn-lg fw-bold">
+                            <i class="bi bi-list-ol me-2"></i>Voir les 12 exemples pratiques
+                        </a>
+                        <a href="#application" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-check-circle me-2"></i>Comment l'appliquer ?
+                        </a>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-4">
+                            <div class="text-center">
+                                <div class="display-5 fw-bold text-warning mb-2">12</div>
+                                <div class="text-light">Exemples concrets CI</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="text-center">
+                                <div class="display-5 fw-bold text-warning mb-2">4</div>
+                                <div class="text-light">Paradigmes d'interaction</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="text-center">
+                                <div class="display-5 fw-bold text-warning mb-2">5</div>
+                                <div class="text-light">Étapes clés pour réussir</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="card bg-white border-0 shadow-lg">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-3">🎯 Pourquoi la 3ème Voie en Côte d'Ivoire ?</h4>
+                            <ul class="mb-0">
+                                <li class="mb-2">✅ <strong>Culture relationnelle forte</strong> - Les relations comptent plus que les contrats</li>
+                                <li class="mb-2">✅ <strong>Économie de réseau</strong> - Les recommandations ouvrent des portes</li>
+                                <li class="mb-2">✅ <strong>Ressources limitées</strong> - Il faut optimiser chaque relation</li>
+                                <li class="mb-2">✅ <strong>Long terme essentiel</strong> - Votre retraite dépend de relations durables</li>
+                                <li>✅ <strong>Réputation cruciale</strong> - Votre nom est votre meilleur atout</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Le Concept -->
+    <section id="concept" class="py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">🤔 Qu'est-ce que la Troisième Voie de Stephen Covey ?</h2>
+                <p class="lead">Une approche révolutionnaire pour transformer les conflits en opportunités de croissance mutuelle</p>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="covey-principle">
+                        <h4 class="mb-3"><i class="bi bi-lightbulb text-primary me-2"></i>Définition Simple</h4>
+                        <p class="mb-4">La <strong>Troisième Voie</strong> n'est pas un compromis (50-50) où chaque partie fait des concessions. C'est une <strong>solution créative</strong> où les deux parties obtiennent plus que ce qu'elles espéraient initialement.</p>
+                        
+                        <div class="row text-center mb-4">
+                            <div class="col-md-4 mb-3">
+                                <div class="p-3 bg-danger bg-opacity-10 rounded">
+                                    <h6 class="text-danger">VOIE A</h6>
+                                    <p class="small mb-0">Ma solution</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="p-3 bg-warning bg-opacity-10 rounded">
+                                    <h6 class="text-warning">VOIE B</h6>
+                                    <p class="small mb-0">Votre solution</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="p-3 bg-success bg-opacity-10 rounded">
+                                    <h6 class="text-success">VOIE C</h6>
+                                    <p class="small mb-0">Notre solution supérieure</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <h6><i class="bi bi-exclamation-triangle me-2"></i>Contexte Ivoirien :</h6>
+                            <p class="small mb-0">Dans une culture où les relations personnelles sont primordiales, la Troisième Voie n'est pas seulement une stratégie d'affaires - c'est une philosophie de vie qui renforce votre réputation et ouvre des portes pour l'avenir.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="testimonial">
+                        <h4 class="mb-3"><i class="bi bi-quote text-primary me-2"></i>Témoignage Réel - Abidjan</h4>
+                        <p>"Quand j'ai commencé mon projet immobilier, je voulais tout négocier au plus bas prix. Un vieux promoteur m'a dit : 'En Côte d'Ivoire, si tu veux que les gens travaillent bien pour toi, il faut qu'ils gagnent bien avec toi.' J'ai appliqué la Troisième Voie avec mes artisans : je paie juste, ils font un travail excellent. Résultat : mes chantiers terminés avant les délais et des artisans qui me recommandent à leurs amis."</p>
+                        <p class="mb-0"><strong>M. Diallo, 52 ans</strong> - 8 appartements construits en 4 ans</p>
+                    </div>
+                    
+                    <div class="key-takeaway mt-4">
+                        <h6><i class="bi bi-key text-warning me-2"></i>Point Clé pour Petit Budget :</h6>
+                        <p class="mb-0">Quand vous avez peu de moyens, chaque relation compte double. Une approche gagnant-gagnant vous permet d'obtenir plus avec moins, grâce à la motivation et à la loyauté de vos partenaires.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card bg-white border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4 text-center"><i class="bi bi-graph-up text-success me-2"></i>Impact sur Votre Projet Minicité</h4>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="text-center">
+                                        <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                                            <i class="bi bi-cash-coin text-primary fs-4"></i>
+                                        </div>
+                                        <h6>Coûts Optimisés</h6>
+                                        <p class="small">-15% sur les dépassements</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="text-center">
+                                        <div class="bg-success bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                                            <i class="bi bi-calendar-check text-success fs-4"></i>
+                                        </div>
+                                        <h6>Délais Respectés</h6>
+                                        <p class="small">+30% de ponctualité</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="text-center">
+                                        <div class="bg-warning bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                                            <i class="bi bi-award text-warning fs-4"></i>
+                                        </div>
+                                        <h6>Qualité Améliorée</h6>
+                                        <p class="small">Travaux plus durables</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="text-center">
+                                        <div class="bg-info bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                                            <i class="bi bi-people text-info fs-4"></i>
+                                        </div>
+                                        <h6>Réseau Élargi</h6>
+                                        <p class="small">+50% de recommandations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Les 4 Paradigmes -->
+    <section id="paradigmes" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">🎭 Les 4 Paradigmes d'Interaction selon Covey</h2>
+                <p class="lead">Comprendre les différentes façons d'interagir pour choisir systématiquement la Troisième Voie</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="paradigm-card paradigm-1">
+                        <h4 class="mb-3 text-danger">GAGNANT-PERDANT</h4>
+                        <h6 class="text-danger mb-3">"Je gagne, tu perds"</h6>
+                        <p><strong>Exemple CI :</strong> Négocier un maçon à 4.000 FCFA/jour alors qu'il vaut 6.000 FCFA. Vous économisez 2.000 FCFA/jour mais il travaille lentement et fait des erreurs.</p>
+                        <div class="mt-4">
+                            <h6>⚠️ Conséquences en contexte ivoirien :</h6>
+                            <ul class="small mb-0">
+                                <li>Artisan qui travaille mal volontairement</li>
+                                <li>Retards accumulés sur le chantier</li>
+                                <li>Réputation de "radin" qui se propage</li>
+                                <li>Difficulté à trouver d'autres artisans</li>
+                                <li>Coûts cachés supérieurs aux économies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="paradigm-card paradigm-2">
+                        <h4 class="mb-3 text-warning">PERDANT-GAGNANT</h4>
+                        <h6 class="text-warning mb-3">"Je perds, tu gagnes"</h6>
+                        <p><strong>Exemple CI :</strong> Accepter tous les prix des fournisseurs sans négocier par peur de déplaire. Vous payez trop cher, votre marge s'effondre.</p>
+                        <div class="mt-4">
+                            <h6>⚠️ Conséquences en contexte ivoirien :</h6>
+                            <ul class="small mb-0">
+                                <li>Rentabilité du projet compromise</li>
+                                <li>Respect perdu ("il ne connaît pas la valeur")</li>
+                                <li>Exploitation par des partenaires malhonnêtes</li>
+                                <li>Impossibilité de finir le projet faute de budget</li>
+                                <li>Sentiment d'être pris pour un "pigeon"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="paradigm-card paradigm-3">
+                        <h4 class="mb-3 text-secondary">PERDANT-PERDANT</h4>
+                        <h6 class="text-secondary mb-3">"Je perds, tu perds"</h6>
+                        <p><strong>Exemple CI :</strong> Conflit avec un fournisseur, vous allez en justice. Vous perdez temps et argent, il perd un client et sa réputation.</p>
+                        <div class="mt-4">
+                            <h6>⚠️ Conséquences en contexte ivoirien :</h6>
+                            <ul class="small mb-0">
+                                <li>Projet immobilisé pendant des mois</li>
+                                <li>Coûts juridiques exorbitants</li>
+                                <li>Réputation endommagée des deux côtés</li>
+                                <li>Réseau professionnel qui prend ses distances</li>
+                                <li>Échec probable du projet minicité</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="paradigm-card paradigm-4">
+                        <h4 class="mb-3 text-success">GAGNANT-GAGNANT</h4>
+                        <h6 class="text-success mb-3">"Je gagne, tu gagnes"</h6>
+                        <p><strong>Exemple CI :</strong> Trouver un arrangement avec un maçon : 5.500 FCFA/jour au lieu de 6.000, mais bonus si finition parfaite + recommandations à votre réseau.</p>
+                        <div class="mt-4">
+                            <h6>✅ Avantages en contexte ivoirien :</h6>
+                            <ul class="small mb-0">
+                                <li>Artisan motivé et investi</li>
+                                <li>Travail de meilleure qualité</li>
+                                <li>Délais respectés voire anticipés</li>
+                                <li>Réputation de "bon partenaire"</li>
+                                <li>Recommandations mutuelles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="comparison-table">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Paradigme</th>
+                                    <th>Résultat Court Terme</th>
+                                    <th>Résultat Long Terme CI</th>
+                                    <th>Impact sur Minicité</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong class="text-danger">Gagnant-Perçant</strong></td>
+                                    <td>Économie immédiate</td>
+                                    <td>Relations détruites, réputation entachée</td>
+                                    <td class="text-danger">Risque élevé d'échec</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="text-warning">Perçant-Gagnant</strong></td>
+                                    <td>Relations préservées</td>
+                                    <td>Rentabilité compromise, exploitation</td>
+                                    <td class="text-warning">Rentabilité faible</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="text-secondary">Perçant-Perçant</strong></td>
+                                    <td>Satisfaction égoïste</td>
+                                    <td>Double échec, pertes mutuelles</td>
+                                    <td class="text-secondary">Échec probable</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="text-success">Gagnant-Gagnant</strong></td>
+                                    <td>Solution équilibrée</td>
+                                    <td>Relations durables, réputation solide</td>
+                                    <td class="text-success">Succès à long terme</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Démarche Pratique -->
+    <section id="demarche" class="py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">🔄 La Démarche en 5 Étapes pour Appliquer la Troisième Voie</h2>
+                <p class="lead">Un processus concret pour transformer chaque situation problématique en opportunité gagnant-gagnant</p>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span> Comprendre Réellement l'Autre</h5>
+                        <p class="mb-0"><strong>En pratique CI :</strong> Avant de négocier avec un artisan, passez 30 minutes à discuter de sa situation familiale, ses contraintes, ses aspirations. Montrez un intérêt authentique. Dans la culture ivoirienne, on ne fait pas d'affaires avec des inconnus, on fait d'affaires avec des personnes qu'on connaît et qu'on respecte.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span> Exprimer Clairement Vos Besoins</h5>
+                        <p class="mb-0"><strong>En pratique CI :</strong> "Je comprends que vous avez besoin de 6.000 FCFA/jour. De mon côté, avec mon budget limité pour la retraite, je ne peux dépasser 5.500 FCFA. Mais je m'engage à vous payer tous les vendredis sans retard, et si le travail est excellent, je vous recommanderai à trois de mes amis qui ont aussi des projets."</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span> Identifier les Intérêts Communs</h5>
+                        <p class="mb-0"><strong>En pratique CI :</strong> L'artisan a besoin de revenus stables et de recommandations. Vous avez besoin d'un travail de qualité à prix raisonnable et dans les délais. L'intérêt commun : une relation durable où il devient votre artisan de confiance pour tous vos projets futurs.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="step-card">
+                        <h5><span class="step-number">4</span> Créer des Options Innovantes</h5>
+                        <p class="mb-0"><strong>En pratique CI :</strong> "Et si on faisait comme ça : 5.500 FCFA/jour, paiement tous les vendredis, plus un bonus de 50.000 FCFA si le chantier est fini avant la date prévue, plus je vous présente à mon association de futurs retraités qui veulent investir ?"</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <h5><span class="step-number">5</span> Établir un Accord Clair</h5>
+                        <p class="mb-0"><strong>En pratique CI :</strong> "On écrit noir sur blanc : délai, qualité attendue, paiement, bonus, recommandations. On signe tous les deux. Et on prend une photo ensemble devant le chantier qu'on met sur WhatsApp avec un message positif. Comme ça, tout le monde sait qu'on travaille bien ensemble."</p>
+                    </div>
+                    
+                    <div class="covey-principle mt-4">
+                        <h5 class="mb-3"><i class="bi bi-magic text-primary me-2"></i>Astuce Spéciale Petit Budget</h5>
+                        <p class="mb-0">Quand vous avez peu d'argent, <strong>remplacez l'argent par d'autres valeurs</strong> : votre réseau, votre recommandation, votre ponctualité de paiement, votre flexibilité, votre respect. En Côte d'Ivoire, un bon réseau vaut souvent plus que quelques milliers de FCFA.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="alert alert-success">
+                        <h5 class="alert-heading"><i class="bi bi-clock-history me-2"></i>Patience et Persévérance</h5>
+                        <p class="mb-0">La Troisième Voie demande plus de temps au début (étape 1 surtout), mais elle vous en fait gagner énormément après. Un artisan fidélisé travaillera plus vite et mieux sur votre 2ème, 3ème, 4ème appartement. Le temps investi dans la relation est un investissement, pas une dépense.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12 Exemples Concrets -->
+    <section id="exemples" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">🏗️ 12 Exemples Concrets de la Troisième Voie pour Votre Minicité</h2>
+                <p class="lead">Des situations réelles que vous rencontrerez et comment les transformer en succès gagnant-gagnant</p>
+            </div>
+            
+            <!-- Exemple 1 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="100">
+                <h4><span class="example-number">1</span>Négociation avec un Maçon</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je veux 5.000 FCFA/jour maximum." vs "Je veux 7.000 FCFA/jour minimum."</p>
+                        <p><strong>Résultat :</strong> Négociation conflictuelle, méfiance mutuelle.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je comprends que 7.000 FCFA est votre tarif normal. Avec mon budget retraite, je peux faire 5.500 FCFA. Mais :</p>
+                        <ul class="small">
+                            <li>Paiement tous les vendredis sans exception</li>
+                            <li>Bonus de 50.000 FCFA si finition parfaite</li>
+                            <li>Je vous recommande à 3 autres projets</li>
+                            <li>Vous devenez mon maçon attitré pour les 15 appartements</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Artisan motivé, travail de qualité</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 2 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="150">
+                <h4><span class="example-number">2</span>Achat de Matériaux</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je vais chez 5 fournisseurs, je prends le moins cher chaque fois."</p>
+                        <p><strong>Résultat :</strong> Qualité inégale, pas de relation privilégiée.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je choisis un fournisseur sérieux et lui propose :</p>
+                        <ul class="small">
+                            <li>J'achète TOUS mes matériaux chez lui pendant 5 ans</li>
+                            <li>Paiement comptant à chaque livraison</li>
+                            <li>Il me fait -15% sur tous les prix</li>
+                            <li>Livraison gratuite et prioritaire</li>
+                            <li>Conseils gratuits sur les meilleurs matériaux</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Économies, qualité constante, livraison fiable</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 3 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="200">
+                <h4><span class="example-number">3</span>Relations avec les Voisins</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"C'est mon terrain, je fais ce que je veux, les voisins n'ont rien à dire."</p>
+                        <p><strong>Résultat :</strong> Conflits, plaintes, ralentissement administratif.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"J'organise une petite réunion avec les voisins avant de commencer :</p>
+                        <ul class="small">
+                            <li>J'explique mon projet retraite (créer de l'empathie)</li>
+                            <li>Je présente le planning avec les heures de bruit</li>
+                            <li>J'offre de réparer gratuitement leur mur mitoyen</li>
+                            <li>Je propose un local commercial à prix préférentiel à leurs enfants</li>
+                            <li>Je m'engage à nettoyer la rue chaque vendredi</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Soutien des voisins, recommandations locales</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 4 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="250">
+                <h4><span class="example-number">4</span>Gestion des Délais</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Il faut finir dans 3 mois sinon je ne paie pas !"</p>
+                        <p><strong>Résultat :</strong> Stress, travail bâclé, conflit.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je comprends que la saison des pluies complique le travail. Voici notre accord :</p>
+                        <ul class="small">
+                            <li>Planning réaliste avec buffer intégré</li>
+                            <li>Bonus de 100.000 FCFA si fini 15 jours avant</li>
+                            <li>Je fournis un abri pour travailler pendant la pluie</li>
+                            <li>Flexibilité sur certains weekends si besoin</li>
+                            <li>Revue hebdomadaire pour ajuster ensemble</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Motivation, transparence, qualité</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 5 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="100">
+                <h4><span class="example-number">5</span>Sélection des Locataires</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je prends le premier qui paie la caution, peu importe son profil."</p>
+                        <p><strong>Résultat :</strong> Impayés, dégradations, turnover élevé.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je cherche des locataires qui veulent s'installer durablement :</p>
+                        <ul class="small">
+                            <li>Loyer juste mais pas le plus élevé du quartier</li>
+                            <li>Contrat de 2 ans avec augmentation modérée</li>
+                            <li>Entretien gratuit des équipements</li>
+                            <li>Flexibilité en cas de difficulté temporaire</li>
+                            <li>Prime de fidélité après 3 ans (1 mois gratuit)</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Locataires fidèles, paiement régulier, entretien</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 6 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="150">
+                <h4><span class="example-number">6</span>Électricité et Eau</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je fais les branchements moi-même pour économiser."</p>
+                        <p><strong>Résultat :</strong> Danger, illégalité, coupures fréquentes.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je fais appel à un électricien agréé CIE et lui propose :</p>
+                        <ul class="small">
+                            <li>Je paie le tarif normal mais en plusieurs fois</li>
+                            <li>Il devient mon électricien attitré pour entretien</li>
+                            <li>Je lui présente d'autres promoteurs</li>
+                            <li>Il me forme aux économies d'énergie</li>
+                            <li>Bonus si installation passe inspection du premier coup</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Installation légale, sûre, économique</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 7 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="200">
+                <h4><span class="example-number">7</span>Finitions et Qualité</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je surveille tout le temps, je critique chaque défaut."</p>
+                        <p><strong>Résultat :</strong> Démotivation, erreurs cachées.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je définis avec l'artisan 3 critères qualité essentiels :</p>
+                        <ul class="small">
+                            <li>Étanchéité parfaite (priorité absolue)</li>
+                            <li>Alignement des carreaux (esthétique)</li>
+                            <li>Propreté des joints (durabilité)</li>
+                            <li>Bonus spécial si ces 3 critères sont parfaits</li>
+                            <li>Photos des belles finitions pour son portfolio</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Concentration sur l'essentiel, fierté du travail</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 8 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="250">
+                <h4><span class="example-number">8</span>Gestion des Déchets</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je jette tout dans la rue, c'est le problème de la mairie."</p>
+                        <p><strong>Résultat :</strong> Amende, conflit avec voisins, environnement.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je contacte une entreprise de recyclage locale :</p>
+                        <ul class="small">
+                            <li>Ils viennent chercher les déchets gratuitement</li>
+                            <li>Ils revendent ce qui est recyclable</li>
+                            <li>Ils nettoient le chantier chaque semaine</li>
+                            <li>Je leur offre de la publicité sur ma palissade</li>
+                            <li>Je les recommande à mes futurs locataires</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Chantier propre, environnement préservé</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 9 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="100">
+                <h4><span class="example-number">9</span>Sécurité du Chantier</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je ne paie pas de garde, trop cher. Je croise les doigts."</p>
+                        <p><strong>Résultat :</strong> Vols réguliers, matériaux disparus.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"J'embauche un gardien du quartier et lui propose :</p>
+                        <ul class="small">
+                            <li>Salaire décent + repas fournis</li>
+                            <li>Logement temporaire dans un studio fini</li>
+                            <li>Prime si zéro vol pendant le chantier</li>
+                            <li>Recommandation pour d'autres chantiers après</li>
+                            <li>Responsabilité et respect de la communauté</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Sécurité efficace, intégration locale</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 10 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="150">
+                <h4><span class="example-number">10</span>Administration et Permis</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je fais moi-même, je me plains des lenteurs."</p>
+                        <p><strong>Résultat :</strong> Délais de 6-12 mois, erreurs de dossier.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je paie un bureau d'études agréé et propose :</p>
+                        <ul class="small">
+                            <li>Je paie 50% maintenant, 50% après obtention permis</li>
+                            <li>Je leur donne tous mes dossiers futurs</li>
+                            <li>Je suis un client modèle (documents prêts à l'heure)</li>
+                            <li>Je leur réfère 2 autres promoteurs</li>
+                            <li>Bonus si permis en moins de 3 mois</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Permis rapide, conformité assurée</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 11 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="200">
+                <h4><span class="example-number">11</span>Marketing Locatif</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je mets une petite annonce, j'attends."</p>
+                        <p><strong>Résultat :</strong> Vacance longue, perte de revenus.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je crée un réseau de recommandation avec :</p>
+                        <ul class="small">
+                            <li>Commerçants locaux (commission pour chaque locataire trouvé)</li>
+                            <li>Taxis du quartier (ils connaissent tout le monde)</li>
+                            <li>Anciens locataires (1 mois gratuit s'ils amènent un nouveau)</li>
+                            <li>Associations de quartier (don pour leur caisse)</li>
+                            <li>Églises/mosquées (offre spéciale pour leurs membres)</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Locataires de qualité, vacance minimale</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exemple 12 -->
+            <div class="example-card" data-aos="fade-up" data-aos-delay="250">
+                <h4><span class="example-number">12</span>Maintenance à Long Terme</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>❌ Approche classique :</h6>
+                        <p>"Je répare quand ça casse, au plus bas prix."</p>
+                        <p><strong>Résultat :</strong> Réparations fréquentes, locataires mécontents.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success">✅ Troisième Voie :</h6>
+                        <p>"Je crée un partenariat avec un handyman polyvalent :</p>
+                        <ul class="small">
+                            <li>Contrat annuel d'entretien (forfait mensuel)</li>
+                            <li>Il est prioritaire sur tous mes travaux</li>
+                            <li>Je lui fournis un local de stockage gratuit</li>
+                            <li>Il forme un apprenti que je finance partiellement</li>
+                            <li>Nous créons ensemble une micro-entreprise</li>
+                        </ul>
+                        <div class="win-win-badge mt-2">Résultat : Maintenance proactive, locataires heureux</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="alert alert-info">
+                        <h5 class="alert-heading"><i class="bi bi-lightbulb me-2"></i>Clé de Réussite : Systématiser l'Approche</h5>
+                        <p class="mb-0">Ne pas appliquer la Troisième Voie de façon aléatoire. Faites-en votre <strong>mode de fonctionnement par défaut</strong> avec chaque partenaire. Au bout de 2-3 exemples réussis, votre réputation précèdera vos démarches et les gens viendront vers vous avec des propositions gagnant-gagnant.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Pratique -->
+    <section id="application" class="py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">🚀 Comment Appliquer la Troisième Voie dès Maintenant ?</h2>
+                <p class="lead">Un plan d'action concret pour démarrer votre projet minicité avec la bonne philosophie</p>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <div class="bg-primary bg-opacity-10 p-4 rounded-circle d-inline-block">
+                                    <i class="bi bi-journal-text text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-center mb-3">Étape 1 : Diagnostic Relationnel</h4>
+                            <p class="text-center">Évaluez vos relations actuelles avec vos futurs partenaires.</p>
+                            <ul class="small">
+                                <li>Listez 5 artisans que vous connaissez déjà</li>
+                                <li>Notez la qualité de votre relation (1 à 5)</li>
+                                <li>Identifiez 2 relations à améliorer en priorité</li>
+                                <li>Préparez une proposition gagnant-gagnant pour chacun</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <div class="bg-success bg-opacity-10 p-4 rounded-circle d-inline-block">
+                                    <i class="bi bi-people text-success" style="font-size: 3rem;"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-center mb-3">Étape 2 : Premier Contact Gagnant-Gagnant</h4>
+                            <p class="text-center">Appliquez la démarche avec votre premier partenaire.</p>
+                            <ul class="small">
+                                <li>Choisissez l'artisan le plus ouvert</li>
+                                <li>Appliquez les 5 étapes de la démarche</li>
+                                <li>Documentez l'accord (même simple)</li>
+                                <li>Évaluez les résultats après 1 mois</li>
+                                <li>Ajustez votre approche si nécessaire</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <div class="bg-warning bg-opacity-10 p-4 rounded-circle d-inline-block">
+                                    <i class="bi bi-graph-up-arrow text-warning" style="font-size: 3rem;"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-center mb-3">Étape 3 : Systématisation</h4>
+                            <p class="text-center">Étendez l'approche à tous vos partenaires.</p>
+                            <ul class="small">
+                                <li>Créez un modèle d'accord type</li>
+                                <li>Formalisez vos critères gagnant-gagnant</li>
+                                <li>Mesurez l'impact sur votre projet (coûts, délais, qualité)</li>
+                                <li>Partagez vos réussites pour inspirer d'autres</li>
+                                <li>Capitalisez sur votre réputation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-section" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3 class="mb-4">📥 Kit Pratique "Troisième Voie pour Minicité"</h3>
+                        <p class="mb-4">Téléchargez notre kit complet pour appliquer la Troisième Voie à votre projet minicité : modèles d'accords, scripts de négociation, checklist des valeurs non-monétaires, et exemples concrets adaptés au contexte ivoirien.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button class="btn btn-primary btn-lg" id="downloadKit">
+                                <i class="bi bi-download me-2"></i>Télécharger le kit (.zip)
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg" id="downloadChecklist">
+                                <i class="bi bi-checklist me-2"></i>Checklist des 12 situations
+                            </button>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-warning" id="downloadTemplates">
+                                <i class="bi bi-file-earmark-text me-2"></i>Modèles d'accords FCFA
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                        <i class="bi bi-handshake display-4 text-primary"></i>
+                        <p class="mt-3 small"><strong>Contenu :</strong> 8 fichiers pratiques immédiatement utilisables</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="alert alert-success">
+                        <h5 class="alert-heading"><i class="bi bi-arrow-repeat me-2"></i>Le Cercle Vertueux de la Troisième Voie</h5>
+                        <p class="mb-0">Une relation gagnant-gagnant bien menée en entraîne une autre, qui en entraîne une autre... Au bout de 2-3 ans, vous n'aurez plus à chercher des partenaires, ce sont eux qui viendront vers vous avec des propositions intéressantes. Votre projet minicité deviendra ainsi plus facile, moins cher et plus rapide à chaque nouvel appartement construit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #000 100%); color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4"><i class="bi bi-handshake me-2"></i>LA TROISIÈME VOIE - MINICITÉ 🇨🇮</h5>
+                    <p class="small">Guide pratique pour appliquer la philosophie gagnant-gagnant de Stephen Covey à un projet immobilier de retraite en Côte d'Ivoire avec un budget limité.</p>
+                    <p class="small">12 exemples concrets adaptés au contexte local, avec démarche étape par étape.</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">Navigation</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#concept" class="text-light"><i class="bi bi-chevron-right me-2"></i>Le Concept</a></li>
+                        <li class="mb-2"><a href="#paradigmes" class="text-light"><i class="bi bi-chevron-right me-2"></i>4 Paradigmes</a></li>
+                        <li class="mb-2"><a href="#demarche" class="text-light"><i class="bi bi-chevron-right me-2"></i>Démarche en 5 étapes</a></li>
+                        <li class="mb-2"><a href="#exemples" class="text-light"><i class="bi bi-chevron-right me-2"></i>12 Exemples CI</a></li>
+                        <li class="mb-2"><a href="#application" class="text-light"><i class="bi bi-chevron-right me-2"></i>Comment appliquer</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">Ressources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="deepseek_html_20260206_2bc0ab.html" class="text-light"><i class="bi bi-arrow-left me-2"></i>Retour au projet Minicité</a></li>
+                        <li class="mb-2"><a href="#" class="text-light" id="footerDownloadKit"><i class="bi bi-download me-2"></i>Kit complet à télécharger</a></li>
+                        <li class="mb-2"><a href="#" class="text-light" id="footerContact"><i class="bi bi-envelope me-2"></i>Contact conseil CI</a></li>
+                        <li class="mb-2"><a href="#" class="text-light" id="footerTestimony"><i class="bi bi-chat-quote me-2"></i>Partager votre témoignage</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="small mb-0">&copy; 2023 La Troisième Voie pour Minicité Retraite CI. Basé sur les travaux de Stephen Covey, adapté au contexte ivoirien.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-0">Gagnant-Gagnant • Relations durables • Réputation • Succès partagé</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action -->
+    <div class="floating-action">
+        <button class="floating-btn btn btn-warning" id="btnToTop" title="Haut de page">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+        <button class="floating-btn btn btn-primary" id="btnExamples" title="Voir les 12 exemples">
+            <i class="bi bi-list-ol"></i>
+        </button>
+        <button class="floating-btn btn btn-success" id="btnDownload" title="Télécharger le kit">
+            <i class="bi bi-download"></i>
+        </button>
+        <button class="floating-btn btn btn-info" id="btnPrint" title="Imprimer le guide">
+            <i class="bi bi-printer"></i>
+        </button>
+    </div>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll to top
+        document.getElementById('btnToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll to examples
+        document.getElementById('btnExamples').addEventListener('click', function() {
+            document.getElementById('exemples').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // Download buttons
+        document.getElementById('downloadKit').addEventListener('click', function() {
+            alert('Kit "Troisième Voie pour Minicité" téléchargé !\n\n' +
+                  'Fichier : "Kit_Troisieme_Voie_Minicite_CI.zip"\n' +
+                  'Contenu :\n' +
+                  '1. Modèles d\'accords gagnant-gagnant\n' +
+                  '2. Checklist des 12 situations critiques\n' +
+                  '3. Scripts de négociation adaptés CI\n' +
+                  '4. Liste des valeurs non-monétaires\n' +
+                  '5. Calculateur d\'impact relationnel\n' +
+                  '6. Guide de mise en œuvre étape par étape\n' +
+                  '7. Témoignages réussis en Côte d\'Ivoire\n' +
+                  '8. Fiches pratiques par type de partenaire');
+        });
+        
+        document.getElementById('footerDownloadKit').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('downloadKit').click();
+        });
+        
+        document.getElementById('btnDownload').addEventListener('click', function() {
+            document.getElementById('downloadKit').click();
+        });
+        
+        document.getElementById('downloadChecklist').addEventListener('click', function() {
+            alert('Checklist des 12 situations téléchargée !\n\n' +
+                  'Fichier : "Checklist_12_Situations_Troisieme_Voie.pdf"\n' +
+                  'Un outil pratique à imprimer et garder sur votre chantier.');
+        });
+        
+        document.getElementById('downloadTemplates').addEventListener('click', function() {
+            alert('Modèles d\'accords téléchargés !\n\n' +
+                  'Fichier : "Modeles_Accords_Troisieme_Voie.docx"\n' +
+                  'Contenu :\n' +
+                  '- Accord type avec artisan\n' +
+                  '- Contrat fournisseur gagnant-gagnant\n' +
+                  '- Engagement locataire fidélisé\n' +
+                  '- Partenariat maintenance\n' +
+                  '- Tous les documents en FCFA et adaptés CI');
+        });
+        
+        // Print functionality
+        document.getElementById('btnPrint').addEventListener('click', function() {
+            window.print();
+        });
+        
+        // Contact button
+        document.getElementById('footerContact').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Contact conseil Côte d\'Ivoire :\n\n' +
+                  '📧 Email : conseil.minicite.ci@gmail.com\n' +
+                  '📞 WhatsApp : +225 07 00 00 00 00\n' +
+                  '🏢 Bureau : Abidjan, Cocody\n' +
+                  '\n' +
+                  'Spécialistes de l\'accompagnement des projets immobiliers de retraite en Côte d\'Ivoire.');
+        });
+        
+        // Testimony button
+        document.getElementById('footerTestimony').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Partagez votre expérience avec la Troisième Voie !\n\n' +
+                  'Votre témoignage peut inspirer d\'autres futurs retraités.\n' +
+                  'Envoyez-nous votre histoire à : temoignages.minicite@gmail.com\n' +
+                  '\n' +
+                  'Les meilleurs témoignages seront publiés (anonymement si souhaité) avec une compensation.');
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                }
+            });
+        });
+        
+        // Add print styles
+        const printStyles = document.createElement('style');
+        printStyles.textContent = `
+            @media print {
+                .navbar,
+                .floating-action,
+                .download-section,
+                .btn {
+                    display: none !important;
+                }
+                
+                body {
+                    background: white !important;
+                    color: black !important;
+                    font-size: 12pt;
+                }
+                
+                .hero-section {
+                    background: white !important;
+                    color: black !important;
+                    padding: 20px 0 !important;
+                    clip-path: none !important;
+                }
+                
+                .example-card,
+                .paradigm-card,
+                .step-card {
+                    break-inside: avoid;
+                    box-shadow: none !important;
+                    border: 1px solid #ddd !important;
+                }
+                
+                a {
+                    color: black !important;
+                    text-decoration: none;
+                }
+                
+                .example-number {
+                    background: #ddd !important;
+                    color: black !important;
+                    box-shadow: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(printStyles);
+        
+        console.log('Page "Troisième Voie pour Minicité" chargée avec succès');
+        console.log('12 exemples concrets disponibles pour votre projet en Côte d\'Ivoire');
+    </script>
+</body>
+</html>
