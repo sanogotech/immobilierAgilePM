@@ -482,3 +482,86 @@ Exemple 100 m² → 500 000 à 600 000 FCFA
 
 ---
 
+
+## 🧱 **💰 Prix unitaire des briques BTCS (matière seule)**
+
+👉 Selon fabricants et formats disponibles, les **prix en Côte d’Ivoire** ou proches sont :
+
+| Type de BTCS                                                        | Taille / usage | Prix unitaire (FCFA) |
+| ------------------------------------------------------------------- | -------------- | -------------------- |
+| BTCS standard (mur ép. 10 cm)                                       | 29,5×14×10 cm  | ~250 FCFA            |
+| BTCS format plus grand                                              | 24×24×10 cm    | ~350 FCFA            |
+| BTCS spécial (linteau/passage gaine)                                | adapté         | ~250 FCFA            |
+| Versions plus petites (½, ¾)                                        | divers         | ~125 – 200 FCFA      |
+| *(prix estimés hors livraison / selon quantité)* ([Élémenterre][1]) |                |                      |
+
+📌 Les prix peuvent être **dégressifs en fonction du volume commandé** (remises jusqu’à ~15-20 % pour grandes quantités). ([Authentic Geobeton][2])
+
+---
+
+## 📊 **🌍 Exemples de prix observés**
+
+✅ Format courant BTCS pour murs :
+
+* **≈ 250 FCFA / brique** (format classique 29,5×14×10 cm) ([Élémenterre][1])
+* **≈ 350 FCFA / brique** pour formats plus gros ou structurels ([Élémenterre][1])
+* Formats spéciaux ou perforés = ~250 FCFA ([Élémenterre][1])
+
+💡 **Astuce** : Produire les briques sur site (matière locale + presse + main d’œuvre) peut réduire le prix jusqu’à **≈ 80–100 FCFA par brique** si vous fournissez eau, terre et énergie, selon certaines offres promotionnelles. ([Authentic Geobeton][2])
+
+---
+
+## 📦 **🏠 Comparaison avec d’autres matériaux en Côte d’Ivoire**
+
+À titre de comparaison (bloc/parpaing béton) :
+
+| Matériau                    | Prix unitaire approximatif (Abidjan)             |
+| --------------------------- | ------------------------------------------------ |
+| Agglo 10 (bloc creux béton) | ~325 – 442 FCFA                                  |
+| Agglo 15 (bloc béton)       | ~550 – 650 FCFA                                  |
+| BTC / Géobéton              | ~413 FCFA (selon volume) ([Abidjan Solution][3]) |
+
+👉 On voit que **le BTCS peut être plus compétitif** économiquement et thermiquement par rapport au béton traditionnel.
+
+---
+
+## 💡 Conseils pratiques pour optimiser le coût BTCS
+
+### 🧱 1. **Acheter en volume**
+
+✔️ Remises de 10-20 % si vous commandez >5 000 briques. ([Authentic Geobeton][2])
+
+### 🏭 2. **Produire sur site**
+
+✔️ Si vous avez accès à une presse (manuelle ou mécanique), eau, et terre latéritique,
+👉 prix unitaire peut descendre vers **~80 – 100 FCFA / brique**. ([Authentic Geobeton][2])
+
+### 🚚 3. **Négocier livraison**
+
+✔️ Livraison peut être incluse ou négociée selon distance, ce qui réduit le coût final.
+
+### 📐 4. **Choisir le bon format**
+
+✔️ Plus grand format = moins de joints et main d’œuvre → économies de temps et argent.
+
+---
+
+## 🧱 En résumé
+
+| Format BTCS          | Prix unitaire *typique* (FCFA) | Notes                                                      |
+| -------------------- | ------------------------------ | ---------------------------------------------------------- |
+| BTCS standard        | ~250 FCFA                      | Usage murs standard ([Élémenterre][1])                     |
+| BTCS grand           | ~350 FCFA                      | Usage structurant ([Élémenterre][1])                       |
+| BTCS petit / spécial | ~125 – 200 FCFA                | Selon dimensions ([Élémenterre][1])                        |
+| Production sur site  | ~80 – 100 FCFA                 | Si fournisseurs propres matières ([Authentic Geobeton][2]) |
+
+---
+
+Si tu veux, je peux maintenant te :
+
+📊 📈 **Simuler le coût des BTCS pour un plan précis** (ex. 3 chambres 100 m²),
+🏗️ **Comparer BTCS vs parpaings poste par poste**,
+🛠️ **Donner une liste de presses à briques possibles en CI (+ prix)**,
+
+
+
