@@ -885,68 +885,54 @@ Formule semelle filante :
 
 ---
 
-# 🏗️ Comparatif détaillé – Maison 120 m² : Plain-pied vs R+1 vs R+2
-
-### Hypothèses BTCS
-
-* 1 BTCS = 0,41 m × 0,2 m × 0,15 m → 0,0123 m³ ≈ 0,041 m² de mur (hauteur × largeur standard 15 cm)
-* Périmètre maison : 12 + 12 + 10 + 10 = 44 m
-* Hauteur mur par étage : 2,8 m
-* Surface totale mur = périmètre × hauteur × nombre d’étages
-* Surface mur intérieur estimée ≈ 80 % des murs extérieurs (portes/fenêtres) → on ajuste dans le calcul du nombre de BTCS
 
 ---
 
-## 1️⃣ Nombre de BTCS par type de villa
+# 🏗️ Comparatif complet – Maison 120 m² : Plain-pied vs R+1 vs R+2
 
-| Type villa | Hauteur totale murs | Surface mur totale m² | Nb BTCS nécessaires | Coût BTCS + pose (250 FCFA/unité) |
-| ---------- | ------------------- | --------------------- | ------------------- | --------------------------------- |
-| Plain-pied | 2,8 m               | 123,2                 | 3 004 ≈ 3 000       | 750 000                           |
-| R+1        | 5,6 m               | 246,4                 | 6 012 ≈ 6 000       | 1 500 000                         |
-| R+2        | 8,4 m               | 369,6                 | 9 024 ≈ 9 000       | 2 250 000                         |
-
-💡 **Remarques** :
-
-* Le nombre de briques **augmente proportionnellement à la hauteur totale des murs**.
-* En R+2, on a **3× plus de BTCS qu’en plain-pied**.
-* Coût BTCS + pose inclut **main-d’œuvre**.
-
----
-
-# 🏗️ Tableau complet actualisé – Maison 120 m² avec nombre de BTCS
-
-| Poste                     | Plain-pied           | R+1                    | R+2                    | Remarques                                      |
-| ------------------------- | -------------------- | ---------------------- | ---------------------- | ---------------------------------------------- |
-| **Fondation**             | 3 680 000            | 7 180 000              | 11 040 000             | Plus d’étages → fondation plus large/profonde  |
-| **Murs BTCS + pose**      | 3 000 BTCS → 750 000 | 6 000 BTCS → 1 500 000 | 9 000 BTCS → 2 250 000 | Plus d’étages → plus de hauteur → plus de BTCS |
-| **Dalles intermédiaires** | 0                    | 5 184 000              | 10 368 000             | R+1 = 1 dalle, R+2 = 2 dalles                  |
-| **Toiture**               | 4 800 000            | 4 800 000              | 4 800 000              | Surface toiture identique                      |
-| **Electricité**           | 600 000              | 1 200 000              | 1 800 000              | Même équipement par étage                      |
-| **Plomberie**             | 1 500 000            | 3 000 000              | 4 500 000              | 1 salle de bain + cuisine par étage            |
-| **Menuiserie**            | 2 000 000            | 4 000 000              | 6 000 000              | Portes/fenêtres identiques par étage           |
-| **Finitions**             | 4 200 000            | 8 400 000              | 12 600 000             | Même qualité par étage                         |
-| **Divers / imprévus**     | 1 500 000            | 3 000 000              | 4 500 000              | 10–15 % du total                               |
+| Poste                                | Plain-pied           | R+1                    | R+2                    | Tips & REX 🔥                                                                                                           |
+| ------------------------------------ | -------------------- | ---------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Fondation**                        | 3 680 000            | 7 180 000              | 11 040 000             | 💡 Vérifier étude de sol, éviter surdimension → -10 % coût. REX : sol sableux réduit coût, sol humide = surcoût 15 %    |
+| **Murs BTCS + pose**                 | 750 000 → 3 000 BTCS | 1 500 000 → 6 000 BTCS | 2 250 000 → 9 000 BTCS | 💡 Acheter BTCS en gros → remise 10–15 %. REX : murs trop fins → fissures fréquentes                                    |
+| **Dalles intermédiaires**            | 0                    | 5 184 000              | 10 368 000             | 💡 Coffrage réutilisable ou hourdis léger → -15 %. REX : dalle trop lourde → fondation surdimensionnée, retard chantier |
+| **Toiture**                          | 4 800 000            | 4 800 000              | 4 800 000              | 💡 Toiture simple pente ou 2 pentes → économie 10 %. REX : toiture complexe = retard et +20 % coût                      |
+| **Electricité**                      | 1 200 000            | 2 000 000              | 3 000 000              | 💡 Prévoir points électriques standards, éviter changements fréquents → -10 %. REX : modification en cours = +25 % coût |
+| **Plomberie**                        | 3 000 000            | 5 000 000              | 7 000 000              | 💡 Installer tuyaux apparent ou gaines préfabriquées → -15 %. REX : ajouter salle bain = explosion budget               |
+| **Menuiserie (portes + fenêtres)**   | 4 000 000            | 6 500 000              | 9 000 000              | 💡 Aluminium ou bois local selon budget. REX : portes bon marché → remplacement rapide                                  |
+| **Finitions (carrelage + peinture)** | 4 200 000            | 8 400 000              | 12 600 000             | 💡 Carrelage standard + peinture à l’eau → -20 %. REX : finitions luxe → +50 % coût                                     |
+| **Divers / imprévus**                | 1 500 000            | 3 000 000              | 4 500 000              | 💡 Toujours prévoir 10–15 % du budget. REX : modifications après fondation → coûts explosifs                            |
 
 ---
 
 ## 📊 Total général
 
-| Type villa | Total FCFA | % structure (fondation + murs + dalles) |
-| ---------- | ---------- | --------------------------------------- |
-| Plain-pied | 19 030 000 | 23 %                                    |
-| R+1        | 33 264 000 | 42 %                                    |
-| R+2        | 56 358 000 | 47 %                                    |
+| Type villa | Total FCFA | % structure (fondation + murs + dalles) | REX / Tips généraux                                                                           |
+| ---------- | ---------- | --------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Plain-pied | 19 030 000 | 23 %                                    | ⚡ Supervision hebdo chantier = éviter +10–15 % coût imprévus                                  |
+| R+1        | 38 064 000 | 42 %                                    | ⚡ Optimiser coffrage, dalles prédalles = -15 % budget                                         |
+| R+2        | 60 058 000 | 47 %                                    | ⚡ Bien planifier répartition équipements par étage → éviter doublons et modification coûteuse |
 
 ---
 
-💡 **Observations** :
+### 💡 Conseils et astuces supplémentaires
 
-1. **Nombre de BTCS triple** entre plain-pied et R+2, exactement proportionnel à la hauteur totale.
-2. **Fondation et dalles intermédiaires** = postes dominants pour R+2
-3. **Finitions, plomberie, électricité, menuiserie** augmentent linéairement avec chaque étage si équipements identiques.
+1️⃣ Plan compact + toiture simple → économie 5–10 % 😎
+2️⃣ Prévoir extension future plutôt que construire tout de suite → économie + flexibilité 🏠
+3️⃣ Acheter tous matériaux en gros → remise 10–15 % 💰
+4️⃣ Superviser chantier chaque semaine → éviter modifications coûteuses 🔧
+5️⃣ Ajouter 10–15 % pour imprévus → éviter dépassement 💥
+6️⃣ Verrouiller tous devis par écrit ✅
+7️⃣ Prévoir étude technique (fondation, sol, dalle) → éviter surcoût 🔍
+8️⃣ Privilégier matériaux locaux pour réduire transport et coût 🌍
 
 ---
 
+### 🔹 Observation clé
 
+* Pour **R+2**, la structure (fondation + murs + dalles) devient le **poste dominant (~47 %)**.
+* Les postes équipements (électricité, plomberie, menuiserie, finitions) **augmentent linéairement par étage**.
+* Même le **Plain-pied** nécessite un budget conséquent pour équipements complets (~45–50 % hors structure).
+
+---
 
 
