@@ -383,3 +383,102 @@ Si revenu mensuel × 24 mois ≈ budget
 
 ---
 
+
+---
+
+# 🧱 Estimation CORRECTE des parpaings pour 100 m² en Côte d’Ivoire
+
+## 📐 Hypothèses réalistes
+
+* Maison plain-pied
+* Hauteur mur : 2,8 m
+* Plan compact
+* Parpaing 15 : 50 cm × 20 cm
+* 1 m² de mur ≈ 10 parpaings
+* Surface murs ≈ 2,5 × surface habitable
+
+---
+
+# 🧮 Étape 1 – Calcul surface totale des murs
+
+Pour 100 m² habitables :
+
+Surface murs ≈ 100 × 2,5
+= **250 m² de murs**
+
+---
+
+# 🧱 Étape 2 – Nombre de parpaings
+
+1 m² ≈ 10 parpaings
+
+Donc :
+
+250 × 10 = **2 500 parpaings**
+
+On ajoute 8% pertes chantier :
+
+2 500 × 1,08 = **2 700 parpaings environ**
+
+👉 Donc pour 100 m² il faut environ **2 600 à 2 800 parpaings**
+
+---
+
+# 💰 Étape 3 – Budget parpaings
+
+Prix moyen CI : 180 à 250 FCFA unité
+
+Si on prend 200 FCFA :
+
+2 700 × 200 = **540 000 FCFA**
+
+✔️ Voilà d’où venait le 540 000
+C’est le **coût**, pas la quantité.
+
+---
+
+# 📊 Récapitulatif clair
+
+| Élément           | Valeur       |
+| ----------------- | ------------ |
+| Surface habitable | 100 m²       |
+| Surface murs      | 250 m²       |
+| Nombre parpaings  | 2 700        |
+| Prix unitaire     | 200 FCFA     |
+| Budget total      | 540 000 FCFA |
+
+---
+
+# ⚠️ Attention importante
+
+Le parpaing représente une petite partie du coût mur.
+
+Le vrai coût des murs inclut :
+
+* 🧱 Parpaings
+* 🪨 Sable
+* 🧴 Ciment
+* 🪵 Coffrage
+* 🔩 Fer à béton
+* 👷 Main d’œuvre
+
+Pour 100 m² :
+
+Coût total élévation murs ≈ **2,5M à 3M FCFA**
+
+Donc les parpaings ne représentent qu’environ **20% du coût des murs**.
+
+---
+
+# 💡 Astuce terrain
+
+Formule rapide :
+
+Nombre parpaings ≈ Surface × 25
+
+Budget parpaings ≈ Surface × 5 000 FCFA
+
+Exemple 100 m² → 500 000 à 600 000 FCFA
+
+---
+
