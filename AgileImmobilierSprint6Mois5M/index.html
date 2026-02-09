@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide Constructeur Pro | Simulateur Devis Maison 120m²</title>
+    <title>Constructeur Pro | Simulateur Intelligent 120m²+</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,8 +13,8 @@
             --secondary-color: #3498db;
             --accent-color: #e74c3c;
             --success-color: #27ae60;
+            --warning-color: #f39c12;
             --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
         }
         
         body {
@@ -119,6 +119,60 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
+        .parameters-table {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .parameters-table th {
+            background-color: var(--warning-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+        }
+        
+        .parameters-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .parameters-table tr:hover {
+            background-color: rgba(243, 156, 18, 0.05);
+        }
+        
+        .input-group-custom {
+            max-width: 150px;
+        }
+        
+        .input-group-custom input {
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .surface-input-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .surface-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        .surface-label {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-top: -10px;
+        }
+        
         .btn-primary-custom {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
@@ -175,6 +229,10 @@
             .hero-section {
                 padding: 2rem 0;
             }
+            
+            .surface-display {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -194,13 +252,16 @@
                         <a class="nav-link active" href="#simulator">Simulateur</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#parameters">Paramètres</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#comparison">Comparaison</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tips">Conseils</a>
+                        <a class="nav-link" href="#graph">Graphiques</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#graph">Graphiques</a>
+                        <a class="nav-link" href="#tips">Conseils</a>
                     </li>
                 </ul>
             </div>
@@ -215,16 +276,23 @@
                     <h1 class="display-5 fw-bold">Guide Complet : Construction Maison 120 m²</h1>
                     <p class="lead">Simulation de devis, astuces pratiques et retours d'expérience pour votre projet de construction en plain-pied, R+1 ou R+2</p>
                     <div class="mt-4">
-                        <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-check-circle me-1"></i> Devis réalistes</span>
-                        <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-lightbulb me-1"></i> Tips réduction budget</span>
+                        <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-ruler me-1"></i> Surface ajustable</span>
+                        <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-sliders-h me-1"></i> Paramètres modifiables</span>
                         <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-chart-line me-1"></i> Comparaison détaillée</span>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center">
-                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
-                        <div class="text-center">
-                            <h3 class="text-primary mb-0">120 m²</h3>
-                            <p class="text-muted mb-0">Surface</p>
+                    <div class="surface-input-container">
+                        <div class="surface-display" id="surfaceDisplay">120</div>
+                        <div class="surface-label">m²</div>
+                        <div class="mt-3">
+                            <label for="surfaceInput" class="form-label">Ajuster la surface</label>
+                            <input type="range" class="form-range" min="60" max="300" step="10" id="surfaceInput" value="120">
+                            <div class="d-flex justify-content-between">
+                                <small>60 m²</small>
+                                <small>180 m²</small>
+                                <small>300 m²</small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -283,6 +351,9 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="text-center mb-4" id="totalCost">19 030 000 FCFA</h3>
+                                <div class="text-center mb-3">
+                                    <small class="text-muted">Pour une surface de <span id="surfaceResult">120</span> m²</small>
+                                </div>
                                 
                                 <div id="costBreakdown">
                                     <!-- Les éléments de répartition seront insérés par JavaScript -->
@@ -310,9 +381,167 @@
             </div>
         </section>
 
+        <!-- Paramètres Section -->
+        <section id="parameters" class="mb-5 animate-on-scroll">
+            <h2 class="mb-4"><i class="fas fa-sliders-h me-2"></i>Top 10 Paramètres d'Entrée</h2>
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Modifiez ces paramètres pour ajuster les calculs à votre situation. Les changements affectent instantanément tous les calculs.
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table parameters-table">
+                    <thead>
+                        <tr>
+                            <th>Paramètre</th>
+                            <th>Valeur unitaire</th>
+                            <th>Unité</th>
+                            <th>Description</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Coût BTCS</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="btcsCost" value="250" min="150" max="350">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par BTCS</td>
+                            <td>Coût d'un bloc de terre comprimée stabilisée</td>
+                            <td><span class="badge bg-warning">Moyen</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fondation au m²</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="foundationCost" value="30667" min="20000" max="50000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût moyen des fondations par m² de surface</td>
+                            <td><span class="badge bg-danger">Élevé</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dalle intermédiaire</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="floorCost" value="43200" min="30000" max="60000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût d'une dalle intermédiaire par m²</td>
+                            <td><span class="badge bg-danger">Élevé</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Toiture</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="roofCost" value="40000" min="30000" max="60000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût de la toiture par m² de surface</td>
+                            <td><span class="badge bg-warning">Moyen</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Électricité</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="electricityCost" value="10000" min="8000" max="15000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût de l'installation électrique par m²</td>
+                            <td><span class="badge bg-success">Faible</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Plomberie</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="plumbingCost" value="25000" min="20000" max="35000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût de l'installation plomberie par m²</td>
+                            <td><span class="badge bg-warning">Moyen</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Menuiserie</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="joineryCost" value="33333" min="25000" max="45000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût des portes et fenêtres par m²</td>
+                            <td><span class="badge bg-warning">Moyen</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Finitions</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="finishesCost" value="35000" min="25000" max="50000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût des finitions (carrelage, peinture) par m²</td>
+                            <td><span class="badge bg-warning">Moyen</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Main d'œuvre</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="laborCost" value="12500" min="10000" max="20000">
+                                    <span class="input-group-text">FCFA</span>
+                                </div>
+                            </td>
+                            <td>par m²</td>
+                            <td>Coût de la main d'œuvre divers par m²</td>
+                            <td><span class="badge bg-success">Faible</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Toiture coefficient</strong></td>
+                            <td>
+                                <div class="input-group input-group-custom">
+                                    <input type="number" class="form-control" id="roofCoefficient" value="1.2" min="1.0" max="1.5" step="0.1">
+                                    <span class="input-group-text">×</span>
+                                </div>
+                            </td>
+                            <td>coefficient</td>
+                            <td>Multiplicateur surface toiture / surface sol</td>
+                            <td><span class="badge bg-success">Faible</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-warning me-2" id="resetParams">
+                    <i class="fas fa-undo me-2"></i>Réinitialiser les paramètres
+                </button>
+                <button class="btn btn-primary-custom" id="applyParams">
+                    <i class="fas fa-check me-2"></i>Appliquer les changements
+                </button>
+            </div>
+        </section>
+
         <!-- Tableau Comparatif -->
         <section id="comparison" class="mb-5 animate-on-scroll">
             <h2 class="mb-4"><i class="fas fa-table me-2"></i>Comparaison détaillée des coûts</h2>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                Ces coûts sont calculés pour une surface de <span id="comparisonSurface" class="fw-bold">120</span> m². Modifiez la surface dans l'en-tête pour ajuster.
+            </div>
             <div class="table-responsive">
                 <table class="table comparison-table">
                     <thead>
@@ -324,143 +553,18 @@
                             <th>Tips & REX 🔥</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Fondation</strong></td>
-                            <td><span class="cost-badge">3 680 000 FCFA</span></td>
-                            <td><span class="cost-badge">7 180 000 FCFA</span></td>
-                            <td><span class="cost-badge">11 040 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Vérifier étude de sol, éviter surdimension → -10 % coût.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Sol sableux réduit coût, sol humide = surcoût 15 %.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Murs BTCS + pose</strong></td>
-                            <td><span class="cost-badge">750 000 FCFA</span><br><small>→ 3 000 BTCS</small></td>
-                            <td><span class="cost-badge">1 500 000 FCFA</span><br><small>→ 6 000 BTCS</small></td>
-                            <td><span class="cost-badge">2 250 000 FCFA</span><br><small>→ 9 000 BTCS</small></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Acheter BTCS en gros → remise 10–15 %.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Murs trop fins → fissures fréquentes.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dalles intermédiaires</strong></td>
-                            <td><span class="cost-badge">0 FCFA</span></td>
-                            <td><span class="cost-badge">5 184 000 FCFA</span></td>
-                            <td><span class="cost-badge">10 368 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Coffrage réutilisable ou hourdis léger → -15 %.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Dalle trop lourde → fondation surdimensionnée, retard chantier.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Toiture</strong></td>
-                            <td><span class="cost-badge">4 800 000 FCFA</span></td>
-                            <td><span class="cost-badge">4 800 000 FCFA</span></td>
-                            <td><span class="cost-badge">4 800 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Toiture simple pente ou 2 pentes → économie 10 %.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Toiture complexe = retard et +20 % coût.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Électricité</strong></td>
-                            <td><span class="cost-badge">1 200 000 FCFA</span></td>
-                            <td><span class="cost-badge">2 000 000 FCFA</span></td>
-                            <td><span class="cost-badge">3 000 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Prévoir points électriques standards, éviter changements fréquents → -10 %.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Modification en cours = +25 % coût.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Plomberie</strong></td>
-                            <td><span class="cost-badge">3 000 000 FCFA</span></td>
-                            <td><span class="cost-badge">5 000 000 FCFA</span></td>
-                            <td><span class="cost-badge">7 000 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Installer tuyaux apparent ou gaines préfabriquées → -15 %.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Ajouter salle bain = explosion budget.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Menuiserie</strong></td>
-                            <td><span class="cost-badge">4 000 000 FCFA</span></td>
-                            <td><span class="cost-badge">6 500 000 FCFA</span></td>
-                            <td><span class="cost-badge">9 000 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Aluminium ou bois local selon budget.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Portes bon marché → remplacement rapide.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Finitions</strong></td>
-                            <td><span class="cost-badge">4 200 000 FCFA</span></td>
-                            <td><span class="cost-badge">8 400 000 FCFA</span></td>
-                            <td><span class="cost-badge">12 600 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Carrelage standard + peinture à l'eau → -20 %.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Finitions luxe → +50 % coût.
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Divers / imprévus</strong></td>
-                            <td><span class="cost-badge">1 500 000 FCFA</span></td>
-                            <td><span class="cost-badge">3 000 000 FCFA</span></td>
-                            <td><span class="cost-badge">4 500 000 FCFA</span></td>
-                            <td>
-                                <div class="tips-box">
-                                    <strong>💡 Tips:</strong> Toujours prévoir 10–15 % du budget.
-                                </div>
-                                <div class="rex-box">
-                                    <strong>🔍 REX:</strong> Modifications après fondation → coûts explosifs.
-                                </div>
-                            </td>
-                        </tr>
+                    <tbody id="comparisonBody">
+                        <!-- Le contenu sera généré par JavaScript -->
                     </tbody>
                     <tfoot class="table-dark">
                         <tr>
                             <td><strong>TOTAL GÉNÉRAL</strong></td>
-                            <td><strong class="text-warning">19 030 000 FCFA</strong></td>
-                            <td><strong class="text-warning">38 064 000 FCFA</strong></td>
-                            <td><strong class="text-warning">60 058 000 FCFA</strong></td>
+                            <td><strong class="text-warning" id="totalPlain">19 030 000 FCFA</strong></td>
+                            <td><strong class="text-warning" id="totalR1">38 064 000 FCFA</strong></td>
+                            <td><strong class="text-warning" id="totalR2">60 058 000 FCFA</strong></td>
                             <td>
                                 <div class="text-white">
-                                    <small><strong>% structure:</strong> Plain-pied: 23% | R+1: 42% | R+2: 47%</small>
+                                    <small><strong>% structure:</strong> <span id="structurePlain">23%</span> | <span id="structureR1">42%</span> | <span id="structureR2">47%</span></small>
                                 </div>
                             </td>
                         </tr>
@@ -471,7 +575,7 @@
 
         <!-- Graphiques Section -->
         <section id="graph" class="mb-5 animate-on-scroll">
-            <h2 class="mb-4"><i class="fas fa-chart-bar me-2"></i>Visualisation des coûts par poste</h2>
+            <h2 class="mb-4"><i class="fas fa-chart-bar me-2"></i>Visualisation des coûts</h2>
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
@@ -486,10 +590,10 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fas fa-chart-line me-2"></i>Évolution des coûts par type
+                            <i class="fas fa-chart-line me-2"></i>Évolution des coûts par surface
                         </div>
                         <div class="card-body">
-                            <canvas id="chartEvolution"></canvas>
+                            <canvas id="chartSurfaceImpact"></canvas>
                         </div>
                     </div>
                 </div>
@@ -560,6 +664,11 @@
                             <p>Pour <span class="highlight">R+2</span>, la structure (fondation + murs + dalles) devient le <strong>poste dominant (~47 %)</strong> du budget total.</p>
                             <p>Les postes équipements (électricité, plomberie, menuiserie, finitions) <strong>augmentent linéairement par étage</strong>.</p>
                             <p>Même le <span class="highlight">Plain-pied</span> nécessite un budget conséquent pour équipements complets (~45–50 % hors structure).</p>
+                            <div class="alert alert-warning mt-3">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                <strong>Astuce surface:</strong> Une augmentation de 20% de la surface n'augmente pas forcément de 20% le coût total. 
+                                Certains postes (comme la toiture) peuvent avoir des économies d'échelle.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -579,8 +688,8 @@
                     <h5>Liens rapides</h5>
                     <ul class="list-unstyled">
                         <li><a href="#simulator" class="text-white-50">Simulateur</a></li>
+                        <li><a href="#parameters" class="text-white-50">Paramètres</a></li>
                         <li><a href="#comparison" class="text-white-50">Comparaison</a></li>
-                        <li><a href="#tips" class="text-white-50">Conseils</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -600,14 +709,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Données pour le simulateur et les graphiques
-        const constructionData = {
+        // Données de base pour 120 m²
+        const baseData120 = {
             plain: {
                 name: "Plain-pied",
                 total: 19030000,
                 breakdown: {
                     foundation: 3680000,
-                    walls: 750000,
+                    walls: 750000,      // 3000 BTCS × 250 FCFA
                     intermediateFloors: 0,
                     roof: 4800000,
                     electricity: 1200000,
@@ -615,14 +724,15 @@
                     joinery: 4000000,
                     finishes: 4200000,
                     miscellaneous: 1500000
-                }
+                },
+                btcCount: 3000
             },
             r1: {
                 name: "R+1",
                 total: 38064000,
                 breakdown: {
                     foundation: 7180000,
-                    walls: 1500000,
+                    walls: 1500000,     // 6000 BTCS × 250 FCFA
                     intermediateFloors: 5184000,
                     roof: 4800000,
                     electricity: 2000000,
@@ -630,14 +740,15 @@
                     joinery: 6500000,
                     finishes: 8400000,
                     miscellaneous: 3000000
-                }
+                },
+                btcCount: 6000
             },
             r2: {
                 name: "R+2",
                 total: 60058000,
                 breakdown: {
                     foundation: 11040000,
-                    walls: 2250000,
+                    walls: 2250000,     // 9000 BTCS × 250 FCFA
                     intermediateFloors: 10368000,
                     roof: 4800000,
                     electricity: 3000000,
@@ -645,11 +756,34 @@
                     joinery: 9000000,
                     finishes: 12600000,
                     miscellaneous: 4500000
-                }
+                },
+                btcCount: 9000
             }
         };
 
+        // Paramètres unitaires
+        let unitParams = {
+            btcsCost: 250,              // FCFA par BTCS
+            foundationCost: 30667,      // FCFA par m² (pour plain-pied)
+            floorCost: 43200,           // FCFA par m² par étage
+            roofCost: 40000,            // FCFA par m² (surface toiture)
+            electricityCost: 10000,     // FCFA par m²
+            plumbingCost: 25000,        // FCFA par m²
+            joineryCost: 33333,         // FCFA par m²
+            finishesCost: 35000,        // FCFA par m²
+            laborCost: 12500,           // FCFA par m²
+            roofCoefficient: 1.2        // Coefficient surface toiture / surface sol
+        };
+
+        // Surface actuelle
+        let currentSurface = 120;
+
         // Éléments DOM
+        const surfaceInput = document.getElementById('surfaceInput');
+        const surfaceDisplay = document.getElementById('surfaceDisplay');
+        const surfaceResult = document.getElementById('surfaceResult');
+        const comparisonSurface = document.getElementById('comparisonSurface');
+        
         const houseTypeSelect = document.getElementById('houseType');
         const unexpectedSlider = document.getElementById('unexpected');
         const unexpectedValue = document.getElementById('unexpectedValue');
@@ -658,24 +792,129 @@
         const costPerM2Element = document.getElementById('costPerM2');
         const costBreakdownElement = document.getElementById('costBreakdown');
         
+        const comparisonBody = document.getElementById('comparisonBody');
+        const totalPlain = document.getElementById('totalPlain');
+        const totalR1 = document.getElementById('totalR1');
+        const totalR2 = document.getElementById('totalR2');
+        const structurePlain = document.getElementById('structurePlain');
+        const structureR1 = document.getElementById('structureR1');
+        const structureR2 = document.getElementById('structureR2');
+        
         // Options additionnelles
         const studySoilCheck = document.getElementById('studySoil');
         const qualityMaterialsCheck = document.getElementById('qualityMaterials');
         const energyEfficientCheck = document.getElementById('energyEfficient');
+        
+        // Paramètres inputs
+        const btcsCostInput = document.getElementById('btcsCost');
+        const foundationCostInput = document.getElementById('foundationCost');
+        const floorCostInput = document.getElementById('floorCost');
+        const roofCostInput = document.getElementById('roofCost');
+        const electricityCostInput = document.getElementById('electricityCost');
+        const plumbingCostInput = document.getElementById('plumbingCost');
+        const joineryCostInput = document.getElementById('joineryCost');
+        const finishesCostInput = document.getElementById('finishesCost');
+        const laborCostInput = document.getElementById('laborCost');
+        const roofCoefficientInput = document.getElementById('roofCoefficient');
+        
+        const resetParamsBtn = document.getElementById('resetParams');
+        const applyParamsBtn = document.getElementById('applyParams');
 
         // Formatage des nombres avec séparateurs
         function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+
+        // Calcul des coûts en fonction de la surface et des paramètres
+        function calculateCostsForSurface(surface) {
+            const ratio = surface / 120;
+            const roofSurface = surface * unitParams.roofCoefficient;
+            
+            // Calculer les coûts pour chaque type
+            const results = {};
+            
+            // Plain-pied
+            results.plain = {
+                name: "Plain-pied",
+                total: 0,
+                breakdown: {
+                    foundation: unitParams.foundationCost * surface,
+                    walls: (surface * 25) * unitParams.btcsCost, // 25 BTCS par m²
+                    intermediateFloors: 0,
+                    roof: unitParams.roofCost * roofSurface,
+                    electricity: unitParams.electricityCost * surface,
+                    plumbing: unitParams.plumbingCost * surface,
+                    joinery: unitParams.joineryCost * surface,
+                    finishes: unitParams.finishesCost * surface,
+                    miscellaneous: unitParams.laborCost * surface
+                }
+            };
+            
+            // Calculer le nombre de BTCS
+            results.plain.btcCount = Math.round(surface * 25);
+            results.plain.breakdown.walls = results.plain.btcCount * unitParams.btcsCost;
+            
+            // R+1 (2 étages)
+            results.r1 = {
+                name: "R+1",
+                total: 0,
+                breakdown: {
+                    foundation: unitParams.foundationCost * surface * 1.95, // Coefficient R+1
+                    walls: (surface * 25 * 2) * unitParams.btcsCost, // 2 étages
+                    intermediateFloors: unitParams.floorCost * surface, // 1 dalle
+                    roof: unitParams.roofCost * roofSurface,
+                    electricity: unitParams.electricityCost * surface * 1.67, // Coefficient R+1
+                    plumbing: unitParams.plumbingCost * surface * 1.67,
+                    joinery: unitParams.joineryCost * surface * 1.63,
+                    finishes: unitParams.finishesCost * surface * 2, // 2 étages
+                    miscellaneous: unitParams.laborCost * surface * 2
+                }
+            };
+            
+            results.r1.btcCount = Math.round(surface * 25 * 2);
+            results.r1.breakdown.walls = results.r1.btcCount * unitParams.btcsCost;
+            
+            // R+2 (3 étages)
+            results.r2 = {
+                name: "R+2",
+                total: 0,
+                breakdown: {
+                    foundation: unitParams.foundationCost * surface * 3.0, // Coefficient R+2
+                    walls: (surface * 25 * 3) * unitParams.btcsCost, // 3 étages
+                    intermediateFloors: unitParams.floorCost * surface * 2, // 2 dalles
+                    roof: unitParams.roofCost * roofSurface,
+                    electricity: unitParams.electricityCost * surface * 2.5, // Coefficient R+2
+                    plumbing: unitParams.plumbingCost * surface * 2.33,
+                    joinery: unitParams.joineryCost * surface * 2.25,
+                    finishes: unitParams.finishesCost * surface * 3, // 3 étages
+                    miscellaneous: unitParams.laborCost * surface * 3
+                }
+            };
+            
+            results.r2.btcCount = Math.round(surface * 25 * 3);
+            results.r2.breakdown.walls = results.r2.btcCount * unitParams.btcsCost;
+            
+            // Calculer les totaux
+            for (const type in results) {
+                let total = 0;
+                for (const key in results[type].breakdown) {
+                    total += results[type].breakdown[key];
+                }
+                results[type].total = total;
+            }
+            
+            return results;
         }
 
         // Mise à jour du simulateur
         function updateSimulator() {
             const houseType = houseTypeSelect.value;
-            const data = constructionData[houseType];
+            const data = calculateCostsForSurface(currentSurface);
+            const typeData = data[houseType];
             const unexpectedPercent = parseInt(unexpectedSlider.value);
             
             // Calcul du coût de base
-            let baseCost = data.total;
+            let baseCost = typeData.total;
             
             // Appliquer les options
             let optionsMultiplier = 1;
@@ -686,15 +925,16 @@
             const adjustedCost = baseCost * optionsMultiplier;
             const unexpectedCost = adjustedCost * (unexpectedPercent / 100);
             const finalCost = adjustedCost + unexpectedCost;
-            const costPerM2 = finalCost / 120;
+            const costPerM2 = finalCost / currentSurface;
             
             // Mise à jour de l'affichage
-            totalCostElement.textContent = formatNumber(Math.round(adjustedCost)) + " FCFA";
-            finalCostElement.textContent = formatNumber(Math.round(finalCost)) + " FCFA";
-            costPerM2Element.textContent = formatNumber(Math.round(costPerM2)) + " FCFA/m²";
+            totalCostElement.textContent = formatNumber(adjustedCost) + " FCFA";
+            finalCostElement.textContent = formatNumber(finalCost) + " FCFA";
+            costPerM2Element.textContent = formatNumber(costPerM2) + " FCFA/m²";
+            surfaceResult.textContent = currentSurface;
             
             // Mise à jour de la répartition
-            updateCostBreakdown(data, optionsMultiplier, unexpectedPercent);
+            updateCostBreakdown(typeData, optionsMultiplier, unexpectedPercent);
             
             // Mettre à jour les graphiques
             updateCharts();
@@ -706,8 +946,20 @@
             let html = '';
             
             // Postes de construction
+            const postNames = {
+                foundation: "Fondation",
+                walls: "Murs BTCS",
+                intermediateFloors: "Dalles intermédiaires",
+                roof: "Toiture",
+                electricity: "Électricité",
+                plumbing: "Plomberie",
+                joinery: "Menuiserie",
+                finishes: "Finitions",
+                miscellaneous: "Divers"
+            };
+            
             for (const [key, value] of Object.entries(breakdown)) {
-                const postName = getPostName(key);
+                const postName = postNames[key] || key;
                 const cost = Math.round(value * optionsMultiplier);
                 const percentage = Math.round((cost / (data.total * optionsMultiplier)) * 100);
                 
@@ -741,33 +993,127 @@
             costBreakdownElement.innerHTML = html;
         }
 
-        // Traduction des clés de poste
-        function getPostName(key) {
-            const postNames = {
-                foundation: "Fondation",
-                walls: "Murs BTCS",
-                intermediateFloors: "Dalles intermédiaires",
-                roof: "Toiture",
-                electricity: "Électricité",
-                plumbing: "Plomberie",
-                joinery: "Menuiserie",
-                finishes: "Finitions",
-                miscellaneous: "Divers"
-            };
-            return postNames[key] || key;
+        // Mise à jour du tableau comparatif
+        function updateComparisonTable() {
+            const data = calculateCostsForSurface(currentSurface);
+            
+            // Tips et REX (restent les mêmes)
+            const tipsAndRex = [
+                "💡 Vérifier étude de sol, éviter surdimension → -10 % coût. REX : sol sableux réduit coût, sol humide = surcoût 15 %",
+                "💡 Acheter BTCS en gros → remise 10–15 %. REX : murs trop fins → fissures fréquentes",
+                "💡 Coffrage réutilisable ou hourdis léger → -15 %. REX : dalle trop lourde → fondation surdimensionnée, retard chantier",
+                "💡 Toiture simple pente ou 2 pentes → économie 10 %. REX : toiture complexe = retard et +20 % coût",
+                "💡 Prévoir points électriques standards, éviter changements fréquents → -10 %. REX : modification en cours = +25 % coût",
+                "💡 Installer tuyaux apparent ou gaines préfabriquées → -15 %. REX : ajouter salle bain = explosion budget",
+                "💡 Aluminium ou bois local selon budget. REX : portes bon marché → remplacement rapide",
+                "💡 Carrelage standard + peinture à l'eau → -20 %. REX : finitions luxe → +50 % coût",
+                "💡 Toujours prévoir 10–15 % du budget. REX : modifications après fondation → coûts explosifs"
+            ];
+            
+            const postNames = [
+                "Fondation",
+                "Murs BTCS + pose",
+                "Dalles intermédiaires",
+                "Toiture",
+                "Electricité",
+                "Plomberie",
+                "Menuiserie (portes + fenêtres)",
+                "Finitions (carrelage + peinture)",
+                "Divers / imprévus"
+            ];
+            
+            const keys = [
+                "foundation",
+                "walls",
+                "intermediateFloors",
+                "roof",
+                "electricity",
+                "plumbing",
+                "joinery",
+                "finishes",
+                "miscellaneous"
+            ];
+            
+            let html = '';
+            
+            for (let i = 0; i < keys.length; i++) {
+                const key = keys[i];
+                const postName = postNames[i];
+                const tip = tipsAndRex[i];
+                
+                // Formater l'affichage des murs avec nombre de BTCS
+                let plainText = formatNumber(Math.round(data.plain.breakdown[key])) + " FCFA";
+                let r1Text = formatNumber(Math.round(data.r1.breakdown[key])) + " FCFA";
+                let r2Text = formatNumber(Math.round(data.r2.breakdown[key])) + " FCFA";
+                
+                if (key === 'walls') {
+                    plainText += `<br><small>→ ${data.plain.btcCount} BTCS</small>`;
+                    r1Text += `<br><small>→ ${data.r1.btcCount} BTCS</small>`;
+                    r2Text += `<br><small>→ ${data.r2.btcCount} BTCS</small>`;
+                }
+                
+                html += `
+                <tr>
+                    <td><strong>${postName}</strong></td>
+                    <td><span class="cost-badge">${plainText}</span></td>
+                    <td><span class="cost-badge">${r1Text}</span></td>
+                    <td><span class="cost-badge">${r2Text}</span></td>
+                    <td>
+                        <div class="tips-box">
+                            <strong>💡 Tips:</strong> ${tip.split('REX :')[0].replace('💡 ', '')}
+                        </div>
+                        <div class="rex-box">
+                            <strong>🔍 REX:</strong> ${tip.split('REX :')[1] || tip}
+                        </div>
+                    </td>
+                </tr>
+                `;
+            }
+            
+            comparisonBody.innerHTML = html;
+            
+            // Mettre à jour les totaux
+            totalPlain.textContent = formatNumber(data.plain.total) + " FCFA";
+            totalR1.textContent = formatNumber(data.r1.total) + " FCFA";
+            totalR2.textContent = formatNumber(data.r2.total) + " FCFA";
+            
+            // Calculer les pourcentages de structure
+            const structurePlainPercent = Math.round(((data.plain.breakdown.foundation + data.plain.breakdown.walls + data.plain.breakdown.intermediateFloors) / data.plain.total) * 100);
+            const structureR1Percent = Math.round(((data.r1.breakdown.foundation + data.r1.breakdown.walls + data.r1.breakdown.intermediateFloors) / data.r1.total) * 100);
+            const structureR2Percent = Math.round(((data.r2.breakdown.foundation + data.r2.breakdown.walls + data.r2.breakdown.intermediateFloors) / data.r2.total) * 100);
+            
+            structurePlain.textContent = `${structurePlainPercent}%`;
+            structureR1.textContent = `${structureR1Percent}%`;
+            structureR2.textContent = `${structureR2Percent}%`;
+            
+            // Mettre à jour la surface affichée
+            comparisonSurface.textContent = currentSurface;
         }
 
         // Initialisation des graphiques
-        let plainPiedChart, evolutionChart;
+        let plainPiedChart, surfaceImpactChart;
         
         function initCharts() {
             const ctx1 = document.getElementById('chartPlainPied').getContext('2d');
-            const ctx2 = document.getElementById('chartEvolution').getContext('2d');
+            const ctx2 = document.getElementById('chartSurfaceImpact').getContext('2d');
             
-            // Données pour le graphique Plain-pied
-            const plainData = constructionData.plain.breakdown;
-            const labels = Object.keys(plainData).map(key => getPostName(key));
-            const dataValues = Object.values(plainData);
+            const data = calculateCostsForSurface(currentSurface);
+            const labels = Object.keys(data.plain.breakdown).map(key => {
+                const names = {
+                    foundation: "Fondation",
+                    walls: "Murs BTCS",
+                    intermediateFloors: "Dalles",
+                    roof: "Toiture",
+                    electricity: "Électricité",
+                    plumbing: "Plomberie",
+                    joinery: "Menuiserie",
+                    finishes: "Finitions",
+                    miscellaneous: "Divers"
+                };
+                return names[key] || key;
+            });
+            
+            const dataValues = Object.values(data.plain.breakdown);
             
             // Graphique circulaire pour Plain-pied
             plainPiedChart = new Chart(ctx1, {
@@ -798,7 +1144,7 @@
                                     }
                                     const value = context.raw;
                                     label += formatNumber(value) + ' FCFA';
-                                    const percentage = Math.round((value / constructionData.plain.total) * 100);
+                                    const percentage = Math.round((value / data.plain.total) * 100);
                                     label += ` (${percentage}%)`;
                                     return label;
                                 }
@@ -808,25 +1154,49 @@
                 }
             });
             
-            // Graphique d'évolution par type de construction
-            const houseTypes = ['Plain-pied', 'R+1', 'R+2'];
-            const totalCosts = [
-                constructionData.plain.total,
-                constructionData.r1.total,
-                constructionData.r2.total
-            ];
+            // Graphique d'impact de la surface
+            const surfaces = [80, 120, 160, 200];
+            const plainCosts = surfaces.map(s => {
+                const d = calculateCostsForSurface(s);
+                return d.plain.total;
+            });
+            const r1Costs = surfaces.map(s => {
+                const d = calculateCostsForSurface(s);
+                return d.r1.total;
+            });
+            const r2Costs = surfaces.map(s => {
+                const d = calculateCostsForSurface(s);
+                return d.r2.total;
+            });
             
-            evolutionChart = new Chart(ctx2, {
-                type: 'bar',
+            surfaceImpactChart = new Chart(ctx2, {
+                type: 'line',
                 data: {
-                    labels: houseTypes,
+                    labels: surfaces.map(s => `${s} m²`),
                     datasets: [
                         {
-                            label: 'Coût total (FCFA)',
-                            data: totalCosts,
-                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                            label: 'Plain-pied',
+                            data: plainCosts,
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
                             borderColor: 'rgba(52, 152, 219, 1)',
-                            borderWidth: 1
+                            borderWidth: 2,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'R+1',
+                            data: r1Costs,
+                            backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                            borderColor: 'rgba(46, 204, 113, 1)',
+                            borderWidth: 2,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'R+2',
+                            data: r2Costs,
+                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                            borderColor: 'rgba(231, 76, 60, 1)',
+                            borderWidth: 2,
+                            tension: 0.3
                         }
                     ]
                 },
@@ -834,7 +1204,7 @@
                     responsive: true,
                     scales: {
                         y: {
-                            beginAtZero: true,
+                            beginAtZero: false,
                             ticks: {
                                 callback: function(value) {
                                     return formatNumber(value) + ' FCFA';
@@ -846,7 +1216,7 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return formatNumber(context.raw) + ' FCFA';
+                                    return `${context.dataset.label}: ${formatNumber(context.raw)} FCFA`;
                                 }
                             }
                         }
@@ -857,9 +1227,87 @@
         
         // Mise à jour des graphiques
         function updateCharts() {
-            // Pour l'instant, nous ne mettons pas à jour les graphiques en temps réel
-            // car ils affichent les données de base, mais nous pourrions le faire
-            // si nous voulions montrer l'impact des options sur les graphiques
+            const data = calculateCostsForSurface(currentSurface);
+            
+            // Mettre à jour le graphique circulaire
+            if (plainPiedChart) {
+                plainPiedChart.data.datasets[0].data = Object.values(data.plain.breakdown);
+                plainPiedChart.update();
+            }
+            
+            // Mettre à jour le graphique d'impact de surface
+            if (surfaceImpactChart) {
+                const surfaces = [80, 120, 160, 200];
+                const plainCosts = surfaces.map(s => {
+                    const d = calculateCostsForSurface(s);
+                    return d.plain.total;
+                });
+                const r1Costs = surfaces.map(s => {
+                    const d = calculateCostsForSurface(s);
+                    return d.r1.total;
+                });
+                const r2Costs = surfaces.map(s => {
+                    const d = calculateCostsForSurface(s);
+                    return d.r2.total;
+                });
+                
+                surfaceImpactChart.data.datasets[0].data = plainCosts;
+                surfaceImpactChart.data.datasets[1].data = r1Costs;
+                surfaceImpactChart.data.datasets[2].data = r2Costs;
+                surfaceImpactChart.update();
+            }
+        }
+
+        // Mettre à jour les paramètres à partir des inputs
+        function updateParamsFromInputs() {
+            unitParams.btcsCost = parseFloat(btcsCostInput.value);
+            unitParams.foundationCost = parseFloat(foundationCostInput.value);
+            unitParams.floorCost = parseFloat(floorCostInput.value);
+            unitParams.roofCost = parseFloat(roofCostInput.value);
+            unitParams.electricityCost = parseFloat(electricityCostInput.value);
+            unitParams.plumbingCost = parseFloat(plumbingCostInput.value);
+            unitParams.joineryCost = parseFloat(joineryCostInput.value);
+            unitParams.finishesCost = parseFloat(finishesCostInput.value);
+            unitParams.laborCost = parseFloat(laborCostInput.value);
+            unitParams.roofCoefficient = parseFloat(roofCoefficientInput.value);
+        }
+
+        // Réinitialiser les paramètres
+        function resetParams() {
+            unitParams = {
+                btcsCost: 250,
+                foundationCost: 30667,
+                floorCost: 43200,
+                roofCost: 40000,
+                electricityCost: 10000,
+                plumbingCost: 25000,
+                joineryCost: 33333,
+                finishesCost: 35000,
+                laborCost: 12500,
+                roofCoefficient: 1.2
+            };
+            
+            // Mettre à jour les inputs
+            btcsCostInput.value = unitParams.btcsCost;
+            foundationCostInput.value = unitParams.foundationCost;
+            floorCostInput.value = unitParams.floorCost;
+            roofCostInput.value = unitParams.roofCost;
+            electricityCostInput.value = unitParams.electricityCost;
+            plumbingCostInput.value = unitParams.plumbingCost;
+            joineryCostInput.value = unitParams.joineryCost;
+            finishesCostInput.value = unitParams.finishesCost;
+            laborCostInput.value = unitParams.laborCost;
+            roofCoefficientInput.value = unitParams.roofCoefficient;
+            
+            // Recalculer tout
+            updateAll();
+        }
+
+        // Mettre à jour tout l'affichage
+        function updateAll() {
+            updateSimulator();
+            updateComparisonTable();
+            updateCharts();
         }
 
         // Animation au défilement
@@ -878,13 +1326,22 @@
 
         // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
-            // Mettre à jour le simulateur
-            updateSimulator();
+            // Initialiser les paramètres
+            resetParams();
+            
+            // Mettre à jour tout l'affichage
+            updateAll();
             
             // Initialiser les graphiques
             initCharts();
             
             // Écouteurs d'événements
+            surfaceInput.addEventListener('input', function() {
+                currentSurface = parseInt(this.value);
+                surfaceDisplay.textContent = currentSurface;
+                updateAll();
+            });
+            
             houseTypeSelect.addEventListener('change', updateSimulator);
             unexpectedSlider.addEventListener('input', function() {
                 unexpectedValue.textContent = this.value + "%";
@@ -895,6 +1352,15 @@
             studySoilCheck.addEventListener('change', updateSimulator);
             qualityMaterialsCheck.addEventListener('change', updateSimulator);
             energyEfficientCheck.addEventListener('change', updateSimulator);
+            
+            // Paramètres
+            applyParamsBtn.addEventListener('click', function() {
+                updateParamsFromInputs();
+                updateAll();
+                alert("Paramètres appliqués avec succès!");
+            });
+            
+            resetParamsBtn.addEventListener('click', resetParams);
             
             // Animation au défilement
             window.addEventListener('scroll', animateOnScroll);
