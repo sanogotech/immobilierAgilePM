@@ -180,3 +180,206 @@ Si ton objectif est **25 millions FCFA**, la zone idéale est :
 📊 Budget sécurisé ≈ 28M FCFA
 
 ---
+
+
+---
+
+# 🏗️ TOP 4 STRATÉGIES AGILE POUR CONSTRUIRE EN CI
+
+---
+
+# 🥇 OPTION 1 – Sprint Long Sécurisé (Profil Salarié Stable)
+
+### 📌 Format
+
+* 🧱 5 sprints
+* ⏳ 6 mois par sprint
+* 🕒 Durée totale : 30 mois
+* 💰 5M par sprint
+* 💵 Budget total : 25M – 28M FCFA
+
+### 👤 Profil idéal
+
+* Salaire 700k – 1M FCFA
+* Fonctionnaire / cadre stable
+* Capacité d’épargne 250k – 350k/mois
+
+### 🏗️ Stratégie
+
+* Construire 120 m²
+* Standing moyen (200k/m²)
+* Ajouter 10% réserve sécurité
+
+### 📊 Réalisme
+
+👉 65% des constructions privées en CI suivent ce modèle progressif.
+
+### 💡 Conseils clés
+
+* Ne jamais commencer les finitions avant toiture
+* Acheter fer et ciment en début de sprint
+* Toujours garder 500k – 1M en cash imprévus
+
+### ⚠️ Risque principal
+
+Fatigue financière si perte d’emploi
+
+---
+
+# 🥈 OPTION 2 – Sprint Accéléré Mixte (Salarié + Crédit)
+
+### 📌 Format
+
+* 🧱 3 sprints
+* ⏳ 6 mois par sprint
+* 🕒 18 mois total
+* 💰 8M par sprint
+* 💵 Budget total : 24M – 30M FCFA
+
+### 👤 Profil idéal
+
+* Salaire 1M – 1.5M
+* Apport initial 5M
+* Accès crédit bancaire
+
+### 🏗️ Stratégie
+
+* Crédit partiel pour gros œuvre
+* Autofinancement pour finitions
+
+### 📊 Statistique
+
+Les projets avec crédit terminent en moyenne 40% plus vite.
+
+### 💡 Tips intelligents
+
+* Utiliser crédit uniquement pour fondation + murs
+* Négocier paiement en 3 tranches entrepreneur
+* Bloquer taux d’intérêt fixe
+
+### ⚠️ Risque
+
+Mensualité trop lourde (>40% revenu = danger)
+
+---
+
+# 🥉 OPTION 3 – Sprint Ultra Progressif (Petit Budget)
+
+### 📌 Format
+
+* 🧱 8 sprints
+* ⏳ 6 mois par sprint
+* 🕒 4 ans total
+* 💰 3M par sprint
+* 💵 Budget total : 24M
+
+### 👤 Profil idéal
+
+* Salaire 400k – 600k
+* Construction sans crédit
+* Terrain déjà payé
+
+### 🏗️ Stratégie
+
+* Construire 90–110 m²
+* Standing économique amélioré (160k/m²)
+
+### 📊 Réalité terrain
+
+40% des chantiers privés durent 4 à 6 ans.
+
+### 💡 Tips
+
+* Prioriser structure avant extension
+* Construire évolutif (prévoir étage futur)
+* Ne pas modifier plan en cours
+
+### ⚠️ Risque
+
+Inflation matériaux (5 à 10% / an)
+
+---
+
+# 🏆 OPTION 4 – Sprint Investisseur Intelligent (Mix Location)
+
+### 📌 Format
+
+* 🧱 4 sprints
+* ⏳ 6 mois par sprint
+* 🕒 24 mois total
+* 💰 6–7M par sprint
+* 💵 Budget total : 28M
+
+### 👤 Profil idéal
+
+* Salaire 800k – 1.2M
+* Esprit entrepreneurial
+* Terrain urbain
+
+### 🏗️ Stratégie
+
+Construire :
+
+* 1 appartement principal
+* 1 studio locatif
+
+Studio loué 100k/mois = 1.2M/an
+
+👉 Le loyer finance 1 sprint supplémentaire.
+
+### 📊 Statistique
+
+Les propriétaires qui intègrent location réduisent le délai de 25 à 35%.
+
+### 💡 Tips puissants
+
+* Séparer compteur eau/électricité
+* Prioriser studio en premier
+* Rentabiliser avant finitions premium
+
+### ⚠️ Risque
+
+Mauvaise gestion locative
+
+---
+
+# 📊 Comparatif Global
+
+| Option           | Budget | Durée   | Risque | Vitesse | Idéal pour      |
+| ---------------- | ------ | ------- | ------ | ------- | --------------- |
+| 1️⃣ Sécurisé     | 25M    | 30 mois | Faible | Moyen   | Salarié stable  |
+| 2️⃣ Accéléré     | 30M    | 18 mois | Moyen  | Rapide  | Cadre + crédit  |
+| 3️⃣ Progressif   | 24M    | 4 ans   | Faible | Lent    | Petit salaire   |
+| 4️⃣ Investisseur | 28M    | 24 mois | Moyen  | Rapide  | Profil business |
+
+---
+
+# 📈 Temps Moyen Chantier en CI
+
+* Sans plan : 5 ans
+* Avec suivi technique : 3 ans
+* Avec financement structuré : 18–24 mois
+* Avec stratégie locative : 20–28 mois
+
+---
+
+# 🎯 Conseils Stratégiques Universels
+
+✅ Toujours commencer par un plan validé
+✅ Ajouter 10–15% imprévus
+✅ Ne jamais changer le plan après murs
+✅ Suivre coût par m² chaque trimestre
+✅ Négocier devis global et non journalier
+
+---
+
+# 🧮 Règle d’Or
+
+Si ton revenu mensuel × 36 mois < budget total
+→ projet trop ambitieux ⚠️
+
+Si revenu mensuel × 24 mois ≈ budget
+→ projet optimisé 🚀
+
+---
+
