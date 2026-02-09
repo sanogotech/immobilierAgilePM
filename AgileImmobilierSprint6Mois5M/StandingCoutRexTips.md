@@ -557,11 +557,124 @@ Exemple 100 m² → 500 000 à 600 000 FCFA
 
 ---
 
-Si tu veux, je peux maintenant te :
 
-📊 📈 **Simuler le coût des BTCS pour un plan précis** (ex. 3 chambres 100 m²),
-🏗️ **Comparer BTCS vs parpaings poste par poste**,
-🛠️ **Donner une liste de presses à briques possibles en CI (+ prix)**,
+---
+
+# 🏗️ Les parpaings ou BTCS représentent combien % du coût total ?
+
+## 📌 Réponse courte
+
+👉 En moyenne :
+
+* 🧱 **Parpaings seuls = 3% à 6% du coût total**
+* 🧱 **BTCS seuls = 4% à 8% du coût total**
+* 🏗️ **Murs complets (matériaux + pose) = 12% à 18% du coût total**
+
+Donc la brique elle-même est une petite ligne dans le budget global.
+
+---
+
+# 📊 Exemple concret – Maison 100 m² (standing moyen)
+
+Budget global moyen CI :
+≈ 20 000 000 FCFA
+(200 000 FCFA/m²)
+
+---
+
+## 🧱 CAS 1 : Parpaings
+
+Nombre ≈ 2 700 unités
+Prix moyen ≈ 200 FCFA
+
+👉 Coût parpaings ≈ 540 000 FCFA
+
+Calcul pourcentage :
+
+540 000 ÷ 20 000 000 = **2,7%**
+
+Même si le prix monte à 250 FCFA :
+
+675 000 ÷ 20 000 000 = **3,3%**
+
+➡️ Les parpaings représentent généralement **3 à 5% du budget total**.
+
+---
+
+## 🧱 CAS 2 : BTCS
+
+Nombre ≈ 3 000 à 3 500 unités
+Prix moyen ≈ 250 FCFA
+
+👉 Coût BTCS ≈ 750 000 à 900 000 FCFA
+
+Calcul :
+
+800 000 ÷ 20 000 000 = **4%**
+
+Si BTCS premium :
+
+1 000 000 ÷ 20 000 000 = **5%**
+
+➡️ Les BTCS représentent en général **4 à 8% du budget total**.
+
+---
+
+# 📌 Attention : ce qui coûte cher, ce n’est pas la brique
+
+Ce sont :
+
+* 🏗️ Fondations
+* 🪨 Fer à béton
+* 🧱 Ciment
+* 🏠 Toiture
+* 🎨 Finitions
+* 👷 Main d’œuvre
+
+La structure béton + toiture représente souvent 35 à 45% du budget.
+
+---
+
+# 📊 Répartition moyenne d’un budget 100 m² (20M FCFA)
+
+| Poste             | % moyen |
+| ----------------- | ------- |
+| Fondations        | 18%     |
+| Murs complets     | 15%     |
+| Parpaings seuls   | 3–5%    |
+| Toiture           | 20%     |
+| Electricité       | 10%     |
+| Plomberie         | 10%     |
+| Finitions         | 15%     |
+| Divers & imprévus | 7%      |
+
+---
+
+# 🎯 Conclusion stratégique
+
+Changer parpaing → BTCS peut faire économiser :
+
+👉 1 à 3% du budget total
+👉 Mais peut améliorer confort thermique de 10 à 20%
+
+Donc :
+
+✔️ Impact financier modéré
+✔️ Impact confort important
+
+---
+
+# 💡 Astuce d’expert
+
+Si tu veux réduire fortement le budget total, il vaut mieux optimiser :
+
+* La forme du plan (compact = -10%)
+* La toiture (simple = -8%)
+* Les finitions (carrelage, plafond = gros levier)
+
+Pas seulement le type de brique.
+
+---
 
 
 
