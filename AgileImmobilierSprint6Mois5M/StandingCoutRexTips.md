@@ -676,5 +676,117 @@ Pas seulement le type de brique.
 
 ---
 
+---
+
+# 🏗️ Guide complet : Construction maison en Côte d’Ivoire – Parpaings vs BTCS, budget et fondations
+
+## 📌 Introduction
+
+Construire une maison en Côte d’Ivoire 🇨🇮 nécessite une **vision claire du budget, des matériaux et de la structure**.
+Souvent, le coût dépasse le budget non pas à cause du prix au m² mais parce que :
+
+* Les **quantités de matériaux sont mal estimées**
+* La **fondation est sous-dimensionnée**
+* Les **imprévus ne sont pas intégrés**
+
+Dans ce guide, tu trouveras :
+
+1. Estimation des parpaings ou BTCS nécessaires
+2. Top 8 des postes de dépenses
+3. Pourcentage des matériaux par rapport au budget total
+4. Comparaison fondation villa plain-pied vs R+1
+5. Astuces terrain et bonnes pratiques
+
+---
+
+# 🧱 1️⃣ Estimation des parpaings ou BTCS
+
+## 📐 Hypothèses
+
+* Maison plain-pied
+* Hauteur mur : 2,8 m
+* Plan rectangulaire simple
+* 1 m² de mur ≈ 10 parpaings ou 12–13 BTCS
+* Surface murs ≈ 2,5 × surface habitable
+
+### 📊 Tableau – Nombre et coût
+
+| Surface | Parpaings | Coût parpaings 200 FCFA | BTCS   | Coût BTCS 250 FCFA |
+| ------- | --------- | ----------------------- | ------ | ------------------ |
+| 30 m²   | 750       | 150 000 FCFA            | 2 250  | 562 500 FCFA       |
+| 50 m²   | 1 250     | 250 000 FCFA            | 3 750  | 937 500 FCFA       |
+| 80 m²   | 2 000     | 400 000 FCFA            | 6 000  | 1 500 000 FCFA     |
+| 100 m²  | 2 700     | 540 000 FCFA            | 8 100  | 2 025 000 FCFA     |
+| 120 m²  | 3 000     | 600 000 FCFA            | 9 720  | 2 430 000 FCFA     |
+| 150 m²  | 3 750     | 750 000 FCFA            | 12 150 | 3 037 500 FCFA     |
+
+💡 Astuces :
+
+* Ajouter 5–8 % pour casse et pertes
+* Pour murs porteurs renforcés → +5 %
+* Si étage prévu → fondations + parpaings/BTCS plus résistants
+
+---
+
+# 💰 2️⃣ Top 8 postes de dépenses
+
+*(Estimation standing moyen ≈ 200 000 FCFA/m²)*
+
+| Poste                      | % du budget total | Exemple 100 m² |
+| -------------------------- | ----------------- | -------------- |
+| Fondations                 | 15–30%            | 4–6 M FCFA     |
+| Murs complets (mat + pose) | 12–18%            | 2,5–3 M FCFA   |
+| Parpaings seuls            | 3–5%              | 540 000 FCFA   |
+| BTCS seuls                 | 4–8%              | 2 M FCFA       |
+| Toiture                    | 20%               | 4 M FCFA       |
+| Électricité                | 10–12%            | 1,2–1,5 M FCFA |
+| Plomberie                  | 8–12%             | 1,2–2 M FCFA   |
+| Finitions                  | 15%               | 3 M FCFA       |
+| Main d’œuvre globale       | 25–35%            | 5–6 M FCFA     |
+
+💡 Astuce : optimiser **forme de la maison + toiture + finitions** = réduction 10–15 % du budget
+
+---
+
+# 🏗️ 3️⃣ Fondations – Villa plain-pied vs R+1
+
+| Type Villa | Hauteur murs | Profondeur semelle       | Largeur semelle | Chaînages   | Ferraillage | % budget fondation |
+| ---------- | ------------ | ------------------------ | --------------- | ----------- | ----------- | ------------------ |
+| Plain-pied | 2,8 m        | 0,5–0,7 m                | 0,3–0,5 m       | Optionnel   | 10–12 mm    | 15–20%             |
+| R+1        | 5,6–6 m      | 0,7–1,0 m (argile 1,2 m) | 0,4–0,6 m       | Obligatoire | 12–16 mm    | 25–30%             |
+
+💡 Explication :
+Plus le bâtiment est haut → plus la fondation doit être **large et profonde** pour supporter la charge.
+Le ferraillage et les chaînages augmentent le coût mais **assurent la sécurité structurelle**.
+
+### 💡 Astuces terrain
+
+1. Étude de sol obligatoire (G2) → éviter surdimensionnement
+2. Choisir type fondation adapté (semelle filante, radier, pieux)
+3. Optimiser ferraillage → stabilité sans surcoût
+4. Ne jamais surélever fondations après construction → coûte très cher
+
+---
+
+# 💡 4️⃣ Conseils généraux pour optimiser budget
+
+1️⃣ Plan rectangulaire compact → -10 %
+2️⃣ Toiture simple ou deux pentes → -8 %
+3️⃣ Limiter couloirs inutiles
+4️⃣ Prévoir extension future au lieu de tout construire
+5️⃣ Acheter matériaux en gros
+6️⃣ Verrouiller devis écrit
+7️⃣ Superviser chantier chaque semaine
+8️⃣ Ajouter 10–15 % imprévus
+9️⃣ Ne jamais changer plan après fondation
+🔟 Prioriser structure avant esthétique
+
+---
+
+# 🎯 5️⃣ Règle d’or
+
+**Budget sécurisé** = (Coût m² × surface) + 10–15 % imprévus + 5 % inflation
+
+---
 
 
