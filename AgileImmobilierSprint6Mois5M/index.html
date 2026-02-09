@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Constructeur Pro | Simulateur Devis Maison 120m²</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            border: none;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .card {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 12px 12px 0 0 !important;
+            font-weight: 600;
+        }
+        
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            vertical-align: middle;
+        }
+        
+        .comparison-table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .cost-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .tips-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .rex-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .simulator-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .progress-bar-custom {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+        }
+        
+        .cost-breakdown-item {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            
+            .hero-section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <i class="fas fa-home me-2"></i>Constructeur Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#simulator">Simulateur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comparison">Comparaison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tips">Conseils</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#graph">Graphiques</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold">Guide Complet : Construction Maison 120 m²</h1>
+                    <p class="lead">Simulation de devis, astuces pratiques et retours d'expérience pour votre projet de construction en plain-pied, R+1 ou R+2</p>
+                    <div class="mt-4">
+                        <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-check-circle me-1"></i> Devis réalistes</span>
+                        <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-lightbulb me-1"></i> Tips réduction budget</span>
+                        <span class="badge bg-light text-dark me-2 p-2"><i class="fas fa-chart-line me-1"></i> Comparaison détaillée</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
+                        <div class="text-center">
+                            <h3 class="text-primary mb-0">120 m²</h3>
+                            <p class="text-muted mb-0">Surface</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Simulateur Section -->
+        <section id="simulator" class="mb-5 animate-on-scroll">
+            <div class="simulator-box">
+                <h2 class="mb-4"><i class="fas fa-calculator me-2"></i>Simulateur de Devis</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <label for="houseType" class="form-label fw-bold">Type de construction</label>
+                            <select class="form-select" id="houseType">
+                                <option value="plain">Plain-pied</option>
+                                <option value="r1">R+1</option>
+                                <option value="r2">R+2</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Options additionnelles</label>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="studySoil">
+                                <label class="form-check-label" for="studySoil">Étude de sol (+5%)</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="qualityMaterials">
+                                <label class="form-check-label" for="qualityMaterials">Matériaux haute qualité (+15%)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="energyEfficient">
+                                <label class="form-check-label" for="energyEfficient">Économie d'énergie (+10%)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="unexpected" class="form-label fw-bold">Budget imprévus (%)</label>
+                            <input type="range" class="form-range" min="5" max="20" step="1" id="unexpected" value="10">
+                            <div class="d-flex justify-content-between">
+                                <small>5%</small>
+                                <span id="unexpectedValue" class="fw-bold">10%</span>
+                                <small>20%</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-file-invoice-dollar me-2"></i>Résultat du devis
+                            </div>
+                            <div class="card-body">
+                                <h3 class="text-center mb-4" id="totalCost">19 030 000 FCFA</h3>
+                                
+                                <div id="costBreakdown">
+                                    <!-- Les éléments de répartition seront insérés par JavaScript -->
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Coût total estimé:</span>
+                                        <span class="fw-bold" id="finalCost">19 030 000 FCFA</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Coût au m²:</span>
+                                        <span class="fw-bold" id="costPerM2">158 583 FCFA/m²</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-info mt-4">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <small>Ces estimations sont basées sur les prix moyens du marché. Consultez plusieurs artisans pour des devis précis.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tableau Comparatif -->
+        <section id="comparison" class="mb-5 animate-on-scroll">
+            <h2 class="mb-4"><i class="fas fa-table me-2"></i>Comparaison détaillée des coûts</h2>
+            <div class="table-responsive">
+                <table class="table comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Poste</th>
+                            <th>Plain-pied</th>
+                            <th>R+1</th>
+                            <th>R+2</th>
+                            <th>Tips & REX 🔥</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fondation</strong></td>
+                            <td><span class="cost-badge">3 680 000 FCFA</span></td>
+                            <td><span class="cost-badge">7 180 000 FCFA</span></td>
+                            <td><span class="cost-badge">11 040 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Vérifier étude de sol, éviter surdimension → -10 % coût.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Sol sableux réduit coût, sol humide = surcoût 15 %.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Murs BTCS + pose</strong></td>
+                            <td><span class="cost-badge">750 000 FCFA</span><br><small>→ 3 000 BTCS</small></td>
+                            <td><span class="cost-badge">1 500 000 FCFA</span><br><small>→ 6 000 BTCS</small></td>
+                            <td><span class="cost-badge">2 250 000 FCFA</span><br><small>→ 9 000 BTCS</small></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Acheter BTCS en gros → remise 10–15 %.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Murs trop fins → fissures fréquentes.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dalles intermédiaires</strong></td>
+                            <td><span class="cost-badge">0 FCFA</span></td>
+                            <td><span class="cost-badge">5 184 000 FCFA</span></td>
+                            <td><span class="cost-badge">10 368 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Coffrage réutilisable ou hourdis léger → -15 %.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Dalle trop lourde → fondation surdimensionnée, retard chantier.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Toiture</strong></td>
+                            <td><span class="cost-badge">4 800 000 FCFA</span></td>
+                            <td><span class="cost-badge">4 800 000 FCFA</span></td>
+                            <td><span class="cost-badge">4 800 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Toiture simple pente ou 2 pentes → économie 10 %.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Toiture complexe = retard et +20 % coût.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Électricité</strong></td>
+                            <td><span class="cost-badge">1 200 000 FCFA</span></td>
+                            <td><span class="cost-badge">2 000 000 FCFA</span></td>
+                            <td><span class="cost-badge">3 000 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Prévoir points électriques standards, éviter changements fréquents → -10 %.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Modification en cours = +25 % coût.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Plomberie</strong></td>
+                            <td><span class="cost-badge">3 000 000 FCFA</span></td>
+                            <td><span class="cost-badge">5 000 000 FCFA</span></td>
+                            <td><span class="cost-badge">7 000 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Installer tuyaux apparent ou gaines préfabriquées → -15 %.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Ajouter salle bain = explosion budget.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Menuiserie</strong></td>
+                            <td><span class="cost-badge">4 000 000 FCFA</span></td>
+                            <td><span class="cost-badge">6 500 000 FCFA</span></td>
+                            <td><span class="cost-badge">9 000 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Aluminium ou bois local selon budget.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Portes bon marché → remplacement rapide.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Finitions</strong></td>
+                            <td><span class="cost-badge">4 200 000 FCFA</span></td>
+                            <td><span class="cost-badge">8 400 000 FCFA</span></td>
+                            <td><span class="cost-badge">12 600 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Carrelage standard + peinture à l'eau → -20 %.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Finitions luxe → +50 % coût.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Divers / imprévus</strong></td>
+                            <td><span class="cost-badge">1 500 000 FCFA</span></td>
+                            <td><span class="cost-badge">3 000 000 FCFA</span></td>
+                            <td><span class="cost-badge">4 500 000 FCFA</span></td>
+                            <td>
+                                <div class="tips-box">
+                                    <strong>💡 Tips:</strong> Toujours prévoir 10–15 % du budget.
+                                </div>
+                                <div class="rex-box">
+                                    <strong>🔍 REX:</strong> Modifications après fondation → coûts explosifs.
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="table-dark">
+                        <tr>
+                            <td><strong>TOTAL GÉNÉRAL</strong></td>
+                            <td><strong class="text-warning">19 030 000 FCFA</strong></td>
+                            <td><strong class="text-warning">38 064 000 FCFA</strong></td>
+                            <td><strong class="text-warning">60 058 000 FCFA</strong></td>
+                            <td>
+                                <div class="text-white">
+                                    <small><strong>% structure:</strong> Plain-pied: 23% | R+1: 42% | R+2: 47%</small>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+
+        <!-- Graphiques Section -->
+        <section id="graph" class="mb-5 animate-on-scroll">
+            <h2 class="mb-4"><i class="fas fa-chart-bar me-2"></i>Visualisation des coûts par poste</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-pie me-2"></i>Répartition des coûts - Plain-pied
+                        </div>
+                        <div class="card-body">
+                            <canvas id="chartPlainPied"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-line me-2"></i>Évolution des coûts par type
+                        </div>
+                        <div class="card-body">
+                            <canvas id="chartEvolution"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conseils Section -->
+        <section id="tips" class="animate-on-scroll">
+            <h2 class="mb-4"><i class="fas fa-lightbulb me-2"></i>Conseils et bonnes pratiques</h2>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white">
+                            <i class="fas fa-piggy-bank me-2"></i>Réduction des coûts
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Plan compact + toiture simple → économie 5–10%</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Acheter matériaux en gros → remise 10–15%</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Prévoir extension future plutôt que tout construire</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Superviser chantier hebdomadaire → éviter +10–15% coûts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-warning text-dark">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Éviter les pièges
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Modifications après fondation → coûts explosifs</li>
+                                <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Toiture complexe → +20% coût et retards</li>
+                                <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Étude de sol négligée → surcoût 15% minimum</li>
+                                <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Portes/fenêtres bas de gamme → remplacement rapide</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-info text-white">
+                            <i class="fas fa-clipboard-check me-2"></i>Checklist essentielle
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-square text-info me-2"></i>Étude technique (sol, fondation, dalle)</li>
+                                <li class="mb-2"><i class="fas fa-check-square text-info me-2"></i>Verrouiller tous devis par écrit</li>
+                                <li class="mb-2"><i class="fas fa-check-square text-info me-2"></i>Ajouter 10–15% pour imprévus</li>
+                                <li class="mb-2"><i class="fas fa-check-square text-info me-2"></i>Privilégier matériaux locaux (transport réduit)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-eye me-2"></i>Observation clé
+                        </div>
+                        <div class="card-body">
+                            <p>Pour <span class="highlight">R+2</span>, la structure (fondation + murs + dalles) devient le <strong>poste dominant (~47 %)</strong> du budget total.</p>
+                            <p>Les postes équipements (électricité, plomberie, menuiserie, finitions) <strong>augmentent linéairement par étage</strong>.</p>
+                            <p>Même le <span class="highlight">Plain-pied</span> nécessite un budget conséquent pour équipements complets (~45–50 % hors structure).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Constructeur Pro</h4>
+                    <p>Votre guide complet pour la construction de votre maison. Simulations, conseils pratiques et retours d'expérience pour un projet réussi.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#simulator" class="text-white-50">Simulateur</a></li>
+                        <li><a href="#comparison" class="text-white-50">Comparaison</a></li>
+                        <li><a href="#tips" class="text-white-50">Conseils</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <p class="text-white-50"><i class="fas fa-envelope me-2"></i>contact@constructeurpro.com</p>
+                    <p class="text-white-50"><i class="fas fa-phone me-2"></i>+221 33 123 45 67</p>
+                </div>
+            </div>
+            <hr class="bg-white-50">
+            <div class="text-center pt-3">
+                <p class="text-white-50 mb-0">© 2023 Constructeur Pro. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Données pour le simulateur et les graphiques
+        const constructionData = {
+            plain: {
+                name: "Plain-pied",
+                total: 19030000,
+                breakdown: {
+                    foundation: 3680000,
+                    walls: 750000,
+                    intermediateFloors: 0,
+                    roof: 4800000,
+                    electricity: 1200000,
+                    plumbing: 3000000,
+                    joinery: 4000000,
+                    finishes: 4200000,
+                    miscellaneous: 1500000
+                }
+            },
+            r1: {
+                name: "R+1",
+                total: 38064000,
+                breakdown: {
+                    foundation: 7180000,
+                    walls: 1500000,
+                    intermediateFloors: 5184000,
+                    roof: 4800000,
+                    electricity: 2000000,
+                    plumbing: 5000000,
+                    joinery: 6500000,
+                    finishes: 8400000,
+                    miscellaneous: 3000000
+                }
+            },
+            r2: {
+                name: "R+2",
+                total: 60058000,
+                breakdown: {
+                    foundation: 11040000,
+                    walls: 2250000,
+                    intermediateFloors: 10368000,
+                    roof: 4800000,
+                    electricity: 3000000,
+                    plumbing: 7000000,
+                    joinery: 9000000,
+                    finishes: 12600000,
+                    miscellaneous: 4500000
+                }
+            }
+        };
+
+        // Éléments DOM
+        const houseTypeSelect = document.getElementById('houseType');
+        const unexpectedSlider = document.getElementById('unexpected');
+        const unexpectedValue = document.getElementById('unexpectedValue');
+        const totalCostElement = document.getElementById('totalCost');
+        const finalCostElement = document.getElementById('finalCost');
+        const costPerM2Element = document.getElementById('costPerM2');
+        const costBreakdownElement = document.getElementById('costBreakdown');
+        
+        // Options additionnelles
+        const studySoilCheck = document.getElementById('studySoil');
+        const qualityMaterialsCheck = document.getElementById('qualityMaterials');
+        const energyEfficientCheck = document.getElementById('energyEfficient');
+
+        // Formatage des nombres avec séparateurs
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+
+        // Mise à jour du simulateur
+        function updateSimulator() {
+            const houseType = houseTypeSelect.value;
+            const data = constructionData[houseType];
+            const unexpectedPercent = parseInt(unexpectedSlider.value);
+            
+            // Calcul du coût de base
+            let baseCost = data.total;
+            
+            // Appliquer les options
+            let optionsMultiplier = 1;
+            if (studySoilCheck.checked) optionsMultiplier += 0.05;
+            if (qualityMaterialsCheck.checked) optionsMultiplier += 0.15;
+            if (energyEfficientCheck.checked) optionsMultiplier += 0.10;
+            
+            const adjustedCost = baseCost * optionsMultiplier;
+            const unexpectedCost = adjustedCost * (unexpectedPercent / 100);
+            const finalCost = adjustedCost + unexpectedCost;
+            const costPerM2 = finalCost / 120;
+            
+            // Mise à jour de l'affichage
+            totalCostElement.textContent = formatNumber(Math.round(adjustedCost)) + " FCFA";
+            finalCostElement.textContent = formatNumber(Math.round(finalCost)) + " FCFA";
+            costPerM2Element.textContent = formatNumber(Math.round(costPerM2)) + " FCFA/m²";
+            
+            // Mise à jour de la répartition
+            updateCostBreakdown(data, optionsMultiplier, unexpectedPercent);
+            
+            // Mettre à jour les graphiques
+            updateCharts();
+        }
+
+        // Mise à jour de la répartition des coûts
+        function updateCostBreakdown(data, optionsMultiplier, unexpectedPercent) {
+            const breakdown = data.breakdown;
+            let html = '';
+            
+            // Postes de construction
+            for (const [key, value] of Object.entries(breakdown)) {
+                const postName = getPostName(key);
+                const cost = Math.round(value * optionsMultiplier);
+                const percentage = Math.round((cost / (data.total * optionsMultiplier)) * 100);
+                
+                html += `
+                <div class="cost-breakdown-item">
+                    <div class="d-flex justify-content-between">
+                        <span>${postName}:</span>
+                        <span class="fw-bold">${formatNumber(cost)} FCFA</span>
+                    </div>
+                    <div class="progress mt-1" style="height: 6px;">
+                        <div class="progress-bar progress-bar-custom" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+                `;
+            }
+            
+            // Imprévus
+            const unexpectedCost = Math.round((data.total * optionsMultiplier) * (unexpectedPercent / 100));
+            html += `
+            <div class="cost-breakdown-item">
+                <div class="d-flex justify-content-between">
+                    <span>Imprévus (${unexpectedPercent}%):</span>
+                    <span class="fw-bold text-danger">${formatNumber(unexpectedCost)} FCFA</span>
+                </div>
+                <div class="progress mt-1" style="height: 6px;">
+                    <div class="progress-bar bg-danger" style="width: ${unexpectedPercent}%"></div>
+                </div>
+            </div>
+            `;
+            
+            costBreakdownElement.innerHTML = html;
+        }
+
+        // Traduction des clés de poste
+        function getPostName(key) {
+            const postNames = {
+                foundation: "Fondation",
+                walls: "Murs BTCS",
+                intermediateFloors: "Dalles intermédiaires",
+                roof: "Toiture",
+                electricity: "Électricité",
+                plumbing: "Plomberie",
+                joinery: "Menuiserie",
+                finishes: "Finitions",
+                miscellaneous: "Divers"
+            };
+            return postNames[key] || key;
+        }
+
+        // Initialisation des graphiques
+        let plainPiedChart, evolutionChart;
+        
+        function initCharts() {
+            const ctx1 = document.getElementById('chartPlainPied').getContext('2d');
+            const ctx2 = document.getElementById('chartEvolution').getContext('2d');
+            
+            // Données pour le graphique Plain-pied
+            const plainData = constructionData.plain.breakdown;
+            const labels = Object.keys(plainData).map(key => getPostName(key));
+            const dataValues = Object.values(plainData);
+            
+            // Graphique circulaire pour Plain-pied
+            plainPiedChart = new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: dataValues,
+                        backgroundColor: [
+                            '#2c3e50', '#3498db', '#e74c3c', '#2ecc71', 
+                            '#f39c12', '#9b59b6', '#1abc9c', '#d35400', '#34495e'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    const value = context.raw;
+                                    label += formatNumber(value) + ' FCFA';
+                                    const percentage = Math.round((value / constructionData.plain.total) * 100);
+                                    label += ` (${percentage}%)`;
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Graphique d'évolution par type de construction
+            const houseTypes = ['Plain-pied', 'R+1', 'R+2'];
+            const totalCosts = [
+                constructionData.plain.total,
+                constructionData.r1.total,
+                constructionData.r2.total
+            ];
+            
+            evolutionChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: houseTypes,
+                    datasets: [
+                        {
+                            label: 'Coût total (FCFA)',
+                            data: totalCosts,
+                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                            borderColor: 'rgba(52, 152, 219, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return formatNumber(value) + ' FCFA';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return formatNumber(context.raw) + ' FCFA';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Mise à jour des graphiques
+        function updateCharts() {
+            // Pour l'instant, nous ne mettons pas à jour les graphiques en temps réel
+            // car ils affichent les données de base, mais nous pourrions le faire
+            // si nous voulions montrer l'impact des options sur les graphiques
+        }
+
+        // Animation au défilement
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mettre à jour le simulateur
+            updateSimulator();
+            
+            // Initialiser les graphiques
+            initCharts();
+            
+            // Écouteurs d'événements
+            houseTypeSelect.addEventListener('change', updateSimulator);
+            unexpectedSlider.addEventListener('input', function() {
+                unexpectedValue.textContent = this.value + "%";
+                updateSimulator();
+            });
+            
+            // Options additionnelles
+            studySoilCheck.addEventListener('change', updateSimulator);
+            qualityMaterialsCheck.addEventListener('change', updateSimulator);
+            energyEfficientCheck.addEventListener('change', updateSimulator);
+            
+            // Animation au défilement
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Pour les éléments déjà visibles
+            
+            // Smooth scroll pour les liens d'ancrage
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
