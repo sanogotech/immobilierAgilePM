@@ -790,3 +790,97 @@ Le ferraillage et les chaînages augmentent le coût mais **assurent la sécurit
 ---
 
 
+# 🏗️ Estimation coût fondation – 120 m²
+
+## 📌 Hypothèses
+
+| Paramètre                     | Valeur               |
+| ----------------------------- | -------------------- |
+| Surface au sol                | 120 m²               |
+| Hauteur mur plain-pied        | 2,8 m                |
+| Hauteur mur R+1               | 5,6 m                |
+| Hauteur mur R+2               | 8,4 m                |
+| Profondeur semelle plain-pied | 0,6 m                |
+| Profondeur semelle R+1        | 0,9 m                |
+| Profondeur semelle R+2        | 1,2 m                |
+| Largeur semelle plain-pied    | 0,4 m                |
+| Largeur semelle R+1           | 0,5 m                |
+| Largeur semelle R+2           | 0,6 m                |
+| Ferraillage                   | 10–16 mm selon étage |
+| Béton                         | C25/C30 selon norme  |
+
+💡 Astuce : Ces chiffres tiennent compte d’un sol relativement stable. Sur sol argileux ou instable, ajouter +15–20 % au coût fondation.
+
+---
+
+## 📊 Calcul simplifié volume béton fondation
+
+Formule semelle filante :
+**Volume béton ≈ Périmètre × largeur × profondeur**
+
+* Périmètre ≈ 2 × (longueur + largeur)
+* Pour maison 120 m² (ex. 12 × 10 m) → Périmètre = 44 m
+
+| Type Villa | Largeur semelle | Profondeur semelle | Volume béton (m³) |
+| ---------- | --------------- | ------------------ | ----------------- |
+| Plain-pied | 0,4 m           | 0,6 m              | 10,56 m³          |
+| R+1        | 0,5 m           | 0,9 m              | 19,8 m³           |
+| R+2        | 0,6 m           | 1,2 m              | 31,68 m³          |
+
+---
+
+## 🧮 Ferraillage estimé
+
+| Type Villa | Poids fer (t) | Coût fer (FCFA 1 t ≈ 1,2 M) |
+| ---------- | ------------- | --------------------------- |
+| Plain-pied | 1,5 t         | 1,8 M                       |
+| R+1        | 3 t           | 3,6 M                       |
+| R+2        | 4,5 t         | 5,4 M                       |
+
+---
+
+## 💰 Coût béton (C25 ≈ 120 000 FCFA/m³)
+
+| Type Villa | Volume béton | Coût béton  |
+| ---------- | ------------ | ----------- |
+| Plain-pied | 10,56 m³     | 1,27 M FCFA |
+| R+1        | 19,8 m³      | 2,38 M FCFA |
+| R+2        | 31,68 m³     | 3,80 M FCFA |
+
+---
+
+## 📊 Coût total fondation
+
+**Fondation = Béton + Ferraillage + main d’œuvre / coffrage (~20%)**
+
+| Type Villa | Béton + Fer (FCFA) | Main d’œuvre + coffrage (20%) | Total fondation |
+| ---------- | ------------------ | ----------------------------- | --------------- |
+| Plain-pied | 3,07 M             | 0,61 M                        | ≈ 3,68 M        |
+| R+1        | 5,98 M             | 1,20 M                        | ≈ 7,18 M        |
+| R+2        | 9,20 M             | 1,84 M                        | ≈ 11,04 M       |
+
+---
+
+## 📌 Analyse
+
+* **Plain-pied** : 3,68 M → 15–20% budget global 120 m²
+* **R+1** : 7,18 M → 25–30% budget global
+* **R+2** : 11,04 M → 35–40% budget global
+
+💡 Explication : Plus d’étages → fondation plus **large, profonde et ferraillée** → coût augmente fortement.
+
+---
+
+## 💡 Conseils pratiques
+
+1. Toujours réaliser **étude de sol** → éviter surdimensionnement inutile
+2. Prévoir **chaînages et poteaux verticaux dès R+1**
+3. Penser à coffrage réutilisable → économies 10–15%
+4. Vérifier prix fer + béton → commande en volume pour remise
+5. Ajouter **10% imprévus** pour tassement, coulage, rebuts
+
+---
+
+
+
+
