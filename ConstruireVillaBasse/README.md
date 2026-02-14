@@ -1,356 +1,311 @@
+# 🏗️ Maison basse en Côte d’Ivoire
 
-# 🏗️ CONSTRUIRE UNE MAISON BASSE EN CÔTE D’IVOIRE
-
-## Guide budgétaire structuré et professionnel (160 m²)
-
----
-
-# 📘 INTRODUCTION STRATÉGIQUE
-
-Construire en Côte d’Ivoire n’est pas seulement une question de prix au m².
-
-C’est un **processus technique + financier + organisationnel**.
-
-Beaucoup de propriétaires :
-
-* Sous-estiment les fondations
-* Mélangent gros œuvre et élévation
-* Oublient les imprévus
-* Confondent coût construction et coût global projet
-
-👉 Résultat : dépassements 20 à 40 %.
-
-Ce guide vous donne une **lecture claire, structurée et réaliste**.
+## Guide complet d’estimation budgétaire (Fondations, Gros Œuvre, Élévation)
 
 ---
 
-# 🎯 HYPOTHÈSE DE BASE
+## 📌 Introduction
 
-Maison basse 4 chambres
-Surface : 160 m²
-Prix moyen prudent : 220 000 FCFA / m²
+Construire une maison basse en Côte d’Ivoire peut sembler simple… jusqu’au moment où les dépassements budgétaires commencent.
 
-Base construction ≈ 35 000 000 FCFA
-Budget sécurisé ≈ 42 à 45M FCFA
+En moyenne, **70 % des particuliers dépassent leur budget initial de 15 à 40 %** faute de planification rigoureuse (données issues de retours d’expérience terrain en Afrique de l’Ouest).
 
----
+Ce guide vous permet :
 
-# 🧱 PHASE 1 – ÉTUDES & IMPLANTATION (3–5 %)
-
-## 📌 Pourquoi cette phase est critique ?
-
-Une mauvaise implantation peut entraîner :
-
-* Mauvais drainage
-* Fissures
-* Mauvaise orientation
-* Surcoûts structurels
+* ✅ D’estimer rapidement votre budget
+* ✅ De comprendre la ventilation réelle des coûts
+* ✅ D’anticiper les risques
+* ✅ De structurer votre projet par phase
+* ✅ D’éviter les erreurs les plus coûteuses
 
 ---
 
-## 💰 Budget : 1 à 1,5M FCFA
+# 🧮 1️⃣ Estimation rapide en 4 minutes
 
-### 🧑‍🔧 Main-d’œuvre
+## Hypothèse de base
 
-* Architecte
-* Dessinateur
-* Géomètre
-* Implantation sur terrain
+* Maison basse : **160 m²**
+* Coût moyen en Côte d’Ivoire :
+  **200 000 à 250 000 FCFA / m²** (niveau standard)
 
-### 🧱 Matériaux
+### Calcul simple :
 
-* Piquets
-* Cordeau
-* Marquage
+```
+160 m² × 225 000 FCFA = 36 000 000 FCFA
+```
 
----
+👉 Budget moyen estimé : **32 à 40 millions FCFA**
 
-## ✅ Checklist Études
+⚠️ Ce montant inclut généralement :
 
-☐ Plan validé et cohérent avec budget
-☐ Orientation optimisée (ventilation naturelle)
-☐ Étude sol si terrain douteux
-☐ Implantation validée par professionnel
+* Structure
+* Second œuvre
+* Finitions standard
 
----
+❌ Non inclus :
 
-## 🎯 Tips
-
-* Toujours adapter la maison au terrain, pas l’inverse.
-* Une étude sol coûte 300–600K mais peut éviter 5M de dégâts futurs.
+* Clôture
+* Aménagement extérieur
+* Mobilier
+* Études techniques spécifiques
 
 ---
 
-# 🏗️ PHASE 2 – FONDATIONS (15–20 %)
+# 🏗️ 2️⃣ Ventilation par grandes phases
 
-## 📘 Introduction
-
-Les fondations représentent la stabilité de 30 à 50 ans.
-
-C’est la partie invisible… mais la plus importante.
+| Phase                     | % Budget Total | Fourchette (sur 36M FCFA) |
+| ------------------------- | -------------- | ------------------------- |
+| 🟤 Fondations             | 15–20 %        | 5,4 – 7,2 M               |
+| 🧱 Élévation / Gros œuvre | 30–35 %        | 10,8 – 12,6 M             |
+| 🔧 Second œuvre           | 25–30 %        | 9 – 10,8 M                |
+| 🎨 Finitions              | 15–20 %        | 5,4 – 7,2 M               |
+| ⚠️ Imprévus               | 10–15 %        | 3,6 – 5,4 M               |
 
 ---
 
-## 💰 Budget : 5 à 7M FCFA
+# 🟤 3️⃣ FONDATIONS (15–20%)
 
-### 🧱 Matériaux (65–70 %)
+## 🎯 Objectif
+
+Assurer la stabilité et la durabilité de la maison.
+
+## Sous-catégories
+
+### 🧱 Matériaux (60–65 % de la phase)
 
 * Ciment
-* Gravier
 * Sable
+* Gravier
 * Fer à béton
-* Agglos de soubassement
+* Béton de propreté
+* Semelles
+* Longrines
 
-### 🧑‍🔧 Main-d’œuvre (30–35 %)
+### 👷 Main d’œuvre (35–40 %)
 
-* Maçons
-* Ferrailleurs
-* Manœuvres
+* Terrassement
+* Fouilles
+* Coffrage
+* Ferraillage
+* Coulage
 
 ---
 
-## ✅ Checklist Fondations
+## 📋 Checklist Fondations
 
-☐ Profondeur conforme au plan
-☐ Dosage béton respecté
-☐ Ferraillage contrôlé avant coulage
-☐ Aucune coulée sans validation
-☐ Bon drainage prévu
+### Études & préparation
+
+* [ ] Étude de sol réalisée
+* [ ] Implantation par géomètre
+* [ ] Vérification du niveau terrain
+* [ ] Plan validé par ingénieur
+
+### Exécution
+
+* [ ] Profondeur respectée
+* [ ] Ferraillage conforme
+* [ ] Dosage béton respecté
+* [ ] Cure béton 7 jours minimum
 
 ---
 
 ## ⚠️ Erreurs fréquentes
 
-* Réduire le fer pour économiser
-* Couler sans vibrer le béton
-* Ignorer niveau nappe phréatique
+* Fondations sous-dimensionnées
+* Béton mal dosé
+* Ferraillage insuffisant
+* Pas d’étude de sol
+
+👉 1 erreur ici = fissures à vie.
 
 ---
 
-## 🎯 Astuces
+# 🧱 4️⃣ ÉLÉVATION / GROS ŒUVRE (30–35%)
 
-* Acheter ciment en gros réduit coût 5–8 %
-* Contrôler personnellement le fer avant coulage
-* Photographier chaque étape
+## 🎯 Objectif
 
----
+Monter la structure porteuse.
 
-# 🏗️ PHASE 3 – GROS ŒUVRE (Structure porteuse) (15–20 %)
+## Sous-catégories
 
-## 📘 Introduction
-
-Le gros œuvre constitue l’ossature béton qui supporte la maison.
-
-Il détermine :
-
-* Solidité
-* Résistance aux fissures
-* Possibilité future d’ajouter un étage
-
----
-
-## 💰 Budget : 5 à 7M FCFA
-
-### 🧱 Matériaux (60–65 %)
-
-* Béton
-* Coffrage
-* Fer
-* Poutres
-* Chaînages
-
-### 🧑‍🔧 Main-d’œuvre (35–40 %)
-
-* Coffreurs
-* Maçons spécialisés
-
----
-
-## ✅ Checklist Gros Œuvre
-
-☐ Poteaux bien alignés
-☐ Coffrage stable
-☐ Béton vibré correctement
-☐ Hauteur sous plafond respectée
-☐ Structure dimensionnée pour extension future
-
----
-
-## 🎯 Bonnes pratiques
-
-* Prévoir fondation renforcée si possibilité R+1 futur
-* Ne jamais accepter béton trop liquide
-
----
-
-# 🧱 PHASE 4 – ÉLÉVATION (15–18 %)
-
-## 📘 Introduction
-
-L’élévation donne forme à la maison :
-
-* Murs
-* Cloisons principales
-* Linteaux
-
----
-
-## 💰 Budget : 5 à 6M FCFA
-
-### 🧱 Matériaux (55–60 %)
+### 🧱 Matériaux (65–70 %)
 
 * Agglos
-* Mortier
-* Fer léger
-* Linteaux
+* Ciment
+* Fer
+* Dalles
+* Poutres
+* Chaînages
+* Coffrages
 
-### 🧑‍🔧 Main-d’œuvre (40–45 %)
+### 👷 Main d’œuvre (30–35 %)
 
-* Maçons
-* Aides
-
----
-
-## ✅ Checklist Élévation
-
-☐ Agglos bien alignés
-☐ Niveau horizontal respecté
-☐ Linteaux solides
-☐ Aucune fissure précoce
+* Maçonnerie
+* Coffrage
+* Ferraillage
+* Coulage dalle
 
 ---
 
-## 🎯 Astuces
+## 📋 Checklist Gros Œuvre
 
-* Vérifier qualité agglos (tapoter pour tester densité)
-* Éviter agglos trop légers
+### Structure
 
----
+* [ ] Alignement murs
+* [ ] Verticalité contrôlée
+* [ ] Chaînages horizontaux et verticaux
+* [ ] Linteaux solides
 
-# 🏠 PHASE 5 – TOITURE (10–15 %)
+### Dalle
 
-## 💰 3,5 à 5M FCFA
-
-### Matériaux (60 %)
-
-* Charpente
-* Tôles
-* Fixations
-
-### Main-d’œuvre (40 %)
+* [ ] Ferraillage correct
+* [ ] Épaisseur conforme
+* [ ] Cure béton 14 jours
 
 ---
 
-## Checklist Toiture
+## 📊 Indicateurs de contrôle
 
-☐ Pente suffisante
-☐ Fixations solides
-☐ Isolation thermique prévue
-
----
-
-## Astuce
-
-Bac alu isolé réduit chaleur 20–30 %.
+* Écart verticalité ≤ 5 mm
+* Densité ferraillage conforme plan
+* Résistance béton ≥ 20 MPa
 
 ---
 
-# 🔌 PHASE 6 – SECOND ŒUVRE (20–25 %)
+# 🔧 5️⃣ SECOND ŒUVRE (25–30%)
 
-## Introduction
+## 🎯 Objectif
 
-C’est la phase la plus technique et la plus risquée budgétairement.
+Rendre la maison fonctionnelle.
 
----
+### Matériaux (55–60 %)
 
-### Inclut :
-
-* Électricité
-* Plomberie
-* Menuiserie alu
-* Plafond
-
----
-
-## Répartition
-
-Main-d’œuvre ≈ 45–50 %
-Matériaux ≈ 50–55 %
-
----
-
-## Checklist
-
-☐ Gaines électriques avant fermeture murs
-☐ Test plomberie avant carrelage
-☐ Compteurs individuels
-
----
-
-## Erreur fréquente
-
-Modifier plans après pose = explosion budget.
-
----
-
-# 🎨 PHASE 7 – FINITIONS (10–15 %)
-
-## Inclut :
-
+* Câbles électriques
+* Tuyauterie
+* Menuiserie
 * Carrelage
+
+### Main d’œuvre (40–45 %)
+
+* Électricien
+* Plombier
+* Menuisier
+* Pose carrelage
+
+---
+
+## 📋 Checklist
+
+* [ ] Plans électriques validés
+* [ ] Réseau eau testé pression
+* [ ] Évacuation vérifiée
+* [ ] Menuiserie étanche
+
+---
+
+# 🎨 6️⃣ FINITIONS (15–20%)
+
+## 🎯 Objectif
+
+Esthétique + valeur patrimoniale
+
+### Matériaux (70–75 %)
+
 * Peinture
+* Carrelage
 * Sanitaires
 * Portes
+* Luminaires
+
+### Main d’œuvre (25–30 %)
 
 ---
 
-## Checklist
+## 📋 Checklist Finitions
 
-☐ Comparer 3 devis
-☐ Éviter choix émotionnels
-☐ Priorité qualité moyenne durable
-
----
-
-# 📊 RÉCAPITULATIF GLOBAL
-
-Structure (Fondation + Gros œuvre + Élévation) ≈ 50 %
-
-Matériaux : 58–63 %
-Main-d’œuvre : 37–42 %
+* [ ] Peinture 2 couches minimum
+* [ ] Carrelage nivelé
+* [ ] Joints propres
+* [ ] Test complet électricité
 
 ---
 
-# 🧠 BONNES PRATIQUES GLOBALES
+# 💰 7️⃣ Marge de sécurité (10–15%)
 
-✔️ Toujours +15 à +20 % marge sécurité
-✔️ Paiement par étape validée
-✔️ Contrat écrit pour chaque corps métier
-✔️ Visite chantier hebdomadaire
-✔️ Photos + suivi dépenses Excel
+## Pourquoi indispensable ?
 
----
+En Afrique :
 
-# 🔥 ASTUCES INVESTISSEUR
+* Hausse matériaux imprévisible
+* Retards fournisseurs
+* Modifications en cours
 
-1️⃣ Réduire surface avant réduire qualité structure
-2️⃣ Standardiser portes et fenêtres
-3️⃣ Acheter matériaux en gros
-4️⃣ Prévoir extension future
-5️⃣ Anticiper ventilation naturelle
+👉 Sans marge = 80 % des projets stoppés temporairement.
 
 ---
 
-# 🎯 Conclusion stratégique
+# 📊 Exemple complet 160 m²
 
-En Côte d’Ivoire :
-
-* 50 % du budget = structure
-* 60 % = matériaux
-* 40 % = main-d’œuvre
-* +20 % = sécurité
-
-Celui qui maîtrise la structure maîtrise son patrimoine.
+| Élément             | Montant estimé      |
+| ------------------- | ------------------- |
+| Structure totale    | 36 000 000 FCFA     |
+| Imprévus 12 %       | 4 320 000 FCFA      |
+| **Budget sécurisé** | **40 320 000 FCFA** |
 
 ---
 
+# 📈 REX Terrain (Côte d’Ivoire)
+
+## Maison A – Sans méthode
+
+Budget prévu : 30M
+Coût final : 42M (+40 %)
+Cause : modifications + absence suivi.
+
+## Maison B – Avec méthode
+
+Budget prévu : 36M
+Coût final : 38M (+5 %)
+Cause : contrôle hebdomadaire + marge.
+
+---
+
+# 🧠 10 Sagesses Immobilières
+
+1. La fondation coûte peu, l’erreur coûte cher.
+2. Le moins cher devient souvent le plus coûteux.
+3. Un chantier sans planning est un gouffre.
+4. 1 modification tardive = +3 à 5 % budget.
+5. 70 % des litiges viennent du flou contractuel.
+6. Toujours payer par avancement.
+7. Exiger factures matériaux.
+8. Documenter chaque étape.
+9. Séparer matériaux et main d’œuvre.
+10. Prévoir 12 % d’imprévus minimum.
+
+---
+
+# 🛠️ Outils recommandés
+
+* Excel budget ventilé
+* Planning Gantt simple
+* Contrat écrit détaillé
+* Carnet de suivi chantier
+* Photographies hebdomadaires
+
+---
+
+# 🎯 Conclusion
+
+Construire en Côte d’Ivoire n’est pas risqué.
+Construire sans méthode l’est.
+
+L’immobilier récompense :
+
+* 📊 La planification
+* 📐 La rigueur technique
+* 📈 La vision long terme
+* 💰 La discipline budgétaire
+
+Une maison bien planifiée ne coûte pas plus cher.
+Elle coûte juste… exactement ce qu’elle doit coûter.
