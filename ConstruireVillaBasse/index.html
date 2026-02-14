@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏗️ Guide autodidacte · Maison basse Côte d'Ivoire</title>
+    <!-- Bootstrap 5 + icônes Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f7fb;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        .simulator-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: none;
+            border-radius: 2rem;
+            box-shadow: 0 20px 30px -10px rgba(0,20,30,0.15);
+        }
+        .phase-badge {
+            background-color: #e9ecef;
+            font-weight: 500;
+            padding: 0.35rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+        .checklist-item {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist-item li {
+            margin-bottom: 0.4rem;
+        }
+        .checklist-item i {
+            color: #2b7a4b;
+            width: 1.6rem;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #e2f0f9;
+            color: #0b3b4b;
+            font-weight: 600;
+        }
+        .total-highlight {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #0f5e7a;
+        }
+        .input-group-custom {
+            background-color: white;
+            border-radius: 50px;
+            border: 1px solid #ced8e2;
+            padding: 0.25rem 0.5rem;
+        }
+        .input-group-custom input {
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            text-align: right;
+        }
+        .input-group-custom input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .table-estimation td {
+            border-bottom: 1px dashed #cbd5e1;
+        }
+        .wisdom-icon {
+            color: #c59434;
+            font-size: 1.4rem;
+            margin-right: 10px;
+        }
+        footer {
+            background-color: #1e2f3f;
+            color: #b0c7da;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation simple -->
+    <nav class="navbar navbar-dark bg-dark py-2 px-3">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1"><i class="fas fa-helmet-safety me-2"></i>Auto-constructeur – Côte d’Ivoire</span>
+            <span class="text-white-50 small"><i class="far fa-calendar-alt me-1"></i>Guide terrain 2025</span>
+        </div>
+    </nav>
+
+    <!-- En-tête principal -->
+    <div class="container my-4">
+        <div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-success">
+            <h1 class="display-6 fw-bold">🏗️ Maison basse en Côte d’Ivoire</h1>
+            <p class="lead text-secondary">Guide complet d’estimation budgétaire (Fondations, Gros Œuvre, Élévation) – avec simulateur interactif.</p>
+            <p class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>70% des particuliers dépassent leur budget de 15 à 40% – anticipez avec la méthode.</p>
+        </div>
+    </div>
+
+    <!-- SIMULATEUR INTERACTIF (paramètres variables) -->
+    <div class="container mb-5">
+        <div class="simulator-card p-4 p-xl-5">
+            <div class="row g-4 align-items-end">
+                <div class="col-lg-4">
+                    <label class="fw-semibold text-secondary mb-1"><i class="fas fa-vector-square me-2"></i>Surface habitable (m²)</label>
+                    <div class="input-group-custom d-flex align-items-center">
+                        <span class="px-3 text-secondary">m²</span>
+                        <input type="number" id="surfaceInput" class="form-control-plaintext text-end fs-4" value="160" min="50" max="500" step="5">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <label class="fw-semibold text-secondary mb-1"><i class="fas fa-coins me-2"></i>Coût moyen / m² (FCFA)</label>
+                    <div class="input-group-custom d-flex align-items-center">
+                        <span class="px-3 text-secondary">FCFA</span>
+                        <input type="number" id="coutInput" class="form-control-plaintext text-end fs-4" value="225000" min="150000" max="400000" step="5000">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <label class="fw-semibold text-secondary mb-1"><i class="fas fa-shield-alt me-2"></i>Marge imprévus <span id="contingencyValue">12</span>%</label>
+                    <input type="range" id="contingencySlider" class="form-range" min="0" max="20" step="0.5" value="12">
+                    <div class="d-flex justify-content-between small text-secondary">
+                        <span>0%</span><span>10% (min conseillé)</span><span>20%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Résultats clés -->
+            <div class="row mt-4 pt-3 g-4 text-center">
+                <div class="col-md-4">
+                    <div class="bg-light p-3 rounded-4">
+                        <span class="text-secondary">Budget de base (hors aléas)</span>
+                        <div class="total-highlight" id="baseTotal">36 000 000</div>
+                        <small class="text-secondary">FCFA</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-light p-3 rounded-4">
+                        <span class="text-secondary">Réserve imprévus</span>
+                        <div class="fs-2 fw-bold text-warning" id="contingencyAmount">4 320 000</div>
+                        <small class="text-secondary">FCFA</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-success bg-opacity-10 p-3 rounded-4 border border-success">
+                        <span class="text-success fw-semibold">Budget sécurisé</span>
+                        <div class="fs-1 fw-bold text-success" id="totalSecure">40 320 000</div>
+                        <small class="text-secondary">FCFA (tout compris)</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tableau de ventilation dynamique (min – max – fourchette) -->
+            <div class="mt-5">
+                <h5 class="fw-bold"><i class="fas fa-chart-pie me-2"></i>Ventilation par phase (estimations basses / hautes)</h5>
+                <div class="table-responsive">
+                    <table class="table table-estimation align-middle mt-3">
+                        <thead class="table-light">
+                            <tr><th>Phase</th><th>% du budget de base</th><th>Montant min (FCFA)</th><th>Montant max (FCFA)</th><th>Estimation médiane</th></tr>
+                        </thead>
+                        <tbody id="phaseTableBody">
+                            <!-- injecté via JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-secondary small mt-2"><i class="fas fa-info-circle me-1"></i> Les fourchettes respectent les retours terrain : fondations 15‑20%, élévation 30‑35%, second œuvre 25‑30%, finitions 15‑20%.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GUIDE COMPLET (accordéon avec toutes les sections) -->
+    <div class="container mb-5">
+        <div class="accordion" id="guideAccordion">
+
+            <!-- Introduction -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#introCollapse">📌 Introduction – Pourquoi ce guide ?</button></h2>
+                <div id="introCollapse" class="accordion-collapse collapse show" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p>Construire une maison basse en Côte d’Ivoire peut sembler simple… jusqu’au moment où les dépassements budgétaires commencent. En moyenne, <strong>70 % des particuliers dépassent leur budget initial de 15 à 40 %</strong> faute de planification rigoureuse (données issues de retours d’expérience terrain en Afrique de l’Ouest).</p>
+                        <p>Ce guide vous permet :</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> D’estimer rapidement votre budget</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> De comprendre la ventilation réelle des coûts</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> D’anticiper les risques</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> De structurer votre projet par phase</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> D’éviter les erreurs les plus coûteuses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estimation rapide & ventilation -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ventilationCollapse">🧮 1️⃣ Estimation rapide & ventilation type</button></h2>
+                <div id="ventilationCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p><strong>Hypothèse de base :</strong> maison basse 160 m², coût moyen 200 000 à 250 000 FCFA/m² (standard).</p>
+                        <p class="mb-3"><span class="badge bg-secondary px-3 py-2">160 m² × 225 000 FCFA = 36 000 000 FCFA</span> → Budget moyen : <strong>32 – 40 M FCFA</strong>.</p>
+                        <p>Ce montant inclut structure, second œuvre, finitions standard. <span class="text-danger">❌ Non inclus : clôture, aménagements ext., mobilier, études techniques.</span></p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered bg-white">
+                                <thead><tr><th>Phase</th><th>% Budget Total</th><th>Fourchette (sur 36 M FCFA)</th></tr></thead>
+                                <tbody>
+                                    <tr><td>🟤 Fondations</td><td>15–20 %</td><td>5,4 – 7,2 M</td></tr>
+                                    <tr><td>🧱 Élévation / Gros œuvre</td><td>30–35 %</td><td>10,8 – 12,6 M</td></tr>
+                                    <tr><td>🔧 Second œuvre</td><td>25–30 %</td><td>9 – 10,8 M</td></tr>
+                                    <tr><td>🎨 Finitions</td><td>15–20 %</td><td>5,4 – 7,2 M</td></tr>
+                                    <tr class="table-warning"><td>⚠️ Imprévus</td><td>10–15 %</td><td>3,6 – 5,4 M</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fondations -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fondationsCollapse">🟤 3️⃣ FONDATIONS (15–20%)</button></h2>
+                <div id="fondationsCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p><strong>🎯 Objectif :</strong> Assurer la stabilité et la durabilité.</p>
+                        <ul>
+                            <li><strong>Matériaux (60–65%)</strong> : ciment, sable, gravier, fer à béton, béton de propreté, semelles, longrines.</li>
+                            <li><strong>Main d’œuvre (35–40%)</strong> : terrassement, fouilles, coffrage, ferraillage, coulage.</li>
+                        </ul>
+                        <p class="fw-bold mt-3">📋 Checklist Fondations</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="checklist-item">
+                                    <li><i class="far fa-square"></i> Étude de sol réalisée</li>
+                                    <li><i class="far fa-square"></i> Implantation par géomètre</li>
+                                    <li><i class="far fa-square"></i> Vérification du niveau terrain</li>
+                                    <li><i class="far fa-square"></i> Plan validé par ingénieur</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="checklist-item">
+                                    <li><i class="far fa-square"></i> Profondeur respectée</li>
+                                    <li><i class="far fa-square"></i> Ferraillage conforme</li>
+                                    <li><i class="far fa-square"></i> Dosage béton respecté</li>
+                                    <li><i class="far fa-square"></i> Cure béton 7 jours minimum</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="text-danger mt-2"><i class="fas fa-exclamation-triangle"></i> Erreurs fréquentes : fondations sous-dimensionnées, béton mal dosé, pas d’étude de sol → fissures à vie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Élévation / gros œuvre -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#elevationCollapse">🧱 4️⃣ ÉLÉVATION / GROS ŒUVRE (30–35%)</button></h2>
+                <div id="elevationCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p><strong>🎯 Objectif :</strong> Monter la structure porteuse.</p>
+                        <ul>
+                            <li><strong>Matériaux (65–70%)</strong> : agglos, ciment, fer, dalles, poutres, chaînages, coffrages.</li>
+                            <li><strong>Main d’œuvre (30–35%)</strong> : maçonnerie, coffrage, ferraillage, coulage dalle.</li>
+                        </ul>
+                        <p class="fw-bold mt-3">📋 Checklist Gros Œuvre</p>
+                        <ul class="checklist-item">
+                            <li><i class="far fa-square"></i> Alignement murs, verticalité contrôlée (≤5mm)</li>
+                            <li><i class="far fa-square"></i> Chaînages horizontaux et verticaux</li>
+                            <li><i class="far fa-square"></i> Linteaux solides</li>
+                            <li><i class="far fa-square"></i> Ferraillage dalle conforme, épaisseur, cure 14 jours</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second œuvre & Finitions (condensé) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secondFinition">🔧🎨 5&6 – SECOND ŒUVRE & FINITIONS</button></h2>
+                <div id="secondFinition" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <h5>🔧 Second œuvre (25–30%)</h5>
+                        <p>Matériaux (55–60%) : câbles, tuyauterie, menuiserie, carrelage. Main d’œuvre (40–45%) : électricien, plombier, menuisier, pose carrelage.</p>
+                        <p class="fw-bold">📋 Checklist</p>
+                        <ul><li><i class="far fa-square"></i> Plans électriques validés, réseau eau testé pression, évacuation vérifiée, menuiserie étanche.</li></ul>
+                        <hr>
+                        <h5>🎨 Finitions (15–20%)</h5>
+                        <p>Matériaux (70–75%) : peinture, carrelage, sanitaires, portes, luminaires. Main d’œuvre (25–30%).</p>
+                        <p class="fw-bold">📋 Checklist</p>
+                        <ul><li><i class="far fa-square"></i> Peinture 2 couches, carrelage nivelé, joints propres, test électricité complet.</li></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marge de sécurité & REX -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#securiteCollapse">💰 7️⃣ Marge sécurité & Retours terrain</button></h2>
+                <div id="securiteCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p><strong>Pourquoi 10–15% d’imprévus ?</strong> Hausse matériaux, retards fournisseurs, modifications en cours. Sans marge, 80% des projets stoppés temporairement.</p>
+                        <p><strong>📈 REX Terrain (Côte d’Ivoire)</strong><br> Maison A (sans méthode) : 30M prévu → 42M final (+40%). Maison B (avec méthode) : 36M → 38M (+5%).</p>
+                        <p class="fw-bold mt-2">🧠 10 Sagesses Immobilières</p>
+                        <ol class="row">
+                            <li class="col-md-6">1. La fondation coûte peu, l’erreur coûte cher.</li>
+                            <li class="col-md-6">2. Le moins cher devient souvent le plus coûteux.</li>
+                            <li class="col-md-6">3. Un chantier sans planning est un gouffre.</li>
+                            <li class="col-md-6">4. 1 modification tardive = +3 à 5% budget.</li>
+                            <li class="col-md-6">5. 70% des litiges viennent du flou contractuel.</li>
+                            <li class="col-md-6">6. Toujours payer par avancement.</li>
+                            <li class="col-md-6">7. Exiger factures matériaux.</li>
+                            <li class="col-md-6">8. Documenter chaque étape.</li>
+                            <li class="col-md-6">9. Séparer matériaux et main d’œuvre.</li>
+                            <li class="col-md-6">10. Prévoir 12% d’imprévus minimum.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outils et conclusion -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#outilsCollapse">🛠️ Outils & Conclusion</button></h2>
+                <div id="outilsCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p><strong>Outils recommandés :</strong> Excel budget ventilé, planning Gantt simple, contrat écrit, carnet de suivi, photos hebdomadaires.</p>
+                        <p class="fw-bold">🎯 Conclusion</p>
+                        <p>Construire en Côte d’Ivoire n’est pas risqué. Construire sans méthode l’est. L’immobilier récompense la planification, la rigueur technique, la vision long terme et la discipline budgétaire. Une maison bien planifiée ne coûte pas plus cher. Elle coûte juste… exactement ce qu’elle doit coûter.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center small">
+        <p class="mb-0">© 2025 – Guide autodidacte Côte d’Ivoire • Simulateur libre • Données terrain mises à jour</p>
+    </footer>
+
+    <!-- Bootstrap JS + notre script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function() {
+            // Éléments DOM
+            const surfaceInput = document.getElementById('surfaceInput');
+            const coutInput = document.getElementById('coutInput');
+            const contingencySlider = document.getElementById('contingencySlider');
+            const contingencySpan = document.getElementById('contingencyValue');
+            const baseTotalSpan = document.getElementById('baseTotal');
+            const contingencyAmountSpan = document.getElementById('contingencyAmount');
+            const totalSecureSpan = document.getElementById('totalSecure');
+            const phaseBody = document.getElementById('phaseTableBody');
+
+            // Fonction de formatage des nombres (espaces tous les 3 chiffres)
+            function formatNumber(x) {
+                return x.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            }
+
+            // Mise à jour du tableau des phases et des totaux
+            function updateSimulator() {
+                let surface = parseFloat(surfaceInput.value) || 160;
+                let cout = parseFloat(coutInput.value) || 225000;
+                let base = surface * cout;
+                let contingencyPct = parseFloat(contingencySlider.value) / 100;
+                let contingencyAmount = base * contingencyPct;
+                let totalSecure = base + contingencyAmount;
+
+                // mise à jour des affichages
+                baseTotalSpan.textContent = formatNumber(base);
+                contingencyAmountSpan.textContent = formatNumber(contingencyAmount);
+                totalSecureSpan.textContent = formatNumber(totalSecure);
+                contingencySpan.textContent = contingencySlider.value;
+
+                // Fourchettes de phases (min, max, median) sur base
+                const phases = [
+                    { name: "🟤 Fondations", min: 0.15, max: 0.20, mid: 0.175 },
+                    { name: "🧱 Élévation / Gros œuvre", min: 0.30, max: 0.35, mid: 0.325 },
+                    { name: "🔧 Second œuvre", min: 0.25, max: 0.30, mid: 0.275 },
+                    { name: "🎨 Finitions", min: 0.15, max: 0.20, mid: 0.175 }
+                ];
+
+                let rows = '';
+                phases.forEach(p => {
+                    let minMontant = base * p.min;
+                    let maxMontant = base * p.max;
+                    let midMontant = base * p.mid;
+                    rows += `<tr>
+                        <td>${p.name}</td>
+                        <td>${(p.min*100).toFixed(0)}–${(p.max*100).toFixed(0)}%</td>
+                        <td>${formatNumber(minMontant)}</td>
+                        <td>${formatNumber(maxMontant)}</td>
+                        <td>${formatNumber(midMontant)}</td>
+                    </tr>`;
+                });
+                phaseBody.innerHTML = rows;
+            }
+
+            // Écouteurs d'événements
+            surfaceInput.addEventListener('input', updateSimulator);
+            coutInput.addEventListener('input', updateSimulator);
+            contingencySlider.addEventListener('input', updateSimulator);
+
+            // Initialisation
+            updateSimulator();
+        })();
+    </script>
+</body>
+</html>
