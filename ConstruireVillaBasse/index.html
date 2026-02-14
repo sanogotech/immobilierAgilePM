@@ -74,6 +74,26 @@
             background-color: #1e2f3f;
             color: #b0c7da;
         }
+        .audit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+            gap: 1rem;
+        }
+        .audit-card {
+            background: #f8f9fc;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            border-left: 4px solid #0f5e7a;
+        }
+        /* style pour le select standing */
+        .standing-select {
+            max-width: 100%;
+            border-radius: 30px;
+            background-color: white;
+            border: 1px solid #ced8e2;
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -90,12 +110,12 @@
     <div class="container my-4">
         <div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-success">
             <h1 class="display-6 fw-bold">🏗️ Maison basse en Côte d’Ivoire</h1>
-            <p class="lead text-secondary">Guide complet d’estimation budgétaire (Fondations, Gros Œuvre, Élévation) – avec simulateur interactif.</p>
+            <p class="lead text-secondary">Guide complet d’estimation budgétaire (Fondations, Gros Œuvre, Élévation) – avec simulateur interactif et 8 niveaux de standing.</p>
             <p class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>70% des particuliers dépassent leur budget de 15 à 40% – anticipez avec la méthode.</p>
         </div>
     </div>
 
-    <!-- SIMULATEUR INTERACTIF (paramètres variables) -->
+    <!-- SIMULATEUR INTERACTIF (paramètres variables avec standing) -->
     <div class="container mb-5">
         <div class="simulator-card p-4 p-xl-5">
             <div class="row g-4 align-items-end">
@@ -106,13 +126,29 @@
                         <input type="number" id="surfaceInput" class="form-control-plaintext text-end fs-4" value="160" min="50" max="500" step="5">
                     </div>
                 </div>
+
+                <!-- COLONNE COÛT / STANDING (modifiée) -->
                 <div class="col-lg-4">
                     <label class="fw-semibold text-secondary mb-1"><i class="fas fa-coins me-2"></i>Coût moyen / m² (FCFA)</label>
                     <div class="input-group-custom d-flex align-items-center">
                         <span class="px-3 text-secondary">FCFA</span>
-                        <input type="number" id="coutInput" class="form-control-plaintext text-end fs-4" value="225000" min="150000" max="400000" step="5000">
+                        <input type="number" id="coutInput" class="form-control-plaintext text-end fs-4" value="225000" min="50000" max="1000000" step="5000">
+                    </div>
+                    <div class="mt-2">
+                        <label for="standingSelect" class="form-label small text-secondary mb-1"><i class="fas fa-star me-1"></i>Standing (8 niveaux)</label>
+                        <select id="standingSelect" class="form-select standing-select">
+                            <option value="100000">1 - Très économique (100 000 F/m²)</option>
+                            <option value="150000">2 - Économique (150 000)</option>
+                            <option value="200000">3 - Standard (200 000)</option>
+                            <option value="225000" selected>4 - Standard+ (225 000)</option>
+                            <option value="300000">5 - Confort (300 000)</option>
+                            <option value="400000">6 - Haut standing (400 000)</option>
+                            <option value="550000">7 - Luxe (550 000)</option>
+                            <option value="800000">8 - Très luxe (800 000)</option>
+                        </select>
                     </div>
                 </div>
+
                 <div class="col-lg-4">
                     <label class="fw-semibold text-secondary mb-1"><i class="fas fa-shield-alt me-2"></i>Marge imprévus <span id="contingencyValue">12</span>%</label>
                     <input type="range" id="contingencySlider" class="form-range" min="0" max="20" step="0.5" value="12">
@@ -308,6 +344,144 @@
                 </div>
             </div>
 
+            <!-- 📅 Planning réaliste et gestion de la main d’œuvre -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#planningCollapse">📅 Planning réaliste & main d’œuvre</button></h2>
+                <div id="planningCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p class="fw-bold">Estimation des durées (maison 160 m², équipe de 5–8 ouvriers)</p>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered bg-light">
+                                <thead><tr><th>Phase</th><th>Durée moyenne</th><th>Remarques</th></tr></thead>
+                                <tbody>
+                                    <tr><td>📐 Études & autorisations</td><td>1–2 mois</td><td>À anticiper avant le début</td></tr>
+                                    <tr><td>🟤 Fondations</td><td>3–4 semaines</td><td>Terrassement + coulage + cure</td></tr>
+                                    <tr><td>🧱 Élévation (murs + dalle)</td><td>6–8 semaines</td><td>Selon complexité</td></tr>
+                                    <tr><td>🔧 Second œuvre (élec, plomberie, menuiserie)</td><td>5–7 semaines</td><td>Souvent parallèle</td></tr>
+                                    <tr><td>🎨 Finitions & peinture</td><td>4–5 semaines</td><td>Séchages inclus</td></tr>
+                                    <tr><td>🧹 Nettoyage & réception</td><td>1 semaine</td><td>Levée de réserves</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt-3"><i class="fas fa-users-gear me-2"></i><strong>Gestion de la main d’œuvre :</strong></p>
+                        <ul>
+                            <li><i class="fas fa-check text-success me-1"></i> <strong>Contrat journalier ou forfait tâche ?</strong> Privilégiez le forfait par phase pour éviter la flânerie, mais payez par étape validée.</li>
+                            <li><i class="fas fa-check text-success me-1"></i> <strong>Chef d’équipe</strong> : indispensable pour la coordination, comptez 1,5 à 2 fois le salaire d’un ouvrier.</li>
+                            <li><i class="fas fa-check text-success me-1"></i> <strong>Calendrier prévisionnel</strong> : partagez un planning simple avec les ouvriers (type Gantt mural).</li>
+                            <li><i class="fas fa-check text-success me-1"></i> <strong>Pénalités de retard</strong> : prévoyez une clause si vous engagez une entreprise.</li>
+                            <li><i class="fas fa-check text-success me-1"></i> <strong>Hébergement / repas</strong> : selon les régions, cela peut représenter 10–15% du coût main d’œuvre.</li>
+                        </ul>
+                        <p class="text-secondary small"><i class="fas fa-lightbulb"></i> En Côte d’Ivoire, le coût de la main d’œuvre non qualifiée tourne autour de 5 000–8 000 FCFA/jour, un maçon expérimenté 10 000–15 000 FCFA/jour (hors chef).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ✅ Checklist des contrôles à faire (par phase) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#controlesCollapse">✅ Checklist des contrôles à faire (avant, pendant, après)</button></h2>
+                <div id="controlesCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p><strong>Une check-list de contrôle qualité à imprimer et à utiliser chaque semaine.</strong></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><span class="badge bg-warning text-dark">🔨 AVANT COULAGE</span></h6>
+                                <ul class="checklist-item small">
+                                    <li><i class="far fa-square"></i> Vérifier l’implantation (axes, niveaux)</li>
+                                    <li><i class="far fa-square"></i> Ferraillage : diamètre, espacement, enrobage</li>
+                                    <li><i class="far fa-square"></i> Propreté du fond de fouille</li>
+                                    <li><i class="far fa-square"></i> Présence de cales pour l’enrobage</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><span class="badge bg-primary text-white">🧱 ÉLÉVATION</span></h6>
+                                <ul class="checklist-item small">
+                                    <li><i class="far fa-square"></i> Verticalité (fil à plomb / niveau)</li>
+                                    <li><i class="far fa-square"></i> Chaînage vertical coulé correctement</li>
+                                    <li><i class="far fa-square"></i> Arase de niveau avant dalle</li>
+                                    <li><i class="far fa-square"></i> Attentes pour poteaux</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><span class="badge bg-success text-white">⚡ SECOND ŒUVRE</span></h6>
+                                <ul class="checklist-item small">
+                                    <li><i class="far fa-square"></i> Test d’étanchéité des canalisations (eau sous pression)</li>
+                                    <li><i class="far fa-square"></i> Section des câbles conforme au plan</li>
+                                    <li><i class="far fa-square"></i> Mise à la terre réalisée</li>
+                                    <li><i class="far fa-square"></i> Évacuations avec pente suffisante</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><span class="badge bg-secondary text-white">🎨 FINITIONS</span></h6>
+                                <ul class="checklist-item small">
+                                    <li><i class="far fa-square"></i> Support propre avant peinture</li>
+                                    <li><i class="far fa-square"></i> Carrelage : vérifier le nivellement et joints</li>
+                                    <li><i class="far fa-square"></i> Fonctionnement des interrupteurs et prises</li>
+                                    <li><i class="far fa-square"></i> Portes : jeu d’ouverture/fermeture</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-3"><i class="fas fa-clipboard-check me-2"></i> <strong>Contrôle hebdomadaire :</strong> Prenez des photos côté à côté, notez les écarts dans un carnet et exigez corrections avant le prochain paiement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🔍 Audit technique & réception de chantier -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#auditCollapse">🔍 Audit technique & réception de chantier</button></h2>
+                <div id="auditCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <p><strong>Pourquoi un audit technique ?</strong> Pour détecter les défauts cachés avant de payer le solde. Idéalement par un bureau de contrôle ou un ingénieur indépendant.</p>
+                        <div class="audit-grid">
+                            <div class="audit-card">
+                                <i class="fas fa-ruler-combined fs-3 mb-2" style="color:#0f5e7a;"></i>
+                                <h6>Gros œuvre</h6>
+                                <ul class="small ps-3">
+                                    <li>Résistance béton (scléromètre)</li>
+                                    <li>Fissures structurelles</li>
+                                    <li>Alignement des murs</li>
+                                </ul>
+                            </div>
+                            <div class="audit-card">
+                                <i class="fas fa-bolt fs-3 mb-2" style="color:#0f5e7a;"></i>
+                                <h6>Électricité</h6>
+                                <ul class="small ps-3">
+                                    <li>Mesure de continuité</li>
+                                    <li>Déclenchement différentiel</li>
+                                    <li>Absence de fils dénudés</li>
+                                </ul>
+                            </div>
+                            <div class="audit-card">
+                                <i class="fas fa-water fs-3 mb-2" style="color:#0f5e7a;"></i>
+                                <h6>Plomberie</h6>
+                                <ul class="small ps-3">
+                                    <li>Test de pression (1h à 4 bars)</li>
+                                    <li>Étanchéité des évacuations</li>
+                                    <li>Bon écoulement</li>
+                                </ul>
+                            </div>
+                            <div class="audit-card">
+                                <i class="fas fa-wind fs-3 mb-2" style="color:#0f5e7a;"></i>
+                                <h6>Menuiserie / étanchéité</h6>
+                                <ul class="small ps-3">
+                                    <li>Fermetures et serrures</li>
+                                    <li>Absence de jeu / infiltration</li>
+                                    <li>Vitrages fixes</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-4"><strong>📝 Procédure de réception :</strong></p>
+                        <ol>
+                            <li>Faire une pré-réception avec l’entrepreneur et lister les réserves (délais de correction).</li>
+                            <li>Réaliser les tests (eau, électricité) en votre présence.</li>
+                            <li>Photographier chaque réserve.</li>
+                            <li>Ne verser le solde qu’après levée complète des réserves (généralement 10% du montant retenu).</li>
+                            <li>Exiger les garanties (garantie de parfait achèvement 1 an).</li>
+                        </ol>
+                        <div class="alert alert-info small">💡 En Côte d’Ivoire, le recours à un maître d’œuvre ou à un bureau de contrôle coûte 3 à 5% du budget mais peut vous faire économiser 10 à 20% en vices cachés.</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Outils et conclusion -->
             <div class="accordion-item">
                 <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#outilsCollapse">🛠️ Outils & Conclusion</button></h2>
@@ -324,10 +498,10 @@
 
     <!-- Footer -->
     <footer class="py-4 text-center small">
-        <p class="mb-0">© 2025 – Guide autodidacte Côte d’Ivoire • Simulateur libre • Données terrain mises à jour</p>
+        <p class="mb-0">© 2025 – Guide autodidacte Côte d’Ivoire • Simulateur 8 standings • Données terrain mises à jour</p>
     </footer>
 
-    <!-- Bootstrap JS + notre script -->
+    <!-- Bootstrap JS + script simulateur -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         (function() {
@@ -340,6 +514,7 @@
             const contingencyAmountSpan = document.getElementById('contingencyAmount');
             const totalSecureSpan = document.getElementById('totalSecure');
             const phaseBody = document.getElementById('phaseTableBody');
+            const standingSelect = document.getElementById('standingSelect');
 
             // Fonction de formatage des nombres (espaces tous les 3 chiffres)
             function formatNumber(x) {
@@ -350,6 +525,11 @@
             function updateSimulator() {
                 let surface = parseFloat(surfaceInput.value) || 160;
                 let cout = parseFloat(coutInput.value) || 225000;
+                // Sécurité : éviter les valeurs négatives ou trop petites
+                if (cout < 50000) cout = 50000;
+                if (cout > 1000000) cout = 1000000;
+                coutInput.value = cout;   // recalage
+
                 let base = surface * cout;
                 let contingencyPct = parseFloat(contingencySlider.value) / 100;
                 let contingencyAmount = base * contingencyPct;
@@ -385,12 +565,23 @@
                 phaseBody.innerHTML = rows;
             }
 
-            // Écouteurs d'événements
+            // Événement pour le select standing : met à jour le champ coût
+            standingSelect.addEventListener('change', function() {
+                coutInput.value = standingSelect.value;
+                updateSimulator();
+            });
+
+            // Écouteurs sur les autres contrôles
             surfaceInput.addEventListener('input', updateSimulator);
-            coutInput.addEventListener('input', updateSimulator);
+            coutInput.addEventListener('input', function() {
+                // Si la valeur manuelle correspond exactement à une option, on pourrait sélectionner, mais on laisse libre.
+                updateSimulator();
+            });
             contingencySlider.addEventListener('input', updateSimulator);
 
-            // Initialisation
+            // Initialisation : synchroniser le select avec la valeur par défaut (225000)
+            // (déjà selected, mais au cas où)
+            standingSelect.value = '225000';
             updateSimulator();
         })();
     </script>
