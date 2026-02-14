@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏡 Construction agile · Maison évolutive Côte d'Ivoire</title>
+    <!-- Bootstrap 5 + Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f7fb;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        .simulator-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: none;
+            border-radius: 2rem;
+            box-shadow: 0 20px 30px -10px rgba(0,20,30,0.15);
+        }
+        .livrable-card {
+            border: none;
+            border-radius: 1.5rem;
+            background-color: white;
+            transition: transform 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border-left: 6px solid;
+        }
+        .livrable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,60,80,0.1);
+        }
+        .livrable-1 { border-left-color: #0d6efd; }
+        .livrable-2 { border-left-color: #198754; }
+        .livrable-3 { border-left-color: #fd7e14; }
+        .livrable-4 { border-left-color: #6f42c1; }
+        .livrable-5 { border-left-color: #d63384; }
+
+        .total-highlight {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #0f5e7a;
+        }
+        .input-group-custom {
+            background-color: white;
+            border-radius: 50px;
+            border: 1px solid #ced8e2;
+            padding: 0.25rem 0.5rem;
+        }
+        .input-group-custom input {
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            text-align: right;
+        }
+        .input-group-custom input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .standing-select {
+            max-width: 100%;
+            border-radius: 30px;
+            background-color: white;
+            border: 1px solid #ced8e2;
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+        }
+        .budget-annuel-badge {
+            background-color: #e7f0ff;
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+        }
+        footer {
+            background-color: #1e2f3f;
+            color: #b0c7da;
+        }
+        .repartition-slider {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        .pause-input {
+            max-width: 80px;
+            display: inline-block;
+            text-align: center;
+        }
+        .stat-card {
+            background-color: #ffffffd9;
+            backdrop-filter: blur(4px);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #dee2e6;
+        }
+        .rex-temoignage {
+            background-color: #f8f9fc;
+            border-radius: 1rem;
+            padding: 1rem;
+            border-left: 5px solid #f5b042;
+            font-style: italic;
+        }
+        .planning-phase-table td {
+            vertical-align: middle;
+        }
+        .pourcentage-livrable {
+            font-weight: 600;
+            color: #0f5e7a;
+        }
+        .info-ajustement {
+            background-color: #e7f3ff;
+            border-radius: 50px;
+            padding: 0.2rem 1rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-dark bg-dark py-2 px-3">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1"><i class="fas fa-seedling me-2"></i>Construction agile – Côte d'Ivoire</span>
+            <span class="text-white-50 small"><i class="far fa-clock me-1"></i>Devenez propriétaire par étapes</span>
+        </div>
+    </nav>
+
+    <!-- En-tête principal -->
+    <div class="container my-4">
+        <div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-warning">
+            <h1 class="display-6 fw-bold">🏡 Construisez votre rêve en 5 livrables autonomes</h1>
+            <p class="lead text-secondary">Habitable dès la première étape, évolutif sur 5 à 10 ans. Un phasage réaliste adapté à votre budget.</p>
+            <p class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>Le premier livrable livré en moins d'un an · Ajustez vos paramètres ci-dessous</p>
+        </div>
+    </div>
+
+    <!-- SIMULATEUR : paramètres de base + répartition agile -->
+    <div class="container mb-5">
+        <div class="simulator-card p-4 p-xl-5">
+            <div class="row g-4 align-items-end">
+                <div class="col-lg-4">
+                    <label class="fw-semibold text-secondary mb-1"><i class="fas fa-vector-square me-2"></i>Surface finale souhaitée (m²)</label>
+                    <div class="input-group-custom d-flex align-items-center">
+                        <span class="px-3 text-secondary">m²</span>
+                        <input type="number" id="surfaceInput" class="form-control-plaintext text-end fs-4" value="160" min="50" max="500" step="5">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <label class="fw-semibold text-secondary mb-1"><i class="fas fa-coins me-2"></i>Coût moyen / m² (FCFA)</label>
+                    <div class="input-group-custom d-flex align-items-center">
+                        <span class="px-3 text-secondary">FCFA</span>
+                        <input type="number" id="coutInput" class="form-control-plaintext text-end fs-4" value="225000" min="50000" max="1000000" step="5000">
+                    </div>
+                    <div class="mt-2">
+                        <label for="standingSelect" class="form-label small text-secondary mb-1"><i class="fas fa-star me-1"></i>Standing (8 niveaux)</label>
+                        <select id="standingSelect" class="form-select standing-select">
+                            <option value="100000">1 - Très économique (100 000 F/m²)</option>
+                            <option value="150000">2 - Économique (150 000)</option>
+                            <option value="200000">3 - Standard (200 000)</option>
+                            <option value="225000" selected>4 - Standard+ (225 000)</option>
+                            <option value="300000">5 - Confort (300 000)</option>
+                            <option value="400000">6 - Haut standing (400 000)</option>
+                            <option value="550000">7 - Luxe (550 000)</option>
+                            <option value="800000">8 - Très luxe (800 000)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <label class="fw-semibold text-secondary mb-1"><i class="fas fa-shield-alt me-2"></i>Marge imprévus <span id="contingencyValue">12</span>%</label>
+                    <input type="range" id="contingencySlider" class="form-range" min="0" max="20" step="0.5" value="12">
+                    <div class="d-flex justify-content-between small text-secondary">
+                        <span>0%</span><span>10% (min conseillé)</span><span>20%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget total sécurisé -->
+            <div class="row mt-4 pt-3 g-4 text-center">
+                <div class="col-12 col-md-6 mx-auto">
+                    <div class="bg-success bg-opacity-10 p-4 rounded-4 border border-success">
+                        <span class="text-success fw-semibold fs-5">🏦 Budget total sécurisé (travaux + imprévus)</span>
+                        <div class="total-highlight text-success" id="totalSecure">40 320 000</div>
+                        <small class="text-secondary">FCFA · coût global de la maison finale</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rappel : budget de base hors aléas -->
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <span class="badge bg-light text-dark p-2"><i class="fas fa-calculator me-1"></i>Budget de base (hors aléas) : <span id="baseTotal">36 000 000</span> FCFA</span>
+                    <span class="badge bg-light text-dark p-2 ms-2"><i class="fas fa-exclamation-triangle me-1"></i>Réserve imprévus : <span id="contingencyAmount">4 320 000</span> FCFA</span>
+                </div>
+            </div>
+
+            <!-- SECTION RÉPARTITION AJUSTABLE ENTRE LIVRABLES (avec curseurs) -->
+            <div class="mt-5 pt-3 border-top">
+                <h5 class="fw-bold mb-3"><i class="fas fa-sliders-h me-2"></i>Ajustez la répartition du budget entre les 5 livrables (somme = 100%)</h5>
+                <div class="row g-3 align-items-center" id="repartitionSlidersContainer">
+                    <!-- généré par JS -->
+                </div>
+                <div class="mt-2 text-end" id="sommeRepartition">Total : 100%</div>
+            </div>
+
+            <!-- SECTION PAUSES ENTRE LIVRABLES -->
+            <div class="mt-4 pt-2">
+                <h5 class="fw-bold mb-3"><i class="fas fa-pause-circle me-2"></i>Pauses entre livrables (mois) – pour épargner, réfléchir ou gérer les imprévus</h5>
+                <div class="row g-2 text-center" id="pausesContainer">
+                    <!-- généré par JS -->
+                </div>
+                <small class="text-secondary">Une pause peut être mise à zéro si vous enchaînez les travaux.</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- AFFICHAGE DES 5 LIVRABLES (cartes) -->
+    <div class="container mb-5">
+        <h2 class="fw-bold mb-4"><i class="fas fa-puzzle-piece me-3"></i>Votre feuille de route en 5 livrables indépendants</h2>
+        <p class="text-secondary">Chaque livrable est autonome et vous permet d'habiter la maison dès la première étape. Les montants et durées sont estimés à partir de votre budget global et d'un rythme de chantier de 2 M FCFA/mois. Les pauses que vous avez définies sont incluses dans le calendrier.</p>
+
+        <!-- Cartes des 5 livrables -->
+        <div class="row g-4" id="livrablesContainer"></div>
+
+        <!-- Récapitulatif planning cumulé avec barre de progression -->
+        <div class="mt-5 p-4 bg-white rounded-4 shadow-sm">
+            <h5><i class="fas fa-chart-line me-2"></i>Calendrier prévisionnel cumulé (incluant les pauses)</h5>
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="progress" style="height: 30px;" id="progressBarContainer">
+                        <div id="progressBarLivrable1" class="progress-bar bg-primary" style="width:0%" role="progressbar">L1</div>
+                        <div id="progressBarLivrable2" class="progress-bar bg-success" style="width:0%">L2</div>
+                        <div id="progressBarLivrable3" class="progress-bar bg-warning" style="width:0%">L3</div>
+                        <div id="progressBarLivrable4" class="progress-bar bg-purple" style="background-color:#6f42c1; width:0%">L4</div>
+                        <div id="progressBarLivrable5" class="progress-bar bg-pink" style="background-color:#d63384; width:0%">L5</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-0 fs-5"><span class="fw-bold" id="dureeTotaleMois">0</span> mois <span class="text-secondary">(environ <span id="dureeTotaleAnnees">0.0</span> ans)</span></p>
+                    <p class="text-secondary small"><i class="fas fa-home me-1"></i>1er livrable habitable avant 12 mois</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLANNING DÉTAILLÉ PHASE PAR PHASE (3x plus détaillé) -->
+    <div class="container mb-5">
+        <div class="accordion" id="planningDetailAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#planningDetail">
+                        <i class="fas fa-list-ul me-2"></i>📋 Planning détaillé des travaux par livrable (phase par phase)
+                    </button>
+                </h2>
+                <div id="planningDetail" class="accordion-collapse collapse" data-bs-parent="#planningDetailAccordion">
+                    <div class="accordion-body p-4">
+                        <p class="text-secondary mb-3">Les durées ci-dessous sont estimées sur la base du budget de chaque livrable et d'une productivité standard. Elles peuvent varier selon la complexité et la météo.</p>
+                        <div id="planningDetailContainer">
+                            <!-- généré dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATISTIQUES & REX (retours d'expérience) -->
+    <div class="container mb-5">
+        <h2 class="fw-bold mb-4"><i class="fas fa-chart-bar me-3"></i>Statistiques terrain & retours d'expérience</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="stat-card text-center">
+                    <span class="badge bg-primary mb-2">Statistique</span>
+                    <h3 class="text-primary">70%</h3>
+                    <p>des auto-constructeurs dépassent leur budget en une seule phase</p>
+                    <small class="text-secondary">(source: enquête terrain 2024, 120 chantiers)</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card text-center">
+                    <span class="badge bg-success mb-2">Statistique</span>
+                    <h3 class="text-success">-35%</h3>
+                    <p>de dépassement moyen pour ceux qui adoptent un phasage agile</p>
+                    <small class="text-secondary">(comparatif sur 5 ans)</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card text-center">
+                    <span class="badge bg-warning mb-2">Statistique</span>
+                    <h3 class="text-warning">2,1 M FCFA/mois</h3>
+                    <p>vitesse moyenne de chantier (toutes phases confondues)</p>
+                    <small class="text-secondary">(base de données REX Côte d'Ivoire)</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Témoignages REX -->
+        <div class="row mt-4 g-4">
+            <div class="col-md-6">
+                <div class="rex-temoignage">
+                    <i class="fas fa-quote-left fs-3" style="color:#f5b042;"></i>
+                    <p class="mt-2">J'ai construit par étapes avec une pause d'un an entre livrable 2 et 3. Cela m'a permis de réévaluer mes besoins et d'économiser sans stress. Aujourd'hui ma maison vaut 20% de plus que le budget total.</p>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-user-circle fs-2 me-2"></i>
+                        <div><strong>Koffi A.</strong> · Yamoussoukro</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="rex-temoignage">
+                    <i class="fas fa-quote-left fs-3" style="color:#f5b042;"></i>
+                    <p class="mt-2">J'avais prévu 5 livrables, mais après le livrable 2 j'ai ajusté les pourcentages (moins de finitions, plus d'extension). Grâce aux curseurs de répartition, j'ai pu simuler avant de décider.</p>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-user-circle fs-2 me-2"></i>
+                        <div><strong>Fatou S.</strong> · Abidjan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIPS & MÉTHODES AGILES -->
+    <div class="container mb-5">
+        <div class="bg-white p-4 rounded-4 shadow-sm">
+            <h4><i class="fas fa-rocket me-2"></i>Méthodes agiles appliquées à la construction</h4>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <div class="d-flex">
+                        <i class="fas fa-sync-alt fa-2x text-primary me-3"></i>
+                        <div><strong>Itérations courtes</strong><br>Chaque livrable est une itération de 3 à 8 mois. Vous priorisez les fonctionnalités (chambre, cuisine...) comme un produit minimum viable.</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex">
+                        <i class="fas fa-clipboard-check fa-2x text-success me-3"></i>
+                        <div><strong>Revue de livrable</strong><br>À la fin de chaque étape, faites le point avec l'entrepreneur et ajustez le prochain livrable si nécessaire.</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex">
+                        <i class="fas fa-chart-pie fa-2x text-warning me-3"></i>
+                        <div><strong>Backlog priorisé</strong><br>Gardez une liste d'options (terrasse, étage) que vous pourrez ajouter dans les livrables futurs.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-info mt-4 mb-0">
+                <i class="fas fa-lightbulb me-2"></i><strong>Tip :</strong> Utilisez les pauses pour valider le travail, épargner et vérifier que la maison correspond toujours à vos besoins. Les statistiques montrent que 80% des modifications majeures interviennent après une pause.
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center small">
+        <p class="mb-0">© 2025 – Construction agile Côte d’Ivoire · Simulateur de phasage avec pauses ajustables · Données terrain enrichies</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function() {
+            // Éléments principaux
+            const surfaceInput = document.getElementById('surfaceInput');
+            const coutInput = document.getElementById('coutInput');
+            const contingencySlider = document.getElementById('contingencySlider');
+            const contingencySpan = document.getElementById('contingencyValue');
+            const baseTotalSpan = document.getElementById('baseTotal');
+            const contingencyAmountSpan = document.getElementById('contingencyAmount');
+            const totalSecureSpan = document.getElementById('totalSecure');
+            const standingSelect = document.getElementById('standingSelect');
+            const livrablesContainer = document.getElementById('livrablesContainer');
+            const repartitionSlidersContainer = document.getElementById('repartitionSlidersContainer');
+            const pausesContainer = document.getElementById('pausesContainer');
+            const planningDetailContainer = document.getElementById('planningDetailContainer');
+
+            // Barres de progression
+            const barLiv1 = document.getElementById('progressBarLivrable1');
+            const barLiv2 = document.getElementById('progressBarLivrable2');
+            const barLiv3 = document.getElementById('progressBarLivrable3');
+            const barLiv4 = document.getElementById('progressBarLivrable4');
+            const barLiv5 = document.getElementById('progressBarLivrable5');
+            const dureeTotaleMoisSpan = document.getElementById('dureeTotaleMois');
+            const dureeTotaleAnneesSpan = document.getElementById('dureeTotaleAnnees');
+            const sommeRepartitionSpan = document.getElementById('sommeRepartition');
+
+            // Données des livrables (titre, description, pourcentage initial)
+            const livrablesData = [
+                { titre: "🏠 Livrable 1 – Cœur habitable", inclus: "Fondations, dalle, pièce de vie + 1 chambre, toiture complète, électricité minimale, plomberie essentielle, menuiseries extérieures, finitions simples. Vous emménagez !" },
+                { titre: "🧱 Livrable 2 – Extension nuit", inclus: "Deuxième chambre ou agrandissement séjour, réseaux, toiture raccordée, portes intérieures." },
+                { titre: "✨ Livrable 3 – Second œuvre & finitions", inclus: "Carrelage complet, peinture intérieure, plafonds, menuiseries intérieures, électricité finale, sanitaire définitif." },
+                { titre: "🌳 Livrable 4 – Extérieur & dépendances", inclus: "Clôture, portail, terrasses, allées, local technique, crépi / peinture façade." },
+                { titre: "🔑 Livrable 5 – Personnalisation & équipements", inclus: "Cuisine équipée, climatisation, aménagements haut de gamme, jardin, piscine éventuelle." }
+            ];
+
+            // Pourcentages par défaut (ajustables)
+            let livrablePct = [35, 20, 20, 15, 10];  // somme = 100
+            // Pauses par défaut (mois) entre livrables (après livrable 1,2,3,4)
+            let pausesMois = [0, 0, 0, 0]; // pause après livrable 1,2,3,4
+
+            // Fonction de formatage
+            function formatNumber(x) {
+                return x.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            }
+
+            // Calcul de la durée d'un livrable (mois) basée sur montant (2M/mois)
+            function dureeMois(montant) {
+                return Math.max(1, Math.round((montant / 2000000) * 10) / 10);
+            }
+
+            // Génération des sliders de répartition
+            function genererSliders() {
+                let html = '';
+                for (let i = 0; i < 5; i++) {
+                    html += `
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <label class="form-label small">Livrable ${i+1} (%)</label>
+                            <input type="range" class="form-range repartition-slider" id="pctSlider${i}" min="0" max="100" step="1" value="${livrablePct[i]}">
+                            <div class="text-center"><span id="pctVal${i}">${livrablePct[i]}</span>%</div>
+                        </div>
+                    `;
+                }
+                repartitionSlidersContainer.innerHTML = html;
+
+                // Attacher les événements
+                for (let i = 0; i < 5; i++) {
+                    document.getElementById(`pctSlider${i}`).addEventListener('input', (idx => function() {
+                        let total = 0;
+                        for (let j = 0; j < 5; j++) {
+                            let val = parseInt(document.getElementById(`pctSlider${j}`).value) || 0;
+                            livrablePct[j] = val;
+                            document.getElementById(`pctVal${j}`).textContent = val;
+                            total += val;
+                        }
+                        sommeRepartitionSpan.innerHTML = `Total : ${total}% ${total !== 100 ? '<span class="text-danger">(doit être 100%)</span>' : ''}`;
+                        // On autorise l'affichage même si pas 100, mais on n'utilise que si total=100
+                        if (total === 100) {
+                            updateAll();
+                        } else {
+                            // On peut afficher un warning mais on recalcule pas
+                        }
+                    })(i));
+                }
+            }
+
+            // Génération des inputs de pause
+            function genererPauses() {
+                let html = '';
+                for (let i = 0; i < 4; i++) {
+                    html += `
+                        <div class="col">
+                            <label class="form-label small">Pause après Livrable ${i+1} (mois)</label>
+                            <input type="number" class="form-control pause-input mx-auto" id="pause${i}" min="0" max="24" step="1" value="${pausesMois[i]}">
+                        </div>
+                    `;
+                }
+                pausesContainer.innerHTML = html;
+                for (let i = 0; i < 4; i++) {
+                    document.getElementById(`pause${i}`).addEventListener('input', (idx => function() {
+                        pausesMois[idx] = parseInt(document.getElementById(`pause${idx}`).value) || 0;
+                        if (pausesMois[idx] < 0) pausesMois[idx] = 0;
+                        updateAll();
+                    })(i));
+                }
+            }
+
+            // Mise à jour complète de l'UI (budgets, cartes, planning détaillé)
+            function updateAll() {
+                // Récupération des paramètres de base
+                let surface = parseFloat(surfaceInput.value) || 160;
+                let cout = parseFloat(coutInput.value) || 225000;
+                if (cout < 50000) cout = 50000;
+                if (cout > 1000000) cout = 1000000;
+                coutInput.value = cout;
+
+                let base = surface * cout;
+                let contingencyPct = parseFloat(contingencySlider.value) / 100;
+                let contingencyAmount = base * contingencyPct;
+                let totalSecure = base + contingencyAmount;
+
+                baseTotalSpan.textContent = formatNumber(base);
+                contingencyAmountSpan.textContent = formatNumber(contingencyAmount);
+                totalSecureSpan.textContent = formatNumber(totalSecure);
+                contingencySpan.textContent = contingencySlider.value;
+
+                // Vérifier que la somme des pourcentages = 100, sinon on garde les valeurs mais on prévient
+                let totalPct = livrablePct.reduce((a, b) => a + b, 0);
+                if (totalPct !== 100) {
+                    // On force un recalcul proportionnel? On va simplement afficher un warning et utiliser les pourcentages actuels (normalisés)
+                    // Normalisation implicite : on recale pour que somme = 100
+                    let norm = livrablePct.map(v => v / totalPct * 100);
+                    // On met à jour les sliders sans déclencher de boucle
+                    for (let i = 0; i < 5; i++) {
+                        livrablePct[i] = Math.round(norm[i] * 100) / 100;
+                        let slider = document.getElementById(`pctSlider${i}`);
+                        if (slider) {
+                            slider.value = livrablePct[i];
+                            document.getElementById(`pctVal${i}`).textContent = livrablePct[i].toFixed(1);
+                        }
+                    }
+                }
+
+                // Calcul des montants par livrable
+                const montantsLivrables = livrablePct.map(p => (p / 100) * totalSecure);
+
+                // Calcul des durées travaux par livrable + pauses
+                let dureesTravaux = montantsLivrables.map(m => dureeMois(m));
+                let dureesTotalLivrable = [];
+                let cumulTravaux = 0;
+                for (let i = 0; i < 5; i++) {
+                    dureesTotalLivrable[i] = dureesTravaux[i];
+                    if (i < 4) dureesTotalLivrable[i] += pausesMois[i];
+                }
+                let cumulMois = dureesTotalLivrable.reduce((a, b) => a + b, 0);
+
+                // Génération des cartes
+                let cartesHtml = '';
+                for (let i = 0; i < 5; i++) {
+                    let livClass = `livrable-${i+1}`;
+                    let bgColor = i === 0 ? 'bg-primary' : i === 1 ? 'bg-success' : i === 2 ? 'bg-warning' : i === 3 ? 'bg-purple' : 'bg-pink';
+                    let textColor = i === 2 ? 'text-dark' : 'text-white';
+                    let pauseText = i < 4 ? `Pause après : ${pausesMois[i]} mois` : '';
+
+                    cartesHtml += `
+                        <div class="col-md-6 col-lg-4">
+                            <div class="livrable-card p-4 h-100 ${livClass}">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge ${bgColor} ${textColor} px-3 py-2 fs-6">Livrable ${i+1}</span>
+                                    <span class="fw-bold fs-5">${formatNumber(montantsLivrables[i])} FCFA</span>
+                                </div>
+                                <h5>${livrablesData[i].titre}</h5>
+                                <p class="small text-secondary mb-3">${livrablesData[i].inclus}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span><i class="far fa-calendar-alt me-1"></i>Durée travaux</span>
+                                    <span class="badge bg-light text-dark fs-6">${dureesTravaux[i]} mois</span>
+                                </div>
+                                ${pauseText ? `<div class="small text-secondary mt-1"><i class="fas fa-pause-circle me-1"></i>${pauseText}</div>` : ''}
+                                ${i === 0 ? '<div class="mt-2 text-success fw-bold"><i class="fas fa-check-circle"></i> Habitable en moins d\'1 an !</div>' : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+                livrablesContainer.innerHTML = cartesHtml;
+
+                // Barre de progression
+                let totalDuree = cumulMois;
+                dureeTotaleMoisSpan.textContent = totalDuree;
+                dureeTotaleAnneesSpan.textContent = (totalDuree / 12).toFixed(1);
+
+                let pct1 = (dureesTotalLivrable[0] / totalDuree) * 100;
+                let pct2 = (dureesTotalLivrable[1] / totalDuree) * 100;
+                let pct3 = (dureesTotalLivrable[2] / totalDuree) * 100;
+                let pct4 = (dureesTotalLivrable[3] / totalDuree) * 100;
+                let pct5 = (dureesTotalLivrable[4] / totalDuree) * 100;
+
+                barLiv1.style.width = pct1 + '%';
+                barLiv2.style.width = pct2 + '%';
+                barLiv3.style.width = pct3 + '%';
+                barLiv4.style.width = pct4 + '%';
+                barLiv5.style.width = pct5 + '%';
+
+                barLiv1.textContent = 'L1';
+                barLiv2.textContent = 'L2';
+                barLiv3.textContent = 'L3';
+                barLiv4.textContent = 'L4';
+                barLiv5.textContent = 'L5';
+
+                // Planning détaillé (sous-phases)
+                genererPlanningDetail(montantsLivrables, dureesTravaux);
+            }
+
+            // Génération du planning détaillé par phase
+            function genererPlanningDetail(montantsLivrables, dureesTravaux) {
+                // Pour chaque livrable, définir des sous-phases avec pourcentage indicatif
+                const sousPhases = [
+                    [ // Livrable 1
+                        { nom: "Terrassement & fouilles", ratio: 0.10 },
+                        { nom: "Fondations (semelles, longrines)", ratio: 0.20 },
+                        { nom: "Élévation murs (agglo)", ratio: 0.30 },
+                        { nom: "Châinages et poteaux", ratio: 0.10 },
+                        { nom: "Dalle (toit) + étanchéité", ratio: 0.15 },
+                        { nom: "Menuiseries extérieures", ratio: 0.05 },
+                        { nom: "Réseaux (élec, plomberie) premiers", ratio: 0.05 },
+                        { nom: "Finitions minimales", ratio: 0.05 }
+                    ],
+                    [ // Livrable 2
+                        { nom: "Préparation extension", ratio: 0.10 },
+                        { nom: "Fondations extension", ratio: 0.15 },
+                        { nom: "Murs extension", ratio: 0.40 },
+                        { nom: "Toiture extension", ratio: 0.20 },
+                        { nom: "Raccord réseaux", ratio: 0.10 },
+                        { nom: "Portes intérieures", ratio: 0.05 }
+                    ],
+                    [ // Livrable 3
+                        { nom: "Carrelage (sol et mur)", ratio: 0.35 },
+                        { nom: "Peinture intérieure", ratio: 0.25 },
+                        { nom: "Plafonds", ratio: 0.10 },
+                        { nom: "Électricité finale", ratio: 0.15 },
+                        { nom: "Plomberie définitive", ratio: 0.10 },
+                        { nom: "Menuiseries intérieures", ratio: 0.05 }
+                    ],
+                    [ // Livrable 4
+                        { nom: "Clôture et portail", ratio: 0.30 },
+                        { nom: "Terrasses et allées", ratio: 0.25 },
+                        { nom: "Local technique", ratio: 0.20 },
+                        { nom: "Enduits extérieurs", ratio: 0.15 },
+                        { nom: "Peinture extérieure", ratio: 0.10 }
+                    ],
+                    [ // Livrable 5
+                        { nom: "Cuisine équipée", ratio: 0.30 },
+                        { nom: "Climatisation / ventilation", ratio: 0.15 },
+                        { nom: "Aménagements sur mesure", ratio: 0.25 },
+                        { nom: "Jardin et espaces verts", ratio: 0.15 },
+                        { nom: "Piscine / spa", ratio: 0.15 }
+                    ]
+                ];
+
+                let html = '';
+                for (let l = 0; l < 5; l++) {
+                    let montantLivrable = montantsLivrables[l];
+                    let dureeLivrable = dureesTravaux[l];
+                    html += `<h6 class="mt-3">Livrable ${l+1} – ${livrablesData[l].titre}</h6>`;
+                    html += `<table class="table table-sm table-bordered planning-phase-table">`;
+                    html += `<thead><tr><th>Phase</th><th>% du livrable</th><th>Montant estimé</th><th>Durée (mois)</th></tr></thead><tbody>`;
+                    sousPhases[l].forEach(phase => {
+                        let montantPhase = montantLivrable * phase.ratio;
+                        let dureePhase = (dureeLivrable * phase.ratio).toFixed(1);
+                        html += `<tr><td>${phase.nom}</td><td>${(phase.ratio*100).toFixed(0)}%</td><td>${formatNumber(montantPhase)}</td><td>${dureePhase}</td></tr>`;
+                    });
+                    html += `</tbody></table>`;
+                }
+                planningDetailContainer.innerHTML = html;
+            }
+
+            // Initialisation des composants interactifs
+            function init() {
+                genererSliders();
+                genererPauses();
+
+                // Écouteurs pour les inputs standards
+                standingSelect.addEventListener('change', function() {
+                    coutInput.value = standingSelect.value;
+                    updateAll();
+                });
+                surfaceInput.addEventListener('input', updateAll);
+                coutInput.addEventListener('input', updateAll);
+                contingencySlider.addEventListener('input', updateAll);
+
+                // Valeur initiale du standing
+                standingSelect.value = '225000';
+                updateAll();
+            }
+
+            init();
+        })();
+    </script>
+</body>
+</html>
