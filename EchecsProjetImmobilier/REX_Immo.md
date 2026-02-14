@@ -312,3 +312,263 @@ Mais il enrichit méthodiquement les stratèges patients.
 
 ---
 
+
+---
+
+# 🏗️ 1️⃣ SIMULATEUR “AVANT / APRÈS ERREUR”
+
+## 🎯 Objectif
+
+Mesurer **l’impact réel d’une erreur stratégique** sur :
+
+* Rentabilité
+* Cash-flow
+* Délai de récupération
+* Stress financier
+
+---
+
+# 📊 CAS DE BASE (SCÉNARIO IDÉAL)
+
+### Hypothèse Projet
+
+* Terrain : 20 M FCFA
+* Construction : 40 M FCFA
+* Total projet : 60 M FCFA
+* Loyers annuels : 7,2 M FCFA
+* Vacance : 1 mois/an
+
+### 📈 Résultat idéal
+
+* Rendement brut = 12 %
+* Rendement net estimé = 9 %
+* Amortissement ≈ 9 ans
+
+---
+
+# 🔴 ERREUR 1 – Sous-estimation Budget (+25 %)
+
+### Réalité :
+
+Coût final = 75 M FCFA
+
+### Impact :
+
+* Rendement brut chute à 9,6 %
+* Amortissement passe à 11,5 ans
+* Tension trésorerie élevée
+
+### 💡 Conclusion :
+
++25 % coût = –2 à –3 ans de rentabilité
+
+---
+
+# 🔴 ERREUR 2 – Mauvaise Cible Locative
+
+Vacance 4 mois/an au lieu de 1.
+
+### Impact :
+
+* Loyers réels = 5,4 M FCFA
+* Rendement brut = 9 %
+* Cash-flow négatif si crédit
+
+---
+
+# 🔴 ERREUR 3 – Mauvais Choix de Zone
+
+Valorisation annuelle au lieu de +5 % = +1 %.
+
+### Sur 10 ans :
+
+Différence de plus-value = –30 à –40 %
+
+---
+
+# 🔴 ERREUR 4 – Impayés Locataires (6 mois)
+
+Perte = 3,6 M FCFA
+
+Impact :
+
+* 1 année complète de bénéfice effacée.
+
+---
+
+# 📊 TABLEAU SYNTHÈSE
+
+| Scénario       | Rendement | Amortissement | Stress     |
+| -------------- | --------- | ------------- | ---------- |
+| Idéal          | 12 %      | 9 ans         | Faible     |
+| +25 % budget   | 9,6 %     | 11,5 ans      | Moyen      |
+| Vacance 4 mois | 9 %       | 12 ans        | Élevé      |
+| Impayés        | 8 %       | 13 ans        | Très élevé |
+
+---
+
+# 🧠 Enseignement du Simulateur
+
+Une petite erreur =
+un effet exponentiel sur 10 ans.
+
+L’immobilier est un multiplicateur…
+dans les deux sens.
+
+---
+
+# 📈 2️⃣ MATRICE DE RISQUE IMMOBILIER – AFRIQUE
+
+## 🎯 Objectif
+
+Identifier :
+
+* Probabilité du risque
+* Impact financier
+* Niveau de gravité
+* Plan de mitigation
+
+---
+
+# 🔎 Catégories de Risques
+
+1️⃣ Juridique
+2️⃣ Marché
+3️⃣ Technique
+4️⃣ Financier
+5️⃣ Locatif
+6️⃣ Macroéconomique
+
+---
+
+# 📊 MATRICE STRATÉGIQUE
+
+| Risque | Probabilité | Impact | Gravité | Action |
+| ------ | ----------- | ------ | ------- | ------ |
+
+---
+
+## 🔴 1. Double Attribution Terrain
+
+Probabilité : Moyenne
+Impact : Très élevé
+Gravité : Critique
+
+Action :
+
+* Vérification cadastre
+* Notaire obligatoire
+* Historique propriété
+
+---
+
+## 🔴 2. Explosion Coût Matériaux
+
+Probabilité : Élevée
+Impact : Élevé
+Gravité : Majeure
+
+Action :
+
+* +20 % imprévus
+* Clause indexation
+* Achat groupé
+
+---
+
+## 🔴 3. Vacance Locative
+
+Probabilité : Moyenne
+Impact : Moyen à élevé
+Gravité : Modérée
+
+Action :
+
+* Étude marché réelle
+* Produit adapté
+* Loyer compétitif
+
+---
+
+## 🔴 4. Impayés
+
+Probabilité : Moyenne
+Impact : Élevé
+Gravité : Majeure
+
+Action :
+
+* Sélection rigoureuse
+* Caution 3 mois
+* Assurance loyers si possible
+
+---
+
+## 🔴 5. Instabilité Réglementaire
+
+Probabilité : Faible à moyenne
+Impact : Moyen
+
+Action :
+
+* Suivi réglementaire
+* Conseiller juridique
+
+---
+
+## 🔴 6. Zone Non Développée
+
+Probabilité : Moyenne
+Impact : Élevé
+
+Action :
+
+* Vérifier projets publics confirmés
+* Ne pas spéculer uniquement sur rumeurs
+
+---
+
+# 📌 Échelle de Gravité
+
+* 🟢 Faible
+* 🟡 Modérée
+* 🟠 Majeure
+* 🔴 Critique
+
+---
+
+# 🧠 MATRICE VISUELLE (Logique)
+
+Impact ↑
+|
+| 🔴 Double attribution
+| 🔴 Explosion budget
+| 🟠 Vacance
+| 🟡 Maintenance
+|________________________→ Probabilité
+
+---
+
+# 🎯 Comment Utiliser Cette Matrice
+
+Avant chaque projet :
+
+1. Lister tous les risques.
+2. Noter probabilité (1–5).
+3. Noter impact financier (1–5).
+4. Multiplier → Score de risque.
+5. Si score > 15 = revoir projet.
+
+---
+
+# 🧠 Règle d’Or
+
+Un bon investisseur ne cherche pas
+le rendement maximum.
+
+Il cherche
+le rendement maîtrisé.
+
+---
+
+
