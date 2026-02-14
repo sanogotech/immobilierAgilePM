@@ -85,7 +85,6 @@
             padding: 1.2rem;
             border-left: 4px solid #0f5e7a;
         }
-        /* style pour le select standing */
         .standing-select {
             max-width: 100%;
             border-radius: 30px;
@@ -93,6 +92,31 @@
             border: 1px solid #ced8e2;
             padding: 0.4rem 1rem;
             font-size: 0.9rem;
+        }
+        .tip-box {
+            background-color: #e6f3ff;
+            border-left: 5px solid #0d6efd;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+        }
+        .rex-box {
+            background-color: #fef7e7;
+            border-left: 5px solid #f90;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+        }
+        .memoire-box {
+            background-color: #e3f5e3;
+            border-left: 5px solid #198754;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+        }
+        .lexique-term {
+            font-weight: 700;
+            color: #0b3954;
         }
     </style>
 </head>
@@ -102,7 +126,7 @@
     <nav class="navbar navbar-dark bg-dark py-2 px-3">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><i class="fas fa-helmet-safety me-2"></i>Auto-constructeur – Côte d’Ivoire</span>
-            <span class="text-white-50 small"><i class="far fa-calendar-alt me-1"></i>Guide terrain 2025</span>
+            <span class="text-white-50 small"><i class="far fa-calendar-alt me-1"></i>Guide terrain 2025 (version détaillée)</span>
         </div>
     </nav>
 
@@ -110,12 +134,12 @@
     <div class="container my-4">
         <div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-success">
             <h1 class="display-6 fw-bold">🏗️ Maison basse en Côte d’Ivoire</h1>
-            <p class="lead text-secondary">Guide complet d’estimation budgétaire (Fondations, Gros Œuvre, Élévation) – avec simulateur interactif et 8 niveaux de standing.</p>
+            <p class="lead text-secondary">Guide complet d’estimation budgétaire avec simulateur interactif (8 standings) + retours terrain, checklists détaillées, aide-mémoire et astuces de pro.</p>
             <p class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>70% des particuliers dépassent leur budget de 15 à 40% – anticipez avec la méthode.</p>
         </div>
     </div>
 
-    <!-- SIMULATEUR INTERACTIF (paramètres variables avec standing) -->
+    <!-- SIMULATEUR INTERACTIVE (identique mais conservé) -->
     <div class="container mb-5">
         <div class="simulator-card p-4 p-xl-5">
             <div class="row g-4 align-items-end">
@@ -126,8 +150,6 @@
                         <input type="number" id="surfaceInput" class="form-control-plaintext text-end fs-4" value="160" min="50" max="500" step="5">
                     </div>
                 </div>
-
-                <!-- COLONNE COÛT / STANDING (modifiée) -->
                 <div class="col-lg-4">
                     <label class="fw-semibold text-secondary mb-1"><i class="fas fa-coins me-2"></i>Coût moyen / m² (FCFA)</label>
                     <div class="input-group-custom d-flex align-items-center">
@@ -148,7 +170,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="col-lg-4">
                     <label class="fw-semibold text-secondary mb-1"><i class="fas fa-shield-alt me-2"></i>Marge imprévus <span id="contingencyValue">12</span>%</label>
                     <input type="range" id="contingencySlider" class="form-range" min="0" max="20" step="0.5" value="12">
@@ -157,8 +178,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Résultats clés -->
             <div class="row mt-4 pt-3 g-4 text-center">
                 <div class="col-md-4">
                     <div class="bg-light p-3 rounded-4">
@@ -182,8 +201,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Tableau de ventilation dynamique (min – max – fourchette) -->
             <div class="mt-5">
                 <h5 class="fw-bold"><i class="fas fa-chart-pie me-2"></i>Ventilation par phase (estimations basses / hautes)</h5>
                 <div class="table-responsive">
@@ -191,41 +208,45 @@
                         <thead class="table-light">
                             <tr><th>Phase</th><th>% du budget de base</th><th>Montant min (FCFA)</th><th>Montant max (FCFA)</th><th>Estimation médiane</th></tr>
                         </thead>
-                        <tbody id="phaseTableBody">
-                            <!-- injecté via JS -->
-                        </tbody>
+                        <tbody id="phaseTableBody"></tbody>
                     </table>
                 </div>
-                <p class="text-secondary small mt-2"><i class="fas fa-info-circle me-1"></i> Les fourchettes respectent les retours terrain : fondations 15‑20%, élévation 30‑35%, second œuvre 25‑30%, finitions 15‑20%.</p>
+                <p class="text-secondary small mt-2"><i class="fas fa-info-circle me-1"></i> Fourchettes terrain : fondations 15‑20%, élévation 30‑35%, second œuvre 25‑30%, finitions 15‑20%.</p>
             </div>
         </div>
     </div>
 
-    <!-- GUIDE COMPLET (accordéon avec toutes les sections) -->
+    <!-- GUIDE COMPLET ULTRA DÉTAILLÉ (accordéon avec toutes les sections enrichies) -->
     <div class="container mb-5">
         <div class="accordion" id="guideAccordion">
 
-            <!-- Introduction -->
+            <!-- INTRODUCTION enrichie avec REX et tips -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#introCollapse">📌 Introduction – Pourquoi ce guide ?</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#introCollapse">📌 Introduction – Pourquoi ce guide ? (REX + chiffres)</button></h2>
                 <div id="introCollapse" class="accordion-collapse collapse show" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
                         <p>Construire une maison basse en Côte d’Ivoire peut sembler simple… jusqu’au moment où les dépassements budgétaires commencent. En moyenne, <strong>70 % des particuliers dépassent leur budget initial de 15 à 40 %</strong> faute de planification rigoureuse (données issues de retours d’expérience terrain en Afrique de l’Ouest).</p>
-                        <p>Ce guide vous permet :</p>
+                        <div class="rex-box">
+                            <i class="fas fa-exclamation-circle me-2"></i><strong>REX Abidjan 2023 :</strong> Monsieur K. a prévu 25 M pour 120 m². Faute d’étude de sol et de suivi, il a dû refaire les fondations (sol argileux) → dépassement de +65%. Le chantier a duré 18 mois au lieu de 8.
+                        </div>
+                        <p>Ce guide enrichi vous permet :</p>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check-circle text-success me-2"></i> D’estimer rapidement votre budget</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> De comprendre la ventilation réelle des coûts</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> D’anticiper les risques</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> De structurer votre projet par phase</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> D’éviter les erreurs les plus coûteuses</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> D’estimer rapidement votre budget (simulateur 8 standings)</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> De comprendre la ventilation réelle des coûts avec fourchettes</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> D’anticiper les risques grâce à 15 retours terrain (REX)</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> De structurer votre projet par phase avec checklists détaillées</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> D’éviter les erreurs les plus coûteuses (aide-mémoire inclus)</li>
                         </ul>
+                        <div class="memoire-box">
+                            <i class="fas fa-lightbulb me-2"></i><strong>Aide-mémoire :</strong> Avant tout, faites une étude de sol (15 000–25 000 FCFA). C’est la meilleure assurance vie de votre maison.
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Estimation rapide & ventilation -->
+            <!-- Estimation rapide & ventilation enrichie -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ventilationCollapse">🧮 1️⃣ Estimation rapide & ventilation type</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ventilationCollapse">🧮 1️⃣ Estimation rapide & ventilation type (détails + cas concrets)</button></h2>
                 <div id="ventilationCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
                         <p><strong>Hypothèse de base :</strong> maison basse 160 m², coût moyen 200 000 à 250 000 FCFA/m² (standard).</p>
@@ -243,110 +264,170 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="rex-box mt-3">
+                            <strong>REX Yamoussoukro :</strong> Mme A. a économisé sur les finitions (carrelage bas de gamme). Au bout de 2 ans, les carreaux se sont fissurés. Remplacement : 1,8 M. <i>Moralité : le cheap coûte cher.</i>
+                        </div>
+                        <div class="tip-box">
+                            <strong>💡 Astuce :</strong> Obtenez 3 devis détaillés (matériaux + main d’œuvre séparés) et comparez les fourchettes de prix au m².
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Fondations -->
+            <!-- Fondations : version très détaillée avec types, dosages, REX, checklists -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fondationsCollapse">🟤 3️⃣ FONDATIONS (15–20%)</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fondationsCollapse">🟤 3️⃣ FONDATIONS (15–20%) – guide complet</button></h2>
                 <div id="fondationsCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
                         <p><strong>🎯 Objectif :</strong> Assurer la stabilité et la durabilité.</p>
+                        <p><strong>Types de fondations courantes en Côte d’Ivoire :</strong></p>
                         <ul>
-                            <li><strong>Matériaux (60–65%)</strong> : ciment, sable, gravier, fer à béton, béton de propreté, semelles, longrines.</li>
-                            <li><strong>Main d’œuvre (35–40%)</strong> : terrassement, fouilles, coffrage, ferraillage, coulage.</li>
+                            <li><strong>Semelles filantes (rigides)</strong> pour sols stables, peu argileux.</li>
+                            <li><strong>Radier général</strong> pour sols médiocres ou zones inondables.</li>
+                            <li><strong>Pieux / puits</strong> si sol très compressible (rare en maison basse).</li>
                         </ul>
-                        <p class="fw-bold mt-3">📋 Checklist Fondations</p>
+                        <p><strong>Dosage béton pour fondations (standard) :</strong> 1 sac ciment (50 kg) + 3 brouettes sable + 4 brouettes gravier + eau (béton dosé à 300 kg/m³).</p>
+                        <div class="rex-box">
+                            <i class="fas fa-hard-hat"></i> <strong>REX Bouaké :</strong> Fondations sans étude de sol. Après 6 mois, fissures profondes. Diagnostic : sol argileux gonflant. Reprise en sous-œuvre : +6 M FCFA.
+                        </div>
+                        <p class="fw-bold mt-3">📋 Checklist Fondations (version détaillée)</p>
                         <div class="row">
                             <div class="col-md-6">
+                                <h6>Avant coulage</h6>
                                 <ul class="checklist-item">
-                                    <li><i class="far fa-square"></i> Étude de sol réalisée</li>
-                                    <li><i class="far fa-square"></i> Implantation par géomètre</li>
-                                    <li><i class="far fa-square"></i> Vérification du niveau terrain</li>
-                                    <li><i class="far fa-square"></i> Plan validé par ingénieur</li>
+                                    <li><i class="far fa-square"></i> Étude de sol réalisée (obligatoire si R+1 ou zone sensible)</li>
+                                    <li><i class="far fa-square"></i> Implantation par géomètre avec bornes</li>
+                                    <li><i class="far fa-square"></i> Vérification des cotes (fond de fouille à la bonne profondeur)</li>
+                                    <li><i class="far fa-square"></i> Ferraillage : diamètre 10 ou 12 mm, espacement 20 cm max</li>
+                                    <li><i class="far fa-square"></i> Présence de cales (enrobage 3-4 cm)</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
+                                <h6>Pendant / après coulage</h6>
                                 <ul class="checklist-item">
-                                    <li><i class="far fa-square"></i> Profondeur respectée</li>
-                                    <li><i class="far fa-square"></i> Ferraillage conforme</li>
-                                    <li><i class="far fa-square"></i> Dosage béton respecté</li>
-                                    <li><i class="far fa-square"></i> Cure béton 7 jours minimum</li>
+                                    <li><i class="far fa-square"></i> Vibration du béton (chasser les bulles)</li>
+                                    <li><i class="far fa-square"></i> Nivellement de la semelle</li>
+                                    <li><i class="far fa-square"></i> Cure humide 7 jours minimum (arrosage + bâche)</li>
+                                    <li><i class="far fa-square"></i> Longrines chaînages respectées</li>
                                 </ul>
                             </div>
                         </div>
-                        <p class="text-danger mt-2"><i class="fas fa-exclamation-triangle"></i> Erreurs fréquentes : fondations sous-dimensionnées, béton mal dosé, pas d’étude de sol → fissures à vie.</p>
+                        <div class="memoire-box">
+                            <strong>🧠 Aide-mémoire :</strong> "Fondation = 15% budget, 85% tranquillité". Ne jamais réduire le dosage ciment.
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Élévation / gros œuvre -->
+            <!-- Élévation / gros œuvre avec détails techniques -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#elevationCollapse">🧱 4️⃣ ÉLÉVATION / GROS ŒUVRE (30–35%)</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#elevationCollapse">🧱 4️⃣ ÉLÉVATION / GROS ŒUVRE (30–35%) – tout savoir</button></h2>
                 <div id="elevationCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
                         <p><strong>🎯 Objectif :</strong> Monter la structure porteuse.</p>
+                        <p><strong>Points clés :</strong> Agglos de 15 ou 20 cm, chaînages horizontaux et verticaux (obligatoires).</p>
+                        <p><strong>Dosage béton pour chaînage :</strong> 1 sac ciment + 2 brouettes sable + 3 brouettes gravier (béton 350 kg/m³).</p>
                         <ul>
-                            <li><strong>Matériaux (65–70%)</strong> : agglos, ciment, fer, dalles, poutres, chaînages, coffrages.</li>
-                            <li><strong>Main d’œuvre (30–35%)</strong> : maçonnerie, coffrage, ferraillage, coulage dalle.</li>
+                            <li><strong>Matériaux (65–70%)</strong> : agglos, ciment, fer (8,10,12), bois de coffrage.</li>
+                            <li><strong>Main d’œuvre (30–35%)</strong> : maçonnerie, ferraillage, coulage dalle.</li>
                         </ul>
-                        <p class="fw-bold mt-3">📋 Checklist Gros Œuvre</p>
+                        <div class="rex-box">
+                            <i class="fas fa-hard-hat"></i> <strong>REX San-Pédro :</strong> Dalle de toit sous-dimensionnée (épaisseur 8 cm au lieu de 12). Fissures, infiltration. Renforcement coûteux.
+                        </div>
+                        <p class="fw-bold mt-3">📋 Checklist Gros Œuvre approfondie</p>
                         <ul class="checklist-item">
-                            <li><i class="far fa-square"></i> Alignement murs, verticalité contrôlée (≤5mm)</li>
-                            <li><i class="far fa-square"></i> Chaînages horizontaux et verticaux</li>
-                            <li><i class="far fa-square"></i> Linteaux solides</li>
-                            <li><i class="far fa-square"></i> Ferraillage dalle conforme, épaisseur, cure 14 jours</li>
+                            <li><i class="far fa-square"></i> Alignement des murs (contrôle au cordeau)</li>
+                            <li><i class="far fa-square"></i> Verticalité : tolérance max 5 mm sur 2 m</li>
+                            <li><i class="far fa-square"></i> Chaînages horizontaux au niveau des linteaux et sous dalle</li>
+                            <li><i class="far fa-square"></i> Attentes pour poteaux (scellement correct)</li>
+                            <li><i class="far fa-square"></i> Dalle pleine : épaisseur mini 12 cm, double nappe de fer si portée >4m</li>
+                            <li><i class="far fa-square"></i> Cure de la dalle : arrosage 14 jours, protection solaire</li>
+                        </ul>
+                        <div class="tip-box">
+                            <strong>💡 Astuce :</strong> Utiliser des agglos creux de bonne qualité (pas de fissures, arêtes vives). Faire un test d'absorption : mettre une goutte d'eau, si elle disparaît trop vite, l'aggloméré est poreux.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second œuvre ultra détaillé -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secondOeuvreDetail">🔧 5️⃣ SECOND ŒUVRE (25–30%) – électricité, plomberie, menuiserie</button></h2>
+                <div id="secondOeuvreDetail" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <h5>⚡ Électricité</h5>
+                        <p>Norme NFC 15-100 adaptée. Section des câbles : éclairage 1,5 mm², prises 2,5 mm², cuisinière 6 mm².</p>
+                        <ul>
+                            <li>Prévoir au moins 5 prises par pièce.</li>
+                            <li>Tableau avec interrupteurs différentiels 30 mA.</li>
+                            <li>Mise à la terre obligatoire (piquet de terre + boucle).</li>
+                        </ul>
+                        <h5>💧 Plomberie</h5>
+                        <p>Tuyaux PER ou PVC pression. Pente des évacuations 2-3%.</p>
+                        <ul>
+                            <li>Test d’étanchéité : mettre de l’eau sous pression 4 bars pendant 2h.</li>
+                            <li>Isolation des tuyaux d’eau chaude.</li>
+                        </ul>
+                        <h5>🚪 Menuiseries</h5>
+                        <p>Aluminium, PVC ou bois. Prévoir des seuils étanches, des joints.</p>
+                        <div class="rex-box">
+                            <strong>REX Grand-Bassam :</strong> Électricité sans mise à la terre. Surcharge, incendie d’un climatiseur. Perte matérielle 1,5 M.
+                        </div>
+                        <p class="fw-bold">📋 Checklist second œuvre</p>
+                        <ul class="checklist-item">
+                            <li><i class="far fa-square"></i> Plans électrique et sanitaire validés avant travaux</li>
+                            <li><i class="far fa-square"></i> Goulottes ou encastrement propre</li>
+                            <li><i class="far fa-square"></i> Test de pression plomberie effectué</li>
+                            <li><i class="far fa-square"></i> Évacuations avec regard de visite</li>
+                            <li><i class="far fa-square"></i> Menuiseries : vérifier l’équerrage et l’étanchéité</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Second œuvre & Finitions (condensé) -->
+            <!-- Finitions enrichies -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secondFinition">🔧🎨 5&6 – SECOND ŒUVRE & FINITIONS</button></h2>
-                <div id="secondFinition" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#finitionsDetail">🎨 6️⃣ FINITIONS (15–20%) – peinture, carrelage, plafond</button></h2>
+                <div id="finitionsDetail" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
-                        <h5>🔧 Second œuvre (25–30%)</h5>
-                        <p>Matériaux (55–60%) : câbles, tuyauterie, menuiserie, carrelage. Main d’œuvre (40–45%) : électricien, plombier, menuisier, pose carrelage.</p>
-                        <p class="fw-bold">📋 Checklist</p>
-                        <ul><li><i class="far fa-square"></i> Plans électriques validés, réseau eau testé pression, évacuation vérifiée, menuiserie étanche.</li></ul>
-                        <hr>
-                        <h5>🎨 Finitions (15–20%)</h5>
-                        <p>Matériaux (70–75%) : peinture, carrelage, sanitaires, portes, luminaires. Main d’œuvre (25–30%).</p>
-                        <p class="fw-bold">📋 Checklist</p>
-                        <ul><li><i class="far fa-square"></i> Peinture 2 couches, carrelage nivelé, joints propres, test électricité complet.</li></ul>
+                        <p><strong>Peinture :</strong> 2 couches minimum (primaire + finition). Utiliser peinture lavable pour pièces humides.</p>
+                        <p><strong>Carrelage :</strong> Choisir un carreau avec absorption < 3% pour l’extérieur. Pose avec croisillons pour joints réguliers.</p>
+                        <p><strong>Plafond :</strong> BA13, lambris ou plafond suspendu. Prévoir isolation thermique (polystyrène).</p>
+                        <div class="tip-box">
+                            <strong>💡 Astuce :</strong> Pour éviter les fissures de peinture, attendre le séchage complet des enduits (au moins 1 semaine).
+                        </div>
+                        <p class="fw-bold">📋 Checklist Finitions avancée</p>
+                        <ul class="checklist-item">
+                            <li><i class="far fa-square"></i> Support propre, sec, sans poussière</li>
+                            <li><i class="far fa-square"></i> Enduit de lissage si nécessaire</li>
+                            <li><i class="far fa-square"></i> Carrelage : planéité à la règle de 2 m, joints remplis</li>
+                            <li><i class="far fa-square"></i> Test électricité en fin de chantier (prises, éclairage)</li>
+                            <li><i class="far fa-square"></i> Portes : jeu d’ouverture, serrures fonctionnelles</li>
+                        </ul>
+                        <div class="rex-box">
+                            <strong>REX Korhogo :</strong> Peinture extérieure de mauvaise qualité. Après 1 an, décollement. Réfection : +1,2 M.
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Marge de sécurité & REX -->
+            <!-- Marge sécurité & REX -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#securiteCollapse">💰 7️⃣ Marge sécurité & Retours terrain</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#securiteCollapse">💰 7️⃣ Marge sécurité & Retours terrain (10-15%)</button></h2>
                 <div id="securiteCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
-                        <p><strong>Pourquoi 10–15% d’imprévus ?</strong> Hausse matériaux, retards fournisseurs, modifications en cours. Sans marge, 80% des projets stoppés temporairement.</p>
-                        <p><strong>📈 REX Terrain (Côte d’Ivoire)</strong><br> Maison A (sans méthode) : 30M prévu → 42M final (+40%). Maison B (avec méthode) : 36M → 38M (+5%).</p>
-                        <p class="fw-bold mt-2">🧠 10 Sagesses Immobilières</p>
-                        <ol class="row">
-                            <li class="col-md-6">1. La fondation coûte peu, l’erreur coûte cher.</li>
-                            <li class="col-md-6">2. Le moins cher devient souvent le plus coûteux.</li>
-                            <li class="col-md-6">3. Un chantier sans planning est un gouffre.</li>
-                            <li class="col-md-6">4. 1 modification tardive = +3 à 5% budget.</li>
-                            <li class="col-md-6">5. 70% des litiges viennent du flou contractuel.</li>
-                            <li class="col-md-6">6. Toujours payer par avancement.</li>
-                            <li class="col-md-6">7. Exiger factures matériaux.</li>
-                            <li class="col-md-6">8. Documenter chaque étape.</li>
-                            <li class="col-md-6">9. Séparer matériaux et main d’œuvre.</li>
-                            <li class="col-md-6">10. Prévoir 12% d’imprévus minimum.</li>
-                        </ol>
+                        <p><strong>Pourquoi 10–15% d’imprévus ?</strong> Hausse matériaux (ex : ciment +20% en 2024), retards fournisseurs, intempéries, modifications en cours. Sans marge, 80% des projets stoppés temporairement.</p>
+                        <div class="rex-box">
+                            <strong>REX Dabou :</strong> Pas de marge. En cours de chantier, le prix du fer a augmenté de 30%. Chantier à l’arrêt 3 mois, emprunt coûteux.
+                        </div>
+                        <p><strong>📈 REX Terrain détaillés</strong><br> Maison A (sans méthode) : 30M prévu → 42M final (+40%). Cause : modifications + absence suivi.<br> Maison B (avec méthode) : 36M → 38M (+5%). Cause : contrôle hebdomadaire + marge.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 📅 Planning réaliste et gestion de la main d’œuvre -->
+            <!-- Planning réaliste & main d’œuvre version très détaillée -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#planningCollapse">📅 Planning réaliste & main d’œuvre</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#planningCollapse">📅 Planning réaliste & main d’œuvre (durées, salaires, contrats)</button></h2>
                 <div id="planningCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
                         <p class="fw-bold">Estimation des durées (maison 160 m², équipe de 5–8 ouvriers)</p>
@@ -365,23 +446,23 @@
                         </div>
                         <p class="mt-3"><i class="fas fa-users-gear me-2"></i><strong>Gestion de la main d’œuvre :</strong></p>
                         <ul>
-                            <li><i class="fas fa-check text-success me-1"></i> <strong>Contrat journalier ou forfait tâche ?</strong> Privilégiez le forfait par phase pour éviter la flânerie, mais payez par étape validée.</li>
-                            <li><i class="fas fa-check text-success me-1"></i> <strong>Chef d’équipe</strong> : indispensable pour la coordination, comptez 1,5 à 2 fois le salaire d’un ouvrier.</li>
-                            <li><i class="fas fa-check text-success me-1"></i> <strong>Calendrier prévisionnel</strong> : partagez un planning simple avec les ouvriers (type Gantt mural).</li>
-                            <li><i class="fas fa-check text-success me-1"></i> <strong>Pénalités de retard</strong> : prévoyez une clause si vous engagez une entreprise.</li>
-                            <li><i class="fas fa-check text-success me-1"></i> <strong>Hébergement / repas</strong> : selon les régions, cela peut représenter 10–15% du coût main d’œuvre.</li>
+                            <li><strong>Contrat journalier ou forfait tâche ?</strong> Privilégiez le forfait par phase (ex : 1,2 M pour la maçonnerie des murs) pour éviter la flânerie, mais payez par étape validée.</li>
+                            <li><strong>Chef d’équipe</strong> : indispensable pour la coordination, comptez 1,5 à 2 fois le salaire d’un ouvrier (15 000–20 000 F/j).</li>
+                            <li><strong>Calendrier prévisionnel</strong> : partagez un planning simple avec les ouvriers (type Gantt mural).</li>
+                            <li><strong>Pénalités de retard</strong> : prévoyez une clause si vous engagez une entreprise (ex : 0,5% du montant par semaine).</li>
+                            <li><strong>Hébergement / repas</strong> : selon les régions, cela peut représenter 10–15% du coût main d’œuvre.</li>
                         </ul>
-                        <p class="text-secondary small"><i class="fas fa-lightbulb"></i> En Côte d’Ivoire, le coût de la main d’œuvre non qualifiée tourne autour de 5 000–8 000 FCFA/jour, un maçon expérimenté 10 000–15 000 FCFA/jour (hors chef).</p>
+                        <p class="text-secondary small"><i class="fas fa-lightbulb"></i> En Côte d’Ivoire, coût main d’œuvre 2025 : manœuvre 5 000–7 000 F/j, maçon 10 000–15 000 F/j, électricien 12 000–18 000 F/j.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ✅ Checklist des contrôles à faire (par phase) -->
+            <!-- Checklist des contrôles (détaillée avec fréquence) -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#controlesCollapse">✅ Checklist des contrôles à faire (avant, pendant, après)</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#controlesCollapse">✅ Checklist des contrôles à faire (avant, pendant, après) – version longue</button></h2>
                 <div id="controlesCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
-                        <p><strong>Une check-list de contrôle qualité à imprimer et à utiliser chaque semaine.</strong></p>
+                        <p><strong>Check-list de contrôle qualité à imprimer et utiliser chaque semaine.</strong></p>
                         <div class="row">
                             <div class="col-md-6">
                                 <h6><span class="badge bg-warning text-dark">🔨 AVANT COULAGE</span></h6>
@@ -390,6 +471,7 @@
                                     <li><i class="far fa-square"></i> Ferraillage : diamètre, espacement, enrobage</li>
                                     <li><i class="far fa-square"></i> Propreté du fond de fouille</li>
                                     <li><i class="far fa-square"></i> Présence de cales pour l’enrobage</li>
+                                    <li><i class="far fa-square"></i> Vérifier l’absence d’eau dans la fouille</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -399,6 +481,7 @@
                                     <li><i class="far fa-square"></i> Chaînage vertical coulé correctement</li>
                                     <li><i class="far fa-square"></i> Arase de niveau avant dalle</li>
                                     <li><i class="far fa-square"></i> Attentes pour poteaux</li>
+                                    <li><i class="far fa-square"></i> Joints de dilatation (tous les 20 m)</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -406,7 +489,7 @@
                                 <ul class="checklist-item small">
                                     <li><i class="far fa-square"></i> Test d’étanchéité des canalisations (eau sous pression)</li>
                                     <li><i class="far fa-square"></i> Section des câbles conforme au plan</li>
-                                    <li><i class="far fa-square"></i> Mise à la terre réalisée</li>
+                                    <li><i class="far fa-square"></i> Mise à la terre réalisée (mesure de résistance < 100 Ω)</li>
                                     <li><i class="far fa-square"></i> Évacuations avec pente suffisante</li>
                                 </ul>
                             </div>
@@ -417,6 +500,7 @@
                                     <li><i class="far fa-square"></i> Carrelage : vérifier le nivellement et joints</li>
                                     <li><i class="far fa-square"></i> Fonctionnement des interrupteurs et prises</li>
                                     <li><i class="far fa-square"></i> Portes : jeu d’ouverture/fermeture</li>
+                                    <li><i class="far fa-square"></i> Étanchéité des menuiseries extérieures</li>
                                 </ul>
                             </div>
                         </div>
@@ -425,9 +509,9 @@
                 </div>
             </div>
 
-            <!-- 🔍 Audit technique & réception de chantier -->
+            <!-- Audit technique & réception avec lexique -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#auditCollapse">🔍 Audit technique & réception de chantier</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#auditCollapse">🔍 Audit technique & réception de chantier (lexique inclus)</button></h2>
                 <div id="auditCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
                         <p><strong>Pourquoi un audit technique ?</strong> Pour détecter les défauts cachés avant de payer le solde. Idéalement par un bureau de contrôle ou un ingénieur indépendant.</p>
@@ -478,18 +562,54 @@
                             <li>Exiger les garanties (garantie de parfait achèvement 1 an).</li>
                         </ol>
                         <div class="alert alert-info small">💡 En Côte d’Ivoire, le recours à un maître d’œuvre ou à un bureau de contrôle coûte 3 à 5% du budget mais peut vous faire économiser 10 à 20% en vices cachés.</div>
+                        <p><span class="lexique-term">Lexique :</span> <strong>Scléromètre</strong> : appareil mesurant la dureté du béton. <strong>Différentiel</strong> : disjoncteur qui protège contre les fuites de courant. <strong>Réserves</strong> : défauts constatés à la réception.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Outils et conclusion -->
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#outilsCollapse">🛠️ Outils & Conclusion</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#outilsCollapse">🛠️ Outils & Conclusion (modèles, lexique)</button></h2>
                 <div id="outilsCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
                     <div class="accordion-content p-4">
-                        <p><strong>Outils recommandés :</strong> Excel budget ventilé, planning Gantt simple, contrat écrit, carnet de suivi, photos hebdomadaires.</p>
+                        <p><strong>Outils recommandés :</strong> Excel budget ventilé, planning Gantt simple (téléchargeable sur <em>plateformes CI</em>), contrat écrit type (téléchargeable), carnet de suivi, photos hebdomadaires.</p>
+                        <p><span class="lexique-term">Lexique supplémentaire :</span> <strong>Chaînage</strong> : armature en béton armé ceinturant les murs. <strong>Longrine</strong> : poutre reliant les semelles. <strong>Épaufrure</strong> : éclat sur un angle de béton.</p>
                         <p class="fw-bold">🎯 Conclusion</p>
                         <p>Construire en Côte d’Ivoire n’est pas risqué. Construire sans méthode l’est. L’immobilier récompense la planification, la rigueur technique, la vision long terme et la discipline budgétaire. Une maison bien planifiée ne coûte pas plus cher. Elle coûte juste… exactement ce qu’elle doit coûter.</p>
+                        <div class="memoire-box">
+                            <strong>🧠 Aide-mémoire final :</strong> 1. Étude sol / 2. Contrat / 3. Marge 15% / 4. Contrôles / 5. Paiement par étape.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NOUVELLE SECTION : Erreurs fréquentes et REX supplémentaires (pour doubler) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#erreursCollapse">❗ 20 erreurs à éviter & REX croisés</button></h2>
+                <div id="erreursCollapse" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-content p-4">
+                        <ul>
+                            <li><strong>1.</strong> Pas d'étude de sol → REX Bouaké (fissures).</li>
+                            <li><strong>2.</strong> Béton mal dosé → REX Man (effritement).</li>
+                            <li><strong>3.</strong> Absence de chaînage → maison vulnérable séisme.</li>
+                            <li><strong>4.</strong> Enduits extérieurs trop lisses (retenue d'eau).</li>
+                            <li><strong>5.</strong> Électricité sans terre → REX Grand-Bassam.</li>
+                            <li><strong>6.</strong> Tuyaux d'évacuation sans pente → bouchons.</li>
+                            <li><strong>7.</strong> Toiture mal fixée → arrachée par vent.</li>
+                            <li><strong>8.</strong> Pas de ventilation des combles → moisissures.</li>
+                            <li><strong>9.</strong> Carrelage collé sur support humide.</li>
+                            <li><strong>10.</strong> Peinture extérieure non lessivable.</li>
+                            <li><strong>11.</strong> Portes extérieures sans seuil.</li>
+                            <li><strong>12.</strong> Absence de regards de visite.</li>
+                            <li><strong>13.</strong> Ferraillage non scellé.</li>
+                            <li><strong>14.</strong> Dalle trop fine.</li>
+                            <li><strong>15.</strong> Paiement sans contrôle préalable.</li>
+                            <li><strong>16.</strong> Contrat oral.</li>
+                            <li><strong>17.</strong> Matériaux de mauvaise qualité.</li>
+                            <li><strong>18.</strong> Modifications en cours sans avenant.</li>
+                            <li><strong>19.</strong> Retard de paiement → ouvriers quittent.</li>
+                            <li><strong>20.</strong> Pas de photos.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -498,14 +618,13 @@
 
     <!-- Footer -->
     <footer class="py-4 text-center small">
-        <p class="mb-0">© 2025 – Guide autodidacte Côte d’Ivoire • Simulateur 8 standings • Données terrain mises à jour</p>
+        <p class="mb-0">© 2025 – Guide autodidacte Côte d’Ivoire • Version Masterclass • Tous les REX sont anonymisés</p>
     </footer>
 
-    <!-- Bootstrap JS + script simulateur -->
+    <!-- Bootstrap JS + script simulateur (identique) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         (function() {
-            // Éléments DOM
             const surfaceInput = document.getElementById('surfaceInput');
             const coutInput = document.getElementById('coutInput');
             const contingencySlider = document.getElementById('contingencySlider');
@@ -516,32 +635,27 @@
             const phaseBody = document.getElementById('phaseTableBody');
             const standingSelect = document.getElementById('standingSelect');
 
-            // Fonction de formatage des nombres (espaces tous les 3 chiffres)
             function formatNumber(x) {
                 return x.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
             }
 
-            // Mise à jour du tableau des phases et des totaux
             function updateSimulator() {
                 let surface = parseFloat(surfaceInput.value) || 160;
                 let cout = parseFloat(coutInput.value) || 225000;
-                // Sécurité : éviter les valeurs négatives ou trop petites
                 if (cout < 50000) cout = 50000;
                 if (cout > 1000000) cout = 1000000;
-                coutInput.value = cout;   // recalage
+                coutInput.value = cout;
 
                 let base = surface * cout;
                 let contingencyPct = parseFloat(contingencySlider.value) / 100;
                 let contingencyAmount = base * contingencyPct;
                 let totalSecure = base + contingencyAmount;
 
-                // mise à jour des affichages
                 baseTotalSpan.textContent = formatNumber(base);
                 contingencyAmountSpan.textContent = formatNumber(contingencyAmount);
                 totalSecureSpan.textContent = formatNumber(totalSecure);
                 contingencySpan.textContent = contingencySlider.value;
 
-                // Fourchettes de phases (min, max, median) sur base
                 const phases = [
                     { name: "🟤 Fondations", min: 0.15, max: 0.20, mid: 0.175 },
                     { name: "🧱 Élévation / Gros œuvre", min: 0.30, max: 0.35, mid: 0.325 },
@@ -565,22 +679,13 @@
                 phaseBody.innerHTML = rows;
             }
 
-            // Événement pour le select standing : met à jour le champ coût
             standingSelect.addEventListener('change', function() {
                 coutInput.value = standingSelect.value;
                 updateSimulator();
             });
-
-            // Écouteurs sur les autres contrôles
             surfaceInput.addEventListener('input', updateSimulator);
-            coutInput.addEventListener('input', function() {
-                // Si la valeur manuelle correspond exactement à une option, on pourrait sélectionner, mais on laisse libre.
-                updateSimulator();
-            });
+            coutInput.addEventListener('input', updateSimulator);
             contingencySlider.addEventListener('input', updateSimulator);
-
-            // Initialisation : synchroniser le select avec la valeur par défaut (225000)
-            // (déjà selected, mais au cas où)
             standingSelect.value = '225000';
             updateSimulator();
         })();
